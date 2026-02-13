@@ -226,7 +226,7 @@ Implementada a conexao funcional entre o terminal CLI e o canvas antes de comple
 ### CliPanel integrado ao interpretador ✅
 - `src/components/cli/CliPanel.tsx` — usa `execute()` do interpretador real
 - Estado persistente via `useRef<InterpreterState>`
-- Envia draw commands ao canvas store apos cada execucao
+- Envia draw commands via `startAnimation()` para animacao progressiva
 - Help text com comandos EN/PT
 - Erros formatados por faixa etaria
 
@@ -240,29 +240,42 @@ Implementada a conexao funcional entre o terminal CLI e o canvas antes de comple
 
 ---
 
-## Fase 4: Canvas / Turtle Graphics (3-4 dias) — PARCIALMENTE CONCLUIDA
+## Fase 4: Canvas / Turtle Graphics ✅ CONCLUIDA
 
-> Renderizacao basica funcional. Faltam animacao progressiva, toolbar e export.
+### 4.1 Renderizacao com zoom e pan ✅
+- Canvas 2D com DPI scaling e transformacao de coordenadas (origem centro, y-up)
+- Zoom 25%-400% via scroll wheel e botoes da toolbar
+- Pan via Alt+click ou middle-click drag
+- Grid e eixos escalam corretamente com zoom
+- Tartaruga como triangulo (tamanho adaptado por idade, capped em zoom alto)
 
-### 4.1 Renderizacao basica ✅ (feito na integracao)
-- Canvas 2D com DPI scaling
-- Transformacao de coordenadas: origem no centro, y positivo pra cima
-- Desenho da tartaruga como triangulo (tamanho adaptado por idade)
+### 4.2 Animacao progressiva ✅
+- `requestAnimationFrame` loop com fila de comandos animaveis
+- Tartaruga move visivelmente de comando em comando
+- Velocidade ajustavel: Instant (0x), Lenta (0.5x), Normal (1x), Rapida (2x)
+- Botao "pular" para finalizar animacao instantaneamente
+- Durante animacao, renderiza apenas comandos ja processados
 
-### 4.2 Animacao progressiva — PENDENTE
-- Tartaruga move visivelmente de ponto A para B via `requestAnimationFrame`
-- Velocidade ajustavel: mais lenta para 6-8, mais rapida para 10-14
+### 4.3 CanvasToolbar ✅
+- `src/components/canvas/CanvasToolbar.tsx` — barra compacta com icones SVG inline
+- Zoom +/- com display de percentual, reset de visualizacao (zoom + pan)
+- Toggle de grade (liga/desliga grid e eixos)
+- Ciclo de velocidade de animacao com indicador visual
+- Botao de export PNG
+- Botao "pular" visivel apenas durante animacao
 
-### 4.3 CanvasToolbar — PENDENTE
-- Zoom +/-, reset view, slider de velocidade, export, toggle grid
+### 4.4 Export de desenhos ✅
+- Captura canvas como PNG via `toDataURL("image/png")`
+- Download local automatico com nome `gallogo-{timestamp}.png`
+- Canvas marcado com `data-canvas-export` para acesso pela toolbar
 
-### 4.4 Export de desenhos — PENDENTE
-- Captura canvas como PNG (`toDataURL`)
-- Salvar no perfil, download local, marcar como publico
-
-### 4.5 Canvas store ✅ (feito na integracao)
-- Estado basico: drawCommands, turtle, addCommands, reset
-- **Pendente**: zoom, panOffset, animationSpeed, showGrid, isAnimating
+### 4.5 Canvas store completo ✅
+- `src/stores/canvas-store.ts` — Zustand store expandido
+- Estado: `zoom`, `panX`, `panY`, `showGrid`, `animationSpeed`, `isAnimating`
+- Animacao: `animationQueue`, `animatedCommands`, `animatedTurtle`
+- Actions de zoom: `setZoom`, `zoomIn`, `zoomOut`, `resetView` (range 0.25-4.0)
+- Actions de animacao: `startAnimation`, `advanceAnimation`, `finishAnimation`
+- Modo instant (speed=0) pula animacao completamente
 
 ---
 
@@ -388,7 +401,7 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ~~ ──
      │                                                │                      │
      ├──────────> Fase 3 (Interpretador) ✅ ─────────┘                      v
      │                                                │             Fase 8 (Gamificacao)
-     ├──────────> Fase 4 (Canvas) ~~ ────────────────┘                      │
+     ├──────────> Fase 4 (Canvas) ✅ ───────────────┘                      │
      │                                                              Fase 9 (Polish)
      └──────────> Fase 7 (Auth) ~~ ────────────────────────────────────────┘
 
@@ -404,7 +417,7 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ~~ ──
 | 1. Setup e Fundacao | 2-3 dias | ✅ Concluida |
 | 2. Layout Core e UI | 3-4 dias | ✅ Concluida |
 | 3. Interpretador Logo | 5-7 dias | ✅ Concluida (132 testes) |
-| 4. Canvas / Turtle Graphics | 3-4 dias | ~~ Renderizacao basica OK |
+| 4. Canvas / Turtle Graphics | 3-4 dias | ✅ Concluida |
 | 5. Emulador CLI | 3-4 dias | ~~ CLI funcional, faltam extras |
 | 6. Licoes e Desafios | 5-7 dias | Pendente |
 | 7. Auth e Usuarios | 3-4 dias | ~~ Auth.js config OK |
@@ -454,7 +467,7 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ~~ ──
 1. **Fase 1** ✅: `npm run dev` sobe sem erros, `npx prisma db push` cria 7 tabelas
 2. **Fase 2** ✅: Layout de 3 paineis com resize, temas alternam via `data-age-group`, build OK
 3. **Fase 3** ✅: 132 testes passam (`npx jest`), `fd 100 rt 90` gera DrawCommands corretos, aliases PT funcionam
-4. **Fase 4** ~~: Canvas renderiza `repeat 4 [fd 100 rt 90]` como quadrado, tartaruga visivel. **Falta**: animacao progressiva
+4. **Fase 4** ✅: Canvas com zoom/pan, animacao progressiva, toolbar completa, export PNG
 5. **Fase 5** ~~: CLI aceita input e executa comandos reais. **Falta**: historico Up/Down, autocomplete, syntax highlighting
 6. **Fase 6**: Licao carrega no painel de instrucoes, desafio valida corretamente, hints funcionam
 7. **Fase 7** ~~: Auth.js configurado com JWT + ageGroup. **Falta**: paginas login/registro, middleware

@@ -52,7 +52,7 @@ export function CliPanel() {
   ]);
   const outputRef = useRef<HTMLDivElement>(null);
   const interpreterRef = useRef<InterpreterState | null>(null);
-  const addCommands = useCanvasStore((s) => s.addCommands);
+  const startAnimation = useCanvasStore((s) => s.startAnimation);
   const resetCanvas = useCanvasStore((s) => s.reset);
 
   // Lazy-init persistent interpreter state
@@ -89,9 +89,9 @@ export function CliPanel() {
         const state = getInterpreter();
         const result = execute(trimmed, state);
 
-        // Send draw commands to canvas store
+        // Send draw commands to canvas store (with animation)
         if (result.commands.length > 0) {
-          addCommands(result.commands, result.turtle);
+          startAnimation(result.commands, result.turtle);
         }
 
         if (result.error) {
