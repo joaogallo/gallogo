@@ -119,6 +119,30 @@
 }
 
 /* ============================================
+   8-12 CLI "Homebrew" terminal override
+   Green-on-black classic terminal aesthetic
+   ============================================ */
+[data-age-group="8-12"] [data-panel="cli"] {
+  --color-bg: #000000;
+  --color-bg-secondary: #071a07;
+  --color-bg-panel: #071a07;
+  --color-text: #00ff00;
+  --color-text-secondary: #00cc00;
+  --color-text-muted: #009900;
+  --color-primary: #00ff00;
+  --color-primary-light: #66ff66;
+  --color-primary-dark: #00cc00;
+  --color-secondary: #00cc00;
+  --color-secondary-light: #33ff33;
+  --color-accent: #00ff00;
+  --color-accent-light: #99ff99;
+  --color-border: #003300;
+  --color-error: #ff4444;
+  --color-success: #00ff00;
+  --color-warning: #ccff00;
+}
+
+/* ============================================
    Tailwind theme inline tokens
    ============================================ */
 @theme inline {

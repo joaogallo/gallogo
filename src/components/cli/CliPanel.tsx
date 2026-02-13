@@ -41,7 +41,14 @@ const HELP_TEXT =
   "Math: sum, difference, product, quotient, sqrt, random, power\n" +
   "Proc: to nome :arg ... end  |  aprenda nome :arg ... fim";
 
-export function CliPanel() {
+interface CliPanelProps {
+  /** Shared interpreter ref (owned by playground page) */
+  interpreterRef?: React.RefObject<InterpreterState | null>;
+  /** Consume code pasted from the instructions panel */
+  consumePendingCode?: () => string | null;
+}
+
+export function CliPanel({ interpreterRef: sharedRef, consumePendingCode }: CliPanelProps) {
   const { ageGroup } = useTheme();
   const prompt = getPrompt(ageGroup);
   const [input, setInput] = useState("");
@@ -55,7 +62,8 @@ export function CliPanel() {
   ]);
   const outputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const interpreterRef = useRef<InterpreterState | null>(null);
+  const localRef = useRef<InterpreterState | null>(null);
+  const interpreterRef = sharedRef ?? localRef;
   const startAnimation = useCanvasStore((s) => s.startAnimation);
   const history = useCliHistory();
 
@@ -78,6 +86,16 @@ export function CliPanel() {
   useEffect(() => {
     outputRef.current?.scrollTo(0, outputRef.current.scrollHeight);
   }, [entries]);
+
+  // Consume code pasted from instructions panel
+  useEffect(() => {
+    if (!consumePendingCode) return;
+    const code = consumePendingCode();
+    if (code) {
+      setInput(code);
+      inputRef.current?.focus();
+    }
+  });
 
   const executeCommand = useCallback(
     (code: string) => {
@@ -274,7 +292,7 @@ export function CliPanel() {
   };
 
   return (
-    <div className="flex h-full flex-col bg-surface font-mono">
+    <div data-panel="cli" className="flex h-full flex-col bg-surface font-mono">
       <div className="border-b border-border px-4 py-2.5">
         <h2 className="text-sm font-semibold text-content">Terminal</h2>
       </div>
