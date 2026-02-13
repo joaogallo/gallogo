@@ -4,6 +4,10 @@ import { useSession, signOut } from "next-auth/react";
 import { useTheme } from "@/theme/ThemeProvider";
 import { cn } from "@/lib/utils";
 import type { AgeGroupId } from "@/theme/age-themes";
+import { useGamificationStore } from "@/stores/gamification-store";
+import { LevelIndicator } from "@/components/gamification/LevelIndicator";
+import { BadgeGrid } from "@/components/gamification/BadgeGrid";
+import Link from "next/link";
 
 const AGE_MAP: Record<string, AgeGroupId> = {
   AGE_6_8: "6-8",
@@ -11,23 +15,17 @@ const AGE_MAP: Record<string, AgeGroupId> = {
   AGE_10_14: "10-14",
 };
 
-const LEVEL_NAMES = [
-  "",
-  "Tartaruga Iniciante",
-  "Explorador",
-  "Artista",
-  "Programador",
-  "Mestre",
-  "Ninja",
-  "Lendario",
-  "Mestre Logo",
-  "Guru",
-  "Arquiteto Digital",
-];
-
 export default function ProfilePage() {
   const { data: session } = useSession();
   const { ageGroup, setAgeGroup } = useTheme();
+  const {
+    totalPoints,
+    level,
+    levelName,
+    streak,
+    earnedBadgeIds,
+    loaded,
+  } = useGamificationStore();
 
   if (!session?.user) {
     return (
@@ -38,6 +36,7 @@ export default function ProfilePage() {
   }
 
   const user = session.user;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const userAgeGroup = AGE_MAP[(user as any).ageGroup] || ageGroup;
   const initials = (user.name || user.email || "?")
     .split(" ")
@@ -67,20 +66,66 @@ export default function ProfilePage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3">
         <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4 text-center">
-          <div className="text-2xl font-bold text-primary">1</div>
+          <div className="text-2xl font-bold text-primary">
+            {loaded ? level : "-"}
+          </div>
           <div className="text-xs text-content-muted">Nivel</div>
           <div className="text-[10px] text-content-secondary">
-            {LEVEL_NAMES[1]}
+            {loaded ? levelName : "..."}
           </div>
         </div>
         <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4 text-center">
-          <div className="text-2xl font-bold text-primary">0</div>
+          <div className="text-2xl font-bold text-primary">
+            {loaded ? totalPoints.toLocaleString() : "-"}
+          </div>
           <div className="text-xs text-content-muted">Pontos</div>
         </div>
         <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4 text-center">
-          <div className="text-2xl font-bold text-primary">0</div>
-          <div className="text-xs text-content-muted">Badges</div>
+          <div className="text-2xl font-bold text-primary">
+            {loaded ? earnedBadgeIds.length : "-"}
+          </div>
+          <div className="text-xs text-content-muted">Conquistas</div>
         </div>
+      </div>
+
+      {/* Level progress */}
+      {loaded && (
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4">
+          <LevelIndicator totalPoints={totalPoints} />
+        </div>
+      )}
+
+      {/* Streak */}
+      {loaded && streak > 0 && (
+        <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4 flex items-center gap-3">
+          <span className="text-2xl">🔥</span>
+          <div>
+            <p className="text-sm font-medium text-content">
+              {streak} {streak === 1 ? "dia" : "dias"} seguidos
+            </p>
+            <p className="text-xs text-content-muted">
+              Continue praticando para manter seu streak!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Badges */}
+      <div className="rounded-[var(--radius-md)] border border-border bg-surface p-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-semibold text-content">Conquistas</h2>
+          <Link
+            href="/leaderboard"
+            className="text-xs text-primary hover:underline"
+          >
+            Ver ranking
+          </Link>
+        </div>
+        {loaded ? (
+          <BadgeGrid earnedBadgeIds={earnedBadgeIds} />
+        ) : (
+          <p className="text-sm text-content-muted">Carregando conquistas...</p>
+        )}
       </div>
 
       {/* Theme switcher */}

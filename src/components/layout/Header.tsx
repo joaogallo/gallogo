@@ -7,12 +7,16 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/theme/ThemeProvider";
 import type { AgeGroupId } from "@/theme/age-themes";
+import { PointsDisplay } from "@/components/gamification/PointsDisplay";
+import { StreakDisplay } from "@/components/gamification/StreakDisplay";
+import { useGamificationStore } from "@/stores/gamification-store";
 
 const NAV_ITEMS = [
   { href: "/playground", label: "Playground" },
   { href: "/lessons", label: "Licoes" },
   { href: "/challenges", label: "Desafios" },
   { href: "/gallery", label: "Galeria" },
+  { href: "/leaderboard", label: "Ranking" },
 ];
 
 function ThemeSwitcher() {
@@ -113,6 +117,17 @@ function UserMenu() {
   );
 }
 
+function GamificationHeader() {
+  const { loaded, streak } = useGamificationStore();
+  if (!loaded) return null;
+  return (
+    <div className="flex items-center gap-2">
+      <PointsDisplay />
+      <StreakDisplay streak={streak} />
+    </div>
+  );
+}
+
 export function Header() {
   const pathname = usePathname();
 
@@ -157,6 +172,7 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-3">
+        <GamificationHeader />
         <ThemeSwitcher />
         <UserMenu />
       </div>

@@ -49,9 +49,9 @@ export const MODULE_1_LESSONS: Lesson[] = [
         id: "1.1.1",
         title: "Explorador",
         description:
-          "Digite 'help' no terminal para ver os comandos disponiveis.",
+          "Digite 'ajuda' no terminal para ver os comandos disponiveis.",
         difficulty: 1,
-        hints: ["Digite a palavra 'help' e pressione Enter."],
+        hints: ["Digite a palavra 'ajuda' e pressione Enter."],
         validation: { type: "contains-commands", commands: ["help"] },
         points: 10,
       },
@@ -103,9 +103,9 @@ export const MODULE_1_LESSONS: Lesson[] = [
     moduleId: 1,
     order: 3,
     title: "Os Quatro Movimentos Basicos",
-    description: "Aprenda fd, bk, rt e lt — os 4 comandos fundamentais.",
+    description: "Aprenda pf, pt, vd e ve — os 4 comandos fundamentais.",
     ageGroupMin: "6-8",
-    commandsIntroduced: ["fd", "bk", "rt", "lt"],
+    commandsIntroduced: ["pf", "pt", "vd", "ve"],
     points: 30,
     steps: [
       {
@@ -116,12 +116,12 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "fd N (para frente) — move N passos na direcao que esta olhando\nbk N (para tras) — move N passos para tras\nrt N (girar direita) — gira N graus no sentido horario\nlt N (girar esquerda) — gira N graus no sentido anti-horario",
+          "pf N (para frente) — move N passos na direcao que esta olhando\nbk N (para tras) — move N passos para tras\nrt N (girar direita) — gira N graus no sentido horario\nlt N (girar esquerda) — gira N graus no sentido anti-horario",
       },
       {
         type: "example",
         content: "Mova a tartaruga 100 passos para frente:",
-        code: "fd 100",
+        code: "pf 100",
       },
       {
         type: "example",
@@ -136,7 +136,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "tip",
         content:
-          "Em portugues: pf (para frente), pt (para tras), vd (virar a direita), ve (virar a esquerda). Ambos funcionam!",
+          "Em inglês: fd (forward), bk (back), rt (right turn), lt (left turn). Ambos funcionam!",
       },
     ],
     challenges: [
@@ -145,7 +145,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         title: "Primeiro passo",
         description: "Mova a tartaruga 100 passos para frente.",
         difficulty: 1,
-        hints: ["Use o comando 'fd' seguido de um numero.", "Digite: fd 100"],
+        hints: ["Use o comando 'pf' seguido de um numero.", "Digite: pf 100"],
         validation: { type: "contains-commands", commands: ["forward"] },
         points: 15,
       },
@@ -156,7 +156,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
           "Desenhe uma linha em forma de L (ande para frente, gire e ande de novo).",
         difficulty: 1,
         hints: [
-          "Voce precisa de 3 comandos: fd, rt e fd.",
+          "Voce precisa de 3 comandos: pf, vd e pf.",
           "Gire 90 graus para fazer uma curva em angulo reto.",
         ],
         validation: { type: "min-lines", count: 2 },
@@ -169,7 +169,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
           "Faca a tartaruga ir para frente e voltar ao ponto de partida.",
         difficulty: 1,
         hints: [
-          "Use fd para ir e bk para voltar.",
+          "Use pf para ir e pt para voltar.",
           "Se andar 100 para frente, ande 100 para tras.",
         ],
         validation: { type: "contains-commands", commands: ["forward", "back"] },

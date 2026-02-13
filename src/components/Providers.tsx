@@ -2,11 +2,17 @@
 
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/theme/ThemeProvider";
+import { AchievementToast } from "@/components/gamification/AchievementToast";
+import { GamificationLoader } from "@/components/gamification/GamificationLoader";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <GamificationLoader />
+        {children}
+        <AchievementToast />
+      </ThemeProvider>
     </SessionProvider>
   );
 }
