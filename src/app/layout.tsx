@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/theme/ThemeProvider";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

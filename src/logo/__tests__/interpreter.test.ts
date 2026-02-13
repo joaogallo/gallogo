@@ -52,13 +52,13 @@ describe("Interpreter", () => {
       expect(r.turtle.y).toBeCloseTo(-50);
     });
 
-    it("pd turns right (paradireita)", () => {
-      const r = run("pd 90");
+    it("vd turns right (virar direita)", () => {
+      const r = run("vd 90");
       expect(r.turtle.heading).toBeCloseTo(90);
     });
 
-    it("pe turns left (paraesquerda)", () => {
-      const r = run("pe 45");
+    it("ve turns left (virar esquerda)", () => {
+      const r = run("ve 45");
       expect(r.turtle.heading).toBeCloseTo(315);
     });
   });
@@ -85,8 +85,8 @@ describe("Interpreter", () => {
 
   describe("pen commands", () => {
     it("penup / pendown", () => {
-      const r = run("pu fd 50 pd 90 pendown fd 50");
-      // "pd 90" is right turn (paradireita), not pendown
+      const r = run("pu fd 50 vd 90 pendown fd 50");
+      // "vd 90" is right turn (virar direita), not pendown
       // pendown is the English word form
       const lines = r.commands.filter((c) => c.type === "line");
       expect(lines).toHaveLength(1); // only the last fd 50
@@ -132,7 +132,7 @@ describe("Interpreter", () => {
     });
 
     it("paracentro returns to center (PT)", () => {
-      const r = run("pf 100 pd 45 paracentro");
+      const r = run("pf 100 vd 45 paracentro");
       expect(r.turtle.x).toBeCloseTo(0);
       expect(r.turtle.y).toBeCloseTo(0);
     });
@@ -199,7 +199,7 @@ describe("Interpreter", () => {
     });
 
     it("repita draws a triangle (PT)", () => {
-      const r = run("repita 3 [pf 100 pd 120]");
+      const r = run("repita 3 [pf 100 vd 120]");
       const lines = r.commands.filter((c) => c.type === "line");
       expect(lines).toHaveLength(3);
     });
@@ -257,7 +257,7 @@ describe("Interpreter", () => {
 
     it("aprenda / fim (PT) works", () => {
       const state = createInterpreterState();
-      run("aprenda quadrado :lado\nrepita 4 [pf :lado pd 90]\nfim", state);
+      run("aprenda quadrado :lado\nrepita 4 [pf :lado vd 90]\nfim", state);
       const r = run("quadrado 80", state);
       const lines = r.commands.filter((c) => c.type === "line");
       expect(lines).toHaveLength(4);

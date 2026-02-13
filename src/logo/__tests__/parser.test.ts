@@ -57,13 +57,13 @@ describe("Parser", () => {
       expect(ast[0]).toMatchObject({ kind: "command", name: "back" });
     });
 
-    it("parses pd as right (paradireita)", () => {
-      const ast = parseCode("pd 90");
+    it("parses vd as right (virar direita)", () => {
+      const ast = parseCode("vd 90");
       expect(ast[0]).toMatchObject({ kind: "command", name: "right" });
     });
 
-    it("parses pe as left (paraesquerda)", () => {
-      const ast = parseCode("pe 45");
+    it("parses ve as left (virar esquerda)", () => {
+      const ast = parseCode("ve 45");
       expect(ast[0]).toMatchObject({ kind: "command", name: "left" });
     });
 
@@ -201,7 +201,7 @@ describe("Parser", () => {
     });
 
     it("parses aprenda ... fim (PT)", () => {
-      const ast = parseCode("aprenda quadrado :lado\nrepita 4 [pf :lado pd 90]\nfim");
+      const ast = parseCode("aprenda quadrado :lado\nrepita 4 [pf :lado vd 90]\nfim");
       expect(ast[0]).toMatchObject({
         kind: "procedure_def",
         name: "quadrado",

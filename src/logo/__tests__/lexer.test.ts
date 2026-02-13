@@ -106,8 +106,8 @@ describe("Lexer", () => {
   });
 
   it("tokenizes Portuguese commands as WORDs", () => {
-    const tokens = tokenize("pf 100 pd 90");
+    const tokens = tokenize("pf 100 vd 90");
     const words = tokens.filter((t) => t.type === TokenType.WORD);
-    expect(words.map((w) => w.value)).toEqual(["pf", "pd"]);
+    expect(words.map((w) => w.value)).toEqual(["pf", "vd"]);
   });
 });

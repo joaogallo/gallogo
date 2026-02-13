@@ -34,12 +34,23 @@ function getPrompt(ageGroup: string): string {
   }
 }
 
+const AJUDA_TEXT =
+  "Movimento: pf N (frente), pt N (tras), vd N (direita), ve N (esquerda)\n" +
+  "Caneta: un (levantar), ul (abaixar), mudecor N, mudeespessura N\n" +
+  "Tela: limpe, paracentro, mudexy X Y, mudedirecao N\n" +
+  'Variaveis: faca "nome valor, :nome, escreva valor\n' +
+  "Controle: repita N [...], se cond [...], sesenao cond [...] [...]\n" +
+  "Procedimentos: aprenda nome :arg ... fim\n" +
+  "Matematica: soma, diferenca, produto, quociente, raizq, aleatorio, potencia";
+
 const HELP_TEXT =
-  "Comandos: fd N, bk N, rt N, lt N, pu, pendown, repeat N [...], cs, home\n" +
-  "PT: pf N, pt N, pd N, pe N, un, ul, repita N [...], limpe, paracentro\n" +
-  'Mais: setpc C, setps N, setxy X Y, seth A, make "var V, print V\n' +
-  "Math: sum, difference, product, quotient, sqrt, random, power\n" +
-  "Proc: to nome :arg ... end  |  aprenda nome :arg ... fim";
+  "Movement: fd N, bk N, rt N, lt N\n" +
+  "Pen: pu, pendown, setpc C, setps N\n" +
+  "Screen: cs, home, setxy X Y, seth A\n" +
+  'Variables: make "var V, print V\n' +
+  "Control: repeat N [...], if cond [...], ifelse cond [...] [...]\n" +
+  "Procedures: to name :arg ... end\n" +
+  "Math: sum, difference, product, quotient, sqrt, random, power";
 
 interface CliPanelProps {
   /** Shared interpreter ref (owned by playground page) */
@@ -57,7 +68,7 @@ export function CliPanel({ interpreterRef: sharedRef, consumePendingCode }: CliP
       id: "welcome",
       type: "system",
       content:
-        "GalloGo v0.1.0 — Digite comandos Logo para controlar a tartaruga. Use 'help' para ajuda.",
+        "GalloGo v0.1.0 — Digite comandos Logo para controlar a tartaruga. Digite 'ajuda' para pedir ajuda.",
     },
   ]);
   const outputRef = useRef<HTMLDivElement>(null);
@@ -110,7 +121,13 @@ export function CliPanel({ interpreterRef: sharedRef, consumePendingCode }: CliP
 
       const lower = trimmed.toLowerCase();
 
-      if (lower === "help" || lower === "ajuda") {
+      if (lower === "ajuda") {
+        newEntries.push({
+          id: crypto.randomUUID(),
+          type: "output",
+          content: AJUDA_TEXT,
+        });
+      } else if (lower === "help") {
         newEntries.push({
           id: crypto.randomUUID(),
           type: "output",

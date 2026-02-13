@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/theme/ThemeProvider";
 import type { AgeGroupId } from "@/theme/age-themes";
@@ -38,6 +40,75 @@ function ThemeSwitcher() {
           {opt.label}
         </button>
       ))}
+    </div>
+  );
+}
+
+function UserMenu() {
+  const { data: session } = useSession();
+  const [open, setOpen] = useState(false);
+
+  if (!session?.user) {
+    return (
+      <Link
+        href="/login"
+        className="rounded-[var(--radius-sm)] bg-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-primary-dark transition-colors"
+      >
+        Entrar
+      </Link>
+    );
+  }
+
+  const user = session.user;
+  const initials = (user.name || user.email || "?")
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white text-xs font-bold hover:bg-primary-dark transition-colors"
+      >
+        {initials}
+      </button>
+
+      {open && (
+        <>
+          <div
+            className="fixed inset-0 z-20"
+            onClick={() => setOpen(false)}
+          />
+          <div className="absolute right-0 top-full z-30 mt-1 w-48 rounded-[var(--radius-md)] border border-border bg-surface shadow-lg">
+            <div className="border-b border-border px-3 py-2">
+              <p className="text-sm font-medium text-content truncate">
+                {user.name || "Usuario"}
+              </p>
+              <p className="text-xs text-content-muted truncate">
+                {user.email}
+              </p>
+            </div>
+            <div className="p-1">
+              <Link
+                href="/profile"
+                onClick={() => setOpen(false)}
+                className="block w-full rounded-[var(--radius-sm)] px-3 py-1.5 text-left text-sm text-content-secondary hover:bg-surface-secondary transition-colors"
+              >
+                Perfil
+              </Link>
+              <button
+                onClick={() => signOut({ callbackUrl: "/login" })}
+                className="block w-full rounded-[var(--radius-sm)] px-3 py-1.5 text-left text-sm text-error hover:bg-error/5 transition-colors"
+              >
+                Sair
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -87,6 +158,7 @@ export function Header() {
 
       <div className="flex items-center gap-3">
         <ThemeSwitcher />
+        <UserMenu />
       </div>
     </header>
   );

@@ -165,7 +165,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Em portugues (aprenda...fim):",
-        code: "aprenda triangulo :tam\n  repita 3 [pf :tam pd 120]\nfim\ntriangulo 80",
+        code: "aprenda triangulo :tam\n  repita 3 [pf :tam vd 120]\nfim\ntriangulo 80",
       },
       {
         type: "tip",

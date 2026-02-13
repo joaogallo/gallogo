@@ -136,7 +136,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "tip",
         content:
-          "Em portugues: pf (para frente), pt (para tras), pd (para direita), pe (para esquerda). Ambos funcionam!",
+          "Em portugues: pf (para frente), pt (para tras), vd (virar a direita), ve (virar a esquerda). Ambos funcionam!",
       },
     ],
     challenges: [

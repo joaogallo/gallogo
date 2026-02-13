@@ -23,8 +23,8 @@ function reg(
 // =========================================================
 reg(["forward", "fd", "parafrente", "pf"], "forward", 1);
 reg(["back", "bk", "paratras", "pt"], "back", 1);
-reg(["right", "rt", "paradireita", "pd"], "right", 1);
-reg(["left", "lt", "paraesquerda", "pe"], "left", 1);
+reg(["right", "rt", "paradireita", "vd", "virardireita"], "right", 1);
+reg(["left", "lt", "paraesquerda", "ve", "viraresquerda"], "left", 1);
 
 // =========================================================
 // Caneta / Pen

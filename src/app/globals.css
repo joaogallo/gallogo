@@ -123,6 +123,7 @@
    Green-on-black classic terminal aesthetic
    ============================================ */
 [data-age-group="8-12"] [data-panel="cli"] {
+  /* Raw vars (used by body, inline references) */
   --color-bg: #000000;
   --color-bg-secondary: #071a07;
   --color-bg-panel: #071a07;
@@ -140,6 +141,14 @@
   --color-error: #ff4444;
   --color-success: #00ff00;
   --color-warning: #ccff00;
+
+  /* Tailwind token overrides (used by bg-surface, text-content, etc.) */
+  --color-surface: #000000;
+  --color-surface-secondary: #071a07;
+  --color-surface-panel: #071a07;
+  --color-content: #00ff00;
+  --color-content-secondary: #00cc00;
+  --color-content-muted: #009900;
 }
 
 /* ============================================

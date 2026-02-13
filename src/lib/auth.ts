@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
+import MicrosoftEntraId from "next-auth/providers/microsoft-entra-id";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { prisma } from "./db";
@@ -7,6 +9,15 @@ import { prisma } from "./db";
 export const { auth, handlers, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    MicrosoftEntraId({
+      clientId: process.env.MICROSOFT_CLIENT_ID,
+      clientSecret: process.env.MICROSOFT_CLIENT_SECRET,
+      issuer: process.env.MICROSOFT_ISSUER,
+    }),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },
@@ -44,10 +55,19 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     newUser: "/register",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        token.ageGroup = (user as any).ageGroup;
+        // For OAuth logins, load ageGroup from DB
+        if (account?.provider !== "credentials" && token.sub) {
+          const dbUser = await prisma.user.findUnique({
+            where: { id: token.sub },
+            select: { ageGroup: true },
+          });
+          token.ageGroup = dbUser?.ageGroup ?? "AGE_8_12";
+        } else {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          token.ageGroup = (user as any).ageGroup;
+        }
       }
       return token;
     },

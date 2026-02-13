@@ -206,14 +206,14 @@ function ReferenceCard() {
           Referencia Rapida
         </p>
         <pre className="font-mono text-[10px] text-content-secondary whitespace-pre-wrap leading-relaxed">
-{`fd N   - para frente     bk N   - para tras
-rt N   - girar direita   lt N   - girar esquerda
-pu     - caneta sobe     pendown- caneta desce
-repeat N [cmds]          cs     - limpar tela
-setpc N - cor (0-15)     setpensize N - espessura
-make "nome valor         :nome  - usar variavel
-to nome :arg ... end     print valor
-home   - voltar centro   setxy X Y - ir para X,Y`}
+{`pf N   - para frente     pt N   - para tras
+vd N   - virar direita   ve N   - virar esquerda
+un     - caneta sobe     ul     - caneta desce
+repita N [cmds]          limpe  - limpar tela
+mudecor N - cor (0-15)   mudeespessura N - espessura
+faca "nome valor         :nome  - usar variavel
+aprenda nome :arg ... fim  escreva valor
+paracentro - voltar       mudexy X Y - ir para X,Y`}
         </pre>
       </div>
     </div>
