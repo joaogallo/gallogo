@@ -279,32 +279,43 @@ Implementada a conexao funcional entre o terminal CLI e o canvas antes de comple
 
 ---
 
-## Fase 5: Emulador CLI (3-4 dias) — PARCIALMENTE CONCLUIDA
+## Fase 5: Emulador CLI ✅ CONCLUIDA
 
-> CLI funcional com interpretador conectado. Faltam historico Up/Down, syntax highlighting e autocomplete.
+### 5.1 CliPanel completo ✅
+- CLI custom com output scrollavel + input fixo (textarea auto-resize)
+- Integrado ao interpretador Logo real com animacao progressiva
+- Prompt adaptado por idade: `tartaruga>` (6-8), `logo>` (8-12), `gallogo>` (10-14)
 
-### 5.1 CliPanel funcional ✅ (feito na integracao)
-- CLI custom com area de output scrollavel + input fixo
-- Integrado ao interpretador Logo real
+### 5.2 CliOutput ✅
+- Entries tipadas: input, output, error, system com cores distintas
+- Inputs no historico exibidos com syntax highlighting
+- `whitespace-pre-wrap` para preservar formatacao multiline
 
-### 5.2 CliInput basico ✅
-- Prompt adaptado por idade: tartaruga> / logo> / gallogo>
-- Enter = executar
+### 5.3 Syntax Highlighting ✅
+- `src/components/cli/SyntaxHighlighter.tsx` — tokenizador proprio para colorir
+- Comandos (primary), special forms (accent bold), numeros (accent-light)
+- Variaveis `:nome` (primary-light), strings `"texto` (accent), brackets (bold)
+- Operadores, comentarios (italic muted)
+- Reconhece automaticamente comandos EN/PT e special forms via registro do interpretador
 
-### 5.3 CliOutput ✅
-- Entries tipadas: input, output, error, system
-- Cores por tipo, feedback de execucao
+### 5.4 AutoComplete ✅
+- `src/components/cli/AutoComplete.tsx` — dropdown posicionado acima do input
+- Sugere comandos built-in, special forms, reporters, procedures do usuario e variaveis
+- Filtragem por prefixo com limite de 8 sugestoes
+- Tab para abrir/navegar, Enter para selecionar, Escape para fechar
+- Shift+Tab navega para cima, click seleciona sem perder foco
+- Mostra hint com assinatura dos argumentos e tipo com cor distinta
 
-### 5.4 Syntax Highlighting — PENDENTE
-- Colorir comandos, numeros, brackets, variaveis
+### 5.5 useCliHistory ✅
+- `src/hooks/useCliHistory.ts` — historico com persistencia em localStorage
+- Up/Down para navegar (apenas em modo single-line)
+- Salva draft do input atual ao comecar a navegar
+- Deduplica entradas consecutivas, limite de 100 comandos
 
-### 5.5 AutoComplete — PENDENTE
-- Tab ou pausa: dropdown com sugestoes
-
-### 5.6 useCliHistory — PENDENTE
-- Navegacao Up/Down, persistencia localStorage
-
-### 5.7 Shift+Enter para multiline — PENDENTE
+### 5.6 Multiline (Shift+Enter) ✅
+- Textarea com auto-resize (max 120px) para input multiline
+- Shift+Enter insere nova linha, Enter submete
+- Historico Up/Down desativado quando input contem `\n`
 
 ---
 
@@ -397,7 +408,7 @@ ChallengeValidation: type (exact-drawing|contains-commands|output-match|custom),
 ## Grafo de Dependencias entre Fases
 
 ```
-Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ~~ ──> Fase 6 (Licoes)
+Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ✅ ──> Fase 6 (Licoes)
      │                                                │                      │
      ├──────────> Fase 3 (Interpretador) ✅ ─────────┘                      v
      │                                                │             Fase 8 (Gamificacao)
@@ -418,7 +429,7 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ~~ ──
 | 2. Layout Core e UI | 3-4 dias | ✅ Concluida |
 | 3. Interpretador Logo | 5-7 dias | ✅ Concluida (132 testes) |
 | 4. Canvas / Turtle Graphics | 3-4 dias | ✅ Concluida |
-| 5. Emulador CLI | 3-4 dias | ~~ CLI funcional, faltam extras |
+| 5. Emulador CLI | 3-4 dias | ✅ Concluida |
 | 6. Licoes e Desafios | 5-7 dias | Pendente |
 | 7. Auth e Usuarios | 3-4 dias | ~~ Auth.js config OK |
 | 8. Gamificacao | 4-5 dias | Pendente |
@@ -468,7 +479,7 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ~~ ──
 2. **Fase 2** ✅: Layout de 3 paineis com resize, temas alternam via `data-age-group`, build OK
 3. **Fase 3** ✅: 132 testes passam (`npx jest`), `fd 100 rt 90` gera DrawCommands corretos, aliases PT funcionam
 4. **Fase 4** ✅: Canvas com zoom/pan, animacao progressiva, toolbar completa, export PNG
-5. **Fase 5** ~~: CLI aceita input e executa comandos reais. **Falta**: historico Up/Down, autocomplete, syntax highlighting
+5. **Fase 5** ✅: CLI completo com syntax highlighting, autocomplete, historico Up/Down, multiline
 6. **Fase 6**: Licao carrega no painel de instrucoes, desafio valida corretamente, hints funcionam
 7. **Fase 7** ~~: Auth.js configurado com JWT + ageGroup. **Falta**: paginas login/registro, middleware
 8. **Fase 8**: Pontos incrementam, badges aparecem, toast de achievement dispara, leaderboard carrega
