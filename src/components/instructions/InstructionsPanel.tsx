@@ -6,6 +6,7 @@ import { useTheme } from "@/theme/ThemeProvider";
 import type { InterpreterState } from "@/logo";
 import { getModulesForAge, getModuleLessons, getLesson } from "@/data/lessons";
 import { LessonContent } from "./LessonContent";
+import { useGamification } from "@/hooks/useGamification";
 
 type PanelMode = "browse" | "lesson" | "free";
 
@@ -19,6 +20,7 @@ export function InstructionsPanel({
   onCopyToTerminal,
 }: InstructionsPanelProps) {
   const { ageGroup, theme } = useTheme();
+  const { recordProgress } = useGamification();
   const [mode, setMode] = useState<PanelMode>("browse");
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(
@@ -42,6 +44,9 @@ export function InstructionsPanel({
       // Find next lesson
       const lesson = getLesson(activeLessonId);
       if (lesson) {
+        // Award lesson points
+        recordProgress({ lessonId: activeLessonId, points: lesson.points });
+
         const moduleLessons = getModuleLessons(lesson.moduleId, ageGroup);
         const idx = moduleLessons.findIndex((l) => l.id === activeLessonId);
         if (idx >= 0 && idx < moduleLessons.length - 1) {
@@ -66,11 +71,27 @@ export function InstructionsPanel({
       // No more lessons
       setMode("browse");
     }
-  }, [activeLessonId, ageGroup, modules]);
+  }, [activeLessonId, ageGroup, modules, recordProgress]);
 
-  const handleChallengeComplete = useCallback((challengeId: string) => {
-    setCompletedChallenges((prev) => new Set(prev).add(challengeId));
-  }, []);
+  const handleChallengeComplete = useCallback(
+    (challengeId: string) => {
+      setCompletedChallenges((prev) => new Set(prev).add(challengeId));
+
+      // Award challenge points
+      if (activeLessonId) {
+        const lesson = getLesson(activeLessonId);
+        const challenge = lesson?.challenges.find((c) => c.id === challengeId);
+        if (challenge) {
+          recordProgress({
+            lessonId: activeLessonId,
+            challengeId,
+            points: challenge.points,
+          });
+        }
+      }
+    },
+    [activeLessonId, recordProgress]
+  );
 
   const activeLesson = activeLessonId ? getLesson(activeLessonId) : null;
 
@@ -208,12 +229,12 @@ function ReferenceCard() {
         <pre className="font-mono text-[10px] text-content-secondary whitespace-pre-wrap leading-relaxed">
 {`pf N   - para frente     pt N   - para tras
 vd N   - virar direita   ve N   - virar esquerda
-un     - caneta sobe     ul     - caneta desce
+lc     - levantar caneta uc     - usar caneta
 repita N [cmds]          limpe  - limpar tela
-mudecor N - cor (0-15)   mudeespessura N - espessura
+mudecor N - cor (0-15)   me N   - espessura
 faca "nome valor         :nome  - usar variavel
 aprenda nome :arg ... fim  escreva valor
-paracentro - voltar       mudexy X Y - ir para X,Y`}
+centro - voltar ao centro mudexy X Y - ir para X,Y`}
         </pre>
       </div>
     </div>

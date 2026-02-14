@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- ICON - TMNT head only, works at 16px+ -->
+  <defs>
+    <radialGradient id="iSkin" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#5ED88C"/>
+      <stop offset="50%" stop-color="#3DB86A"/>
+      <stop offset="100%" stop-color="#2A8F4E"/>
+    </radialGradient>
+    <radialGradient id="iSkinHi" cx="40%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#7EEAA8"/>
+      <stop offset="100%" stop-color="#5ED88C"/>
+    </radialGradient>
+    <linearGradient id="iBandana" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9333EA"/>
+      <stop offset="35%" stop-color="#A855F7"/>
+      <stop offset="65%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+    <linearGradient id="iGoggle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DDD6FE"/>
+      <stop offset="40%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <radialGradient id="iShell" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#5A9E40"/>
+      <stop offset="100%" stop-color="#2B5E1E"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="62" fill="#F0FDF4" stroke="#2A8F4E" stroke-width="3"/>
+
+  <!-- Shell peeking behind -->
+  <ellipse cx="64" cy="85" rx="42" ry="30" fill="url(#iShell)" stroke="#1a1a2e" stroke-width="3"/>
+  <path d="M64 60 L80 72 L80 92 L64 102 L48 92 L48 72 Z" fill="#3D7A2E" stroke="#1a1a2e" stroke-width="2" opacity="0.5"/>
+
+  <!-- Head -->
+  <ellipse cx="64" cy="54" rx="40" ry="37" fill="url(#iSkin)" stroke="#1a1a2e" stroke-width="3.5"/>
+  <!-- Head highlight -->
+  <ellipse cx="56" cy="40" rx="18" ry="12" fill="url(#iSkinHi)" opacity="0.35"/>
+  <!-- Brow ridge -->
+  <path d="M28 48 Q38 38 64 35 Q90 38 100 48" fill="#3DB86A" stroke="#1a1a2e" stroke-width="2" opacity="0.7"/>
+
+  <!-- Bandana -->
+  <path d="M24 44 Q26 38 44 34 Q54 32 64 31 Q74 32 84 34 Q102 38 104 44 L104 56 Q102 62 84 65 Q74 67 64 67 Q54 67 44 65 Q26 62 24 56 Z" fill="url(#iBandana)" stroke="#1a1a2e" stroke-width="3"/>
+  <!-- Bandana tails -->
+  <path d="M100 47 Q110 43 118 38 Q122 36 124 40 Q120 44 112 47" fill="#F97316" stroke="#1a1a2e" stroke-width="2.5"/>
+  <path d="M101 54 Q112 54 120 57 Q124 59 122 63 Q116 61 108 58" fill="#FB923C" stroke="#1a1a2e" stroke-width="2"/>
+
+  <!-- Eyes through bandana -->
+  <g>
+    <!-- Left eye -->
+    <ellipse cx="52" cy="50" rx="13" ry="10" fill="#1a1a2e"/>
+    <ellipse cx="52" cy="50" rx="11" ry="8" fill="white"/>
+    <ellipse cx="54" cy="49" rx="6" ry="6.5" fill="#2D6A1E"/>
+    <ellipse cx="55" cy="48" rx="4" ry="4.5" fill="#1a1a2e"/>
+    <circle cx="57" cy="46" r="3" fill="white"/>
+    <ellipse cx="52" cy="50" rx="11" ry="8" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+
+    <!-- Right eye -->
+    <ellipse cx="76" cy="50" rx="13" ry="10" fill="#1a1a2e"/>
+    <ellipse cx="76" cy="50" rx="11" ry="8" fill="white"/>
+    <ellipse cx="78" cy="49" rx="6" ry="6.5" fill="#2D6A1E"/>
+    <ellipse cx="79" cy="48" rx="4" ry="4.5" fill="#1a1a2e"/>
+    <circle cx="81" cy="46" r="3" fill="white"/>
+    <ellipse cx="76" cy="50" rx="11" ry="8" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+  </g>
+
+  <!-- Eyebrows -->
+  <path d="M38 40 Q46 34 60 38" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M68 38 Q82 34 90 40" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <circle cx="61" cy="62" r="2" fill="#2A8F4E"/>
+  <circle cx="67" cy="62" r="2" fill="#2A8F4E"/>
+
+  <!-- Mouth (big grin) -->
+  <path d="M47 68 Q58 80 64 81 Q70 80 81 68" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="3"/>
+  <path d="M50 69 L55 75 L60 69 L64 75 L68 69 L73 75 L78 69" fill="white" stroke="#1a1a2e" stroke-width="1"/>
+  <path d="M47 68 Q58 80 64 81 Q70 80 81 68" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+
+  <!-- Tech goggles on forehead -->
+  <g>
+    <path d="M32 32 Q36 24 64 21 Q92 24 96 32" fill="none" stroke="#6D28D9" stroke-width="3"/>
+    <ellipse cx="50" cy="28" rx="11" ry="8" fill="url(#iGoggle)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <ellipse cx="48" cy="26" rx="4" ry="3" fill="white" opacity="0.4"/>
+    <ellipse cx="78" cy="28" rx="11" ry="8" fill="url(#iGoggle)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <ellipse cx="76" cy="26" rx="4" ry="3" fill="white" opacity="0.4"/>
+    <rect x="58" y="25" width="12" height="6" rx="2" fill="#7C3AED" stroke="#1a1a2e" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 440" width="400" height="440">
+  <!-- EXPLORADOR (6-8) - TMNT style but extra cute, big sparkly eyes, magic wand, stars -->
+  <defs>
+    <radialGradient id="exSkin" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#5ED88C"/>
+      <stop offset="50%" stop-color="#3DB86A"/>
+      <stop offset="100%" stop-color="#2A8F4E"/>
+    </radialGradient>
+    <radialGradient id="exSkinHi" cx="40%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#7EEAA8"/>
+      <stop offset="100%" stop-color="#5ED88C"/>
+    </radialGradient>
+    <radialGradient id="exShell" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#5A9E40"/>
+      <stop offset="40%" stop-color="#3D7A2E"/>
+      <stop offset="100%" stop-color="#2B5E1E"/>
+    </radialGradient>
+    <linearGradient id="exPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A8C35"/>
+      <stop offset="100%" stop-color="#2E6820"/>
+    </linearGradient>
+    <!-- Bandana: more orange (Mikey dominant for younger kids) with purple accent -->
+    <linearGradient id="exBandana" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="50%" stop-color="#F97316"/>
+      <stop offset="80%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <radialGradient id="exBelly" cx="48%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#F5E6A3"/>
+      <stop offset="60%" stop-color="#E8D48B"/>
+      <stop offset="100%" stop-color="#D4B96A"/>
+    </radialGradient>
+    <linearGradient id="wandGlow" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+    <filter id="exDrop">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#00000035"/>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feFlood flood-color="#FBBF24" flood-opacity="0.6" result="c"/>
+      <feComposite in="c" in2="b" operator="in" result="g"/>
+      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="exCyanGlow">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feFlood flood-color="#22D3EE" flood-opacity="0.5" result="c"/>
+      <feComposite in="c" in2="b" operator="in" result="g"/>
+      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sparkle/star background elements -->
+  <g filter="url(#starGlow)">
+    <polygon points="65,75 68,85 78,85 70,91 73,101 65,95 57,101 60,91 52,85 62,85" fill="#FBBF24" opacity="0.7" transform="scale(0.9)"/>
+    <polygon points="340,55 343,65 353,65 345,71 348,81 340,75 332,81 335,71 327,65 337,65" fill="#FBBF24" opacity="0.6" transform="scale(0.8)"/>
+    <polygon points="55,340 57,346 63,346 58,350 60,356 55,352 50,356 52,350 47,346 53,346" fill="#FB923C" opacity="0.5"/>
+    <polygon points="345,340 347,346 353,346 348,350 350,356 345,352 340,356 342,350 337,346 343,346" fill="#A855F7" opacity="0.5"/>
+  </g>
+
+  <!-- === SHELL === -->
+  <g filter="url(#exDrop)">
+    <ellipse cx="200" cy="260" rx="112" ry="95" fill="url(#exShell)" stroke="#1a1a2e" stroke-width="4.5"/>
+    <!-- Shell plates (rounder for younger feel) -->
+    <circle cx="200" cy="230" r="35" fill="url(#exPlate)" stroke="#1a1a2e" stroke-width="3" opacity="0.8"/>
+    <circle cx="160" cy="262" r="25" fill="url(#exPlate)" stroke="#1a1a2e" stroke-width="2.5" opacity="0.7"/>
+    <circle cx="240" cy="262" r="25" fill="url(#exPlate)" stroke="#1a1a2e" stroke-width="2.5" opacity="0.7"/>
+    <circle cx="200" cy="292" r="22" fill="url(#exPlate)" stroke="#1a1a2e" stroke-width="2.5" opacity="0.6"/>
+    <!-- Shell shine -->
+    <ellipse cx="182" cy="218" rx="28" ry="14" fill="white" opacity="0.12" transform="rotate(-15 182 218)"/>
+  </g>
+
+  <!-- Belly -->
+  <path d="M150 200 Q148 255 158 300 Q178 332 200 336 Q222 332 242 300 Q252 255 250 200 Q230 185 200 182 Q170 185 150 200Z" fill="url(#exBelly)" stroke="#1a1a2e" stroke-width="4"/>
+  <path d="M168 210 L232 210" stroke="#C4A862" stroke-width="2" opacity="0.4"/>
+  <path d="M165 245 L235 245" stroke="#C4A862" stroke-width="2" opacity="0.4"/>
+  <path d="M200 182 L200 336" stroke="#C4A862" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Legs (chubby, cute proportions) -->
+  <g>
+    <path d="M140 312 Q125 338 118 355 Q116 367 127 370 Q142 368 148 356 Q152 340 150 318" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <path d="M120 362 Q124 370 134 370" stroke="#D4B96A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M260 312 Q275 338 282 355 Q284 367 273 370 Q258 368 252 356 Q248 340 250 318" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <path d="M280 362 Q276 370 266 370" stroke="#D4B96A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Left arm (waving excitedly) -->
+  <g>
+    <path d="M105 225 Q82 210 70 192 Q65 182 72 176 Q82 178 88 190 Q98 210 108 228" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <rect x="67" y="178" width="18" height="8" rx="3" fill="#D4B96A" stroke="#1a1a2e" stroke-width="2"/>
+    <!-- Waving hand (3 fingers) -->
+    <circle cx="68" cy="175" r="6" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="60" cy="173" r="5" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="76" cy="174" r="5.5" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+  </g>
+
+  <!-- Right arm (holding magic tech-wand up!) -->
+  <g>
+    <path d="M295 218 Q315 195 325 172 Q330 160 323 155 Q314 158 310 170 Q302 192 295 212" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <rect x="310" y="155" width="16" height="8" rx="3" fill="#D4B96A" stroke="#1a1a2e" stroke-width="2" transform="rotate(-35 318 159)"/>
+    <!-- MAGIC TECH WAND -->
+    <g transform="translate(325 142) rotate(-20)">
+      <rect x="-4" y="-50" width="8" height="55" rx="4" fill="url(#wandGlow)" stroke="#1a1a2e" stroke-width="3"/>
+      <!-- Wand tech rings -->
+      <rect x="-6" y="-20" width="12" height="5" rx="2" fill="#C084FC" stroke="#1a1a2e" stroke-width="1.5"/>
+      <!-- Star on wand tip -->
+      <polygon points="0,-68 5,-56 16,-56 7,-48 11,-37 0,-44 -11,-37 -7,-48 -16,-56 -5,-56" fill="#FBBF24" stroke="#1a1a2e" stroke-width="2.5" filter="url(#starGlow)"/>
+      <circle cx="0" cy="-52" r="4" fill="white" opacity="0.6"/>
+      <!-- Sparkles from wand -->
+      <circle cx="12" cy="-65" r="3" fill="#22D3EE" filter="url(#exCyanGlow)" opacity="0.8"/>
+      <circle cx="-10" cy="-72" r="2.5" fill="#FB923C" opacity="0.7"/>
+      <circle cx="18" cy="-52" r="2" fill="#A855F7" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- Tail -->
+  <path d="M155 338 Q132 362 138 374 Q148 368 158 350" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="3.5"/>
+
+  <!-- === HEAD (extra round and big for cute factor) === -->
+  <g filter="url(#exDrop)">
+    <path d="M162 182 Q168 162 200 155 Q232 162 238 182" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="3"/>
+    <!-- Bigger, rounder head -->
+    <ellipse cx="200" cy="112" rx="72" ry="66" fill="url(#exSkin)" stroke="#1a1a2e" stroke-width="4.5"/>
+    <ellipse cx="185" cy="85" rx="38" ry="24" fill="url(#exSkinHi)" opacity="0.35"/>
+    <!-- Chubby cheeks -->
+    <ellipse cx="142" cy="125" rx="12" ry="10" fill="#FB923C" opacity="0.2"/>
+    <ellipse cx="258" cy="125" rx="12" ry="10" fill="#FB923C" opacity="0.2"/>
+    <!-- Brow ridge (softer) -->
+    <path d="M138 100 Q158 86 200 83 Q242 86 262 100" fill="#3DB86A" stroke="#1a1a2e" stroke-width="2.5" opacity="0.7"/>
+  </g>
+
+  <!-- === BANDANA (orange-dominant for younger kids) === -->
+  <g>
+    <path d="M128 94 Q130 86 155 80 Q178 77 200 76 Q222 77 245 80 Q270 86 272 94 L272 116 Q270 124 245 128 Q222 130 200 131 Q178 130 155 128 Q130 124 128 116 Z" fill="url(#exBandana)" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Bandana tails (fluttering, playful) -->
+    <path d="M266 100 Q288 92 312 80 Q325 76 328 84 Q322 92 305 98" fill="#F97316" stroke="#1a1a2e" stroke-width="3.5"/>
+    <path d="M268 112 Q295 112 322 118 Q332 122 328 130 Q318 126 298 120" fill="#FB923C" stroke="#1a1a2e" stroke-width="3"/>
+  </g>
+
+  <!-- === EYES (HUGE, sparkly, kawaii-TMNT fusion) === -->
+  <g>
+    <!-- Left eye -->
+    <ellipse cx="174" cy="105" rx="27" ry="22" fill="#1a1a2e"/>
+    <ellipse cx="174" cy="105" rx="24" ry="19" fill="white"/>
+    <ellipse cx="178" cy="103" rx="14" ry="15" fill="#2D6A1E"/>
+    <ellipse cx="180" cy="101" rx="9" ry="10" fill="#1a1a2e"/>
+    <!-- Big sparkles -->
+    <circle cx="186" cy="95" r="6" fill="white"/>
+    <circle cx="172" cy="112" r="3.5" fill="white" opacity="0.7"/>
+    <circle cx="168" cy="96" r="2" fill="white" opacity="0.4"/>
+    <ellipse cx="174" cy="105" rx="24" ry="19" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+
+    <!-- Right eye -->
+    <ellipse cx="226" cy="105" rx="27" ry="22" fill="#1a1a2e"/>
+    <ellipse cx="226" cy="105" rx="24" ry="19" fill="white"/>
+    <ellipse cx="230" cy="103" rx="14" ry="15" fill="#2D6A1E"/>
+    <ellipse cx="232" cy="101" rx="9" ry="10" fill="#1a1a2e"/>
+    <circle cx="238" cy="95" r="6" fill="white"/>
+    <circle cx="224" cy="112" r="3.5" fill="white" opacity="0.7"/>
+    <circle cx="220" cy="96" r="2" fill="white" opacity="0.4"/>
+    <ellipse cx="226" cy="105" rx="24" ry="19" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  </g>
+
+  <!-- Happy raised eyebrows -->
+  <path d="M148 86 Q162 76 190 84" stroke="#1a1a2e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M210 84 Q238 76 252 86" stroke="#1a1a2e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <circle cx="194" cy="126" r="3" fill="#2A8F4E"/>
+  <circle cx="206" cy="126" r="3" fill="#2A8F4E"/>
+
+  <!-- === MOUTH (HUGE excited open smile) === -->
+  <g>
+    <path d="M158 138 Q180 168 200 170 Q220 168 242 138" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Teeth -->
+    <path d="M165 140 L173 150 L182 140 L191 150 L200 140 L209 150 L218 140 L227 150 L235 140" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+    <!-- Big tongue (Mikey energy!) -->
+    <ellipse cx="200" cy="160" rx="18" ry="10" fill="#E85D75" stroke="#1a1a2e" stroke-width="2"/>
+    <ellipse cx="196" cy="158" rx="8" ry="4" fill="#F5A0B0" opacity="0.5"/>
+    <path d="M158 138 Q180 168 200 170 Q220 168 242 138" fill="none" stroke="#1a1a2e" stroke-width="4"/>
+  </g>
+
+  <!-- Rainbow trail (because kids love rainbows) -->
+  <g opacity="0.5" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M45 400 Q65 380 85 385" stroke="#EF4444"/>
+    <path d="M45 407 Q65 387 85 392" stroke="#F97316"/>
+    <path d="M45 414 Q65 394 85 399" stroke="#FBBF24"/>
+    <path d="M45 421 Q65 401 85 406" stroke="#22C55E"/>
+    <path d="M45 428 Q65 408 85 413" stroke="#3B82F6"/>
+    <path d="M45 435 Q65 415 85 420" stroke="#8B5CF6"/>
+  </g>
+</svg>

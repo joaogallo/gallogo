@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 440" width="400" height="440">
+  <!-- HACKER (10-14) - TMNT style, dark hoodie, matrix vibes, Donnie-dominant, intense -->
+  <defs>
+    <radialGradient id="hkSkin" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#4CC87A"/>
+      <stop offset="50%" stop-color="#2EA85A"/>
+      <stop offset="100%" stop-color="#1E7A3A"/>
+    </radialGradient>
+    <radialGradient id="hkSkinHi" cx="40%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#6ADFA0"/>
+      <stop offset="100%" stop-color="#4CC87A"/>
+    </radialGradient>
+    <radialGradient id="hkSkinSh" cx="55%" cy="65%" r="55%">
+      <stop offset="0%" stop-color="#2EA85A"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </radialGradient>
+    <radialGradient id="hkShell" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#4A8C35"/>
+      <stop offset="40%" stop-color="#2E6820"/>
+      <stop offset="100%" stop-color="#1A4A12"/>
+    </radialGradient>
+    <linearGradient id="hkPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D7A2E"/>
+      <stop offset="100%" stop-color="#1A4A12"/>
+    </linearGradient>
+    <!-- Bandana: more purple (Donnie dominant) with orange edge -->
+    <linearGradient id="hkBandana" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="70%" stop-color="#9333EA"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <radialGradient id="hkBelly" cx="48%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#D4C47A"/>
+      <stop offset="60%" stop-color="#C4A862"/>
+      <stop offset="100%" stop-color="#A89050"/>
+    </radialGradient>
+    <!-- Hoodie -->
+    <linearGradient id="hoodieGr" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="50%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="hkDrop">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#00000050"/>
+    </filter>
+    <filter id="hkCyan">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feFlood flood-color="#22D3EE" flood-opacity="0.6" result="c"/>
+      <feComposite in="c" in2="b" operator="in" result="g"/>
+      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="hkPurple">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feFlood flood-color="#A855F7" flood-opacity="0.5" result="c"/>
+      <feComposite in="c" in2="b" operator="in" result="g"/>
+      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark background atmosphere -->
+  <rect x="0" y="0" width="400" height="440" fill="#0F172A" opacity="0.08" rx="20"/>
+
+  <!-- Matrix rain (subtle) -->
+  <g font-family="monospace" font-size="9" fill="#22D3EE" opacity="0.12">
+    <text x="30" y="50">01101001</text>
+    <text x="300" y="40">10110100</text>
+    <text x="20" y="100">fd :n</text>
+    <text x="340" y="120">rt 90</text>
+    <text x="15" y="380">repeat</text>
+    <text x="330" y="400">to end</text>
+    <text x="50" y="280">make</text>
+    <text x="320" y="300">:var</text>
+  </g>
+
+  <!-- === HOODIE (covers shell) === -->
+  <g filter="url(#hkDrop)">
+    <!-- Main hoodie body -->
+    <path d="M88 160 Q82 210 88 300 Q110 345 200 350 Q290 345 312 300 Q318 210 312 160 Q290 138 200 132 Q110 138 88 160Z" fill="url(#hoodieGr)" stroke="#1a1a2e" stroke-width="4.5"/>
+    <!-- Hoodie kangaroo pocket -->
+    <path d="M140 275 Q140 290 155 296 Q175 302 200 302 Q225 302 245 296 Q260 290 260 275 L260 255 Q235 262 200 262 Q165 262 140 255 Z" fill="#111827" stroke="#4B5563" stroke-width="2"/>
+    <!-- Hoodie zipper -->
+    <line x1="200" y1="165" x2="200" y2="345" stroke="#4B5563" stroke-width="2" stroke-dasharray="8 5"/>
+    <!-- Drawstrings -->
+    <path d="M185 165 L178 210" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M215 165 L222 210" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="178" cy="212" r="4" fill="#6B7280" stroke="#1a1a2e" stroke-width="1.5"/>
+    <circle cx="222" cy="212" r="4" fill="#6B7280" stroke="#1a1a2e" stroke-width="1.5"/>
+    <!-- Hoodie cuff on left arm -->
+    <path d="M88 200 Q75 215 68 240 Q65 258 76 264 Q90 260 95 245 Q100 228 98 212" fill="url(#hoodieGr)" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Hoodie cuff on right arm -->
+    <path d="M312 195 Q328 210 338 235 Q342 252 330 258 Q316 255 310 240 Q305 222 308 208" fill="url(#hoodieGr)" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Shell partially visible through hoodie opening -->
+    <ellipse cx="200" cy="248" rx="42" ry="32" fill="url(#hkShell)" stroke="#1a1a2e" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <!-- Belly visible in hoodie opening -->
+  <ellipse cx="200" cy="255" rx="38" ry="30" fill="url(#hkBelly)" stroke="#1a1a2e" stroke-width="2.5"/>
+  <!-- Terminal text on hoodie (graphic design) -->
+  <g font-family="monospace" font-size="9" opacity="0.7">
+    <text x="170" y="248" fill="#22D3EE">&gt; gallogo</text>
+    <text x="170" y="260" fill="#4ADE80">_ ready</text>
+  </g>
+
+  <!-- Hands poking out of hoodie sleeves -->
+  <!-- Left hand (typing pose, fingers spread) -->
+  <g>
+    <rect x="62" y="252" width="20" height="9" rx="3" fill="#D4B96A" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="70" cy="268" r="6" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="62" cy="266" r="5" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="78" cy="267" r="5.5" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+  </g>
+  <!-- Right hand (holding holographic tablet) -->
+  <g>
+    <rect x="324" y="246" width="20" height="9" rx="3" fill="#D4B96A" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(5 334 250)"/>
+    <circle cx="336" cy="262" r="6" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="328" cy="260" r="5" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="344" cy="261" r="5.5" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+  </g>
+
+  <!-- Legs (under hoodie) -->
+  <g>
+    <path d="M148 335 Q132 358 126 375 Q124 388 135 392 Q150 390 155 378 Q160 362 158 342" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <ellipse cx="138" cy="358" rx="13" ry="9" fill="#3D7A2E" stroke="#1a1a2e" stroke-width="2.5"/>
+    <path d="M128 385 Q132 392 142 392" stroke="#D4B96A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M252 335 Q268 358 274 375 Q276 388 265 392 Q250 390 245 378 Q240 362 242 342" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <ellipse cx="262" cy="358" rx="13" ry="9" fill="#3D7A2E" stroke="#1a1a2e" stroke-width="2.5"/>
+    <path d="M272 385 Q268 392 258 392" stroke="#D4B96A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Tail -->
+  <path d="M152 350 Q130 375 136 388 Q146 382 156 362" fill="url(#hkSkinSh)" stroke="#1a1a2e" stroke-width="3.5"/>
+
+  <!-- === HEAD === -->
+  <g filter="url(#hkDrop)">
+    <path d="M160 138 Q168 118 200 110 Q232 118 240 138" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="3"/>
+    <ellipse cx="200" cy="78" rx="64" ry="58" fill="url(#hkSkin)" stroke="#1a1a2e" stroke-width="4.5"/>
+    <ellipse cx="185" cy="55" rx="32" ry="20" fill="url(#hkSkinHi)" opacity="0.3"/>
+    <path d="M142 100 Q175 118 200 120 Q225 118 258 100" fill="url(#hkSkinSh)" opacity="0.2"/>
+    <path d="M140 68 Q158 52 200 48 Q242 52 260 68" fill="#2EA85A" stroke="#1a1a2e" stroke-width="3" opacity="0.8"/>
+  </g>
+
+  <!-- === HOODIE HOOD (framing face) === -->
+  <g>
+    <path d="M130 90 Q120 70 125 48 Q140 22 200 16 Q260 22 275 48 Q280 70 270 90" fill="url(#hoodieGr)" stroke="#1a1a2e" stroke-width="4"/>
+    <path d="M138 85 Q138 62 145 46 Q162 28 200 24 Q238 28 255 46 Q262 62 262 85" fill="#0F172A" opacity="0.12"/>
+    <path d="M130 90 Q155 100 200 102 Q245 100 270 90" fill="none" stroke="#4B5563" stroke-width="2"/>
+  </g>
+
+  <!-- === BANDANA (purple-dominant, Donnie style) === -->
+  <g>
+    <path d="M134 62 Q136 54 160 48 Q182 45 200 44 Q218 45 240 48 Q264 54 266 62 L266 82 Q264 90 240 94 Q218 96 200 97 Q182 96 160 94 Q136 90 134 82 Z" fill="url(#hkBandana)" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Bandana tails (sharp, angular) -->
+    <path d="M260 66 Q282 58 308 48 Q320 44 324 52 Q318 60 302 65" fill="#9333EA" stroke="#1a1a2e" stroke-width="3.5"/>
+    <path d="M262 78 Q290 76 318 82 Q328 86 324 94 Q314 90 294 86" fill="#A855F7" stroke="#1a1a2e" stroke-width="3"/>
+  </g>
+
+  <!-- === EYES (narrow, intense, glowing - hacker focus) === -->
+  <g>
+    <!-- Left eye -->
+    <ellipse cx="178" cy="72" rx="21" ry="14" fill="#1a1a2e"/>
+    <ellipse cx="178" cy="72" rx="18" ry="11" fill="white"/>
+    <ellipse cx="181" cy="71" rx="10" ry="9" fill="#0F5132"/>
+    <ellipse cx="183" cy="70" rx="6" ry="6.5" fill="#1a1a2e"/>
+    <!-- Intense eye shine -->
+    <circle cx="187" cy="67" r="4" fill="white"/>
+    <circle cx="178" cy="76" r="2" fill="white" opacity="0.5"/>
+    <!-- Cyan glow ring around iris -->
+    <ellipse cx="181" cy="71" rx="10" ry="9" fill="none" stroke="#22D3EE" stroke-width="1" opacity="0.6"/>
+    <ellipse cx="178" cy="72" rx="18" ry="11" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+
+    <!-- Right eye -->
+    <ellipse cx="222" cy="72" rx="21" ry="14" fill="#1a1a2e"/>
+    <ellipse cx="222" cy="72" rx="18" ry="11" fill="white"/>
+    <ellipse cx="225" cy="71" rx="10" ry="9" fill="#0F5132"/>
+    <ellipse cx="227" cy="70" rx="6" ry="6.5" fill="#1a1a2e"/>
+    <circle cx="231" cy="67" r="4" fill="white"/>
+    <circle cx="222" cy="76" r="2" fill="white" opacity="0.5"/>
+    <ellipse cx="225" cy="71" rx="10" ry="9" fill="none" stroke="#22D3EE" stroke-width="1" opacity="0.6"/>
+    <ellipse cx="222" cy="72" rx="18" ry="11" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  </g>
+
+  <!-- Determined flat eyebrows -->
+  <path d="M157 58 L190 62" stroke="#1a1a2e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M210 62 L243 58" stroke="#1a1a2e" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <circle cx="194" cy="90" r="2.5" fill="#1E7A3A"/>
+  <circle cx="206" cy="90" r="2.5" fill="#1E7A3A"/>
+
+  <!-- === MOUTH (subtle confident smirk) === -->
+  <g>
+    <path d="M172 100 Q192 112 210 110 Q228 108 240 98" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="3.5"/>
+    <path d="M178 102 L186 108 L194 102 L202 108 L210 102 L218 108 L226 102 L234 106" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+    <path d="M172 100 Q192 112 210 110 Q228 108 240 98" fill="none" stroke="#1a1a2e" stroke-width="3.5"/>
+  </g>
+
+  <!-- === FLOATING HOLOGRAPHIC TERMINAL === -->
+  <g transform="translate(52 285) rotate(-3)" filter="url(#hkDrop)" opacity="0.85">
+    <rect x="0" y="0" width="90" height="60" rx="5" fill="#0F172A" stroke="#22D3EE" stroke-width="2"/>
+    <rect x="0" y="0" width="90" height="12" rx="5" fill="#1E293B"/>
+    <circle cx="10" cy="6" r="2.5" fill="#EF4444" opacity="0.8"/>
+    <circle cx="20" cy="6" r="2.5" fill="#FBBF24" opacity="0.8"/>
+    <circle cx="30" cy="6" r="2.5" fill="#4ADE80" opacity="0.8"/>
+    <text x="6" y="26" font-family="monospace" font-size="7" fill="#4ADE80">to espiral :n</text>
+    <text x="6" y="36" font-family="monospace" font-size="7" fill="#22D3EE">  fd :n rt 20</text>
+    <text x="6" y="46" font-family="monospace" font-size="7" fill="#A78BFA">  espiral :n*0.9</text>
+    <text x="6" y="56" font-family="monospace" font-size="7" fill="#4ADE80">end</text>
+    <rect x="40" y="50" width="5" height="8" fill="#22D3EE" opacity="0.7"/>
+  </g>
+
+  <!-- Holographic second screen (right side) -->
+  <g transform="translate(310 275) rotate(5)" opacity="0.6">
+    <rect x="0" y="0" width="70" height="48" rx="4" fill="#0F172A" stroke="#A855F7" stroke-width="1.5"/>
+    <rect x="3" y="3" width="64" height="42" rx="2" fill="#0F172A"/>
+    <!-- Spiral visualization -->
+    <path d="M35 24 Q38 18 42 18 Q48 18 48 24 Q48 32 40 32 Q30 32 30 22 Q30 12 42 12 Q55 12 55 26 Q55 38 38 38" fill="none" stroke="#22D3EE" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="38" cy="38" r="2" fill="#22D3EE" filter="url(#hkCyan)"/>
+  </g>
+
+  <!-- Circuit/cyber traces -->
+  <g stroke="#22D3EE" stroke-width="1.5" opacity="0.2">
+    <polyline points="15,160 30,160 30,200 45,200" fill="none"/>
+    <circle cx="45" cy="200" r="3" fill="#22D3EE"/>
+    <polyline points="375,160 360,160 360,190 345,190" fill="none"/>
+    <circle cx="345" cy="190" r="3" fill="#22D3EE"/>
+    <polyline points="380,350 365,350 365,380 350,380" fill="none"/>
+    <circle cx="350" cy="380" r="3" fill="#A855F7"/>
+  </g>
+
+  <!-- Tech goggles on forehead (under hood) -->
+  <g>
+    <path d="M145 42 Q150 30 200 26 Q250 30 255 42" fill="none" stroke="#6D28D9" stroke-width="3.5"/>
+    <ellipse cx="175" cy="38" rx="16" ry="10" fill="#7C3AED" stroke="#1a1a2e" stroke-width="2.5" opacity="0.8"/>
+    <ellipse cx="172" cy="35" rx="5" ry="3.5" fill="white" opacity="0.3"/>
+    <ellipse cx="225" cy="38" rx="16" ry="10" fill="#7C3AED" stroke="#1a1a2e" stroke-width="2.5" opacity="0.8"/>
+    <ellipse cx="222" cy="35" rx="5" ry="3.5" fill="white" opacity="0.3"/>
+    <rect x="188" y="34" width="24" height="8" rx="3" fill="#581C87" stroke="#1a1a2e" stroke-width="2"/>
+    <!-- Goggle LED indicators -->
+    <circle cx="162" cy="38" r="2" fill="#22D3EE" filter="url(#hkCyan)"/>
+    <circle cx="238" cy="38" r="2" fill="#22D3EE" filter="url(#hkCyan)"/>
+  </g>
+</svg>

@@ -30,38 +30,22 @@ reg(["left", "lt", "paraesquerda", "ve", "viraresquerda"], "left", 1);
 // Caneta / Pen
 // =========================================================
 reg(
-  ["penup", "pu", "usenada", "un", "uselevante", "levante", "descecaneta"],
+  ["penup", "pu", "levantecaneta", "lc", "semcaneta", "sc"],
   "penup",
   0
 );
 reg(
-  ["pendown", "uselapis", "ul", "usebaixe", "baixe", "sobecaneta"],
+  ["pendown", "usecaneta", "abaixecaneta", "uc", "ac"],
   "pendown",
   0
 );
 reg(
-  [
-    "setpencolor",
-    "setpc",
-    "mudecl",
-    "mudecordolapis",
-    "mudecor",
-    "mudecorlapis",
-    "mudecorcaneta",
-  ],
+  ["setpencolor", "setpc", "mudecor", "mudecorcaneta"],
   "setpencolor",
   1
 );
 reg(
-  [
-    "setpensize",
-    "setps",
-    "mudeel",
-    "mudeespessuralapis",
-    "mudeespessura",
-    "mudeespessuracaneta",
-    "mudetamanhocaneta",
-  ],
+  ["setpensize", "setps", "mudeespessura", "me", "espessuracaneta", "tamanhocaneta", "tc"],
   "setpensize",
   1
 );
@@ -69,29 +53,15 @@ reg(
 // =========================================================
 // Tartaruga / Turtle
 // =========================================================
-reg(["home", "paracentro", "centro", "volteinicio"], "home", 0);
+reg(["home", "centro", "inicio", "casa"], "home", 0);
 reg(["clearscreen", "cs", "limpe", "limpetela", "limpatela"], "clearscreen", 0);
 reg(
-  [
-    "hideturtle",
-    "ht",
-    "desaparecatartaruga",
-    "dt",
-    "escondetartaruga",
-    "escondatartaruga",
-  ],
+  ["hideturtle", "ht", "esconda", "et", "escondatartaruga"],
   "hideturtle",
   0
 );
 reg(
-  [
-    "showturtle",
-    "st",
-    "mostretartaruga",
-    "mt",
-    "aparecatartaruga",
-    "mostratartaruga",
-  ],
+  ["showturtle", "st", "apareca", "mt", "mostretartaruga"],
   "showturtle",
   0
 );
@@ -119,7 +89,7 @@ reg(["stop", "pare"], "stop", 0);
 reg(["sum", "soma"], "sum", 2, "reporter");
 reg(["difference", "diferenca"], "difference", 2, "reporter");
 reg(["product", "produto"], "product", 2, "reporter");
-reg(["quotient", "quociente"], "quotient", 2, "reporter");
+reg(["quotient", "quociente", "divisao"], "quotient", 2, "reporter");
 reg(["remainder", "resto", "modulo"], "remainder", 2, "reporter");
 reg(["random", "aleatorio", "sorteie"], "random", 1, "reporter");
 reg(["sqrt", "raizq", "raizquadrada"], "sqrt", 1, "reporter");

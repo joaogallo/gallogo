@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
@@ -10,6 +11,7 @@ import type { AgeGroupId } from "@/theme/age-themes";
 import { PointsDisplay } from "@/components/gamification/PointsDisplay";
 import { StreakDisplay } from "@/components/gamification/StreakDisplay";
 import { useGamificationStore } from "@/stores/gamification-store";
+import galloLogo from "@/media/avatar/gallo-logo.png";
 
 const NAV_ITEMS = [
   { href: "/playground", label: "Playground" },
@@ -135,21 +137,14 @@ export function Header() {
     <header className="flex h-14 items-center justify-between border-b border-border bg-surface px-4">
       <div className="flex items-center gap-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] bg-primary text-white">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="h-5 w-5"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 2 L20 18 L4 18 Z" />
-            </svg>
-          </div>
-          <span className="text-lg font-bold text-content">GalloGo</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src={galloLogo}
+            alt="GalloGo"
+            height={44}
+            className="h-11 w-auto"
+            priority
+          />
         </Link>
 
         {/* Navigation */}

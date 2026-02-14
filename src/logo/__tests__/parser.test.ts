@@ -67,26 +67,26 @@ describe("Parser", () => {
       expect(ast[0]).toMatchObject({ kind: "command", name: "left" });
     });
 
-    it("parses un as penup (usenada)", () => {
-      const ast = parseCode("un");
+    it("parses lc as penup (levantecaneta)", () => {
+      const ast = parseCode("lc");
       expect(ast[0]).toMatchObject({ kind: "command", name: "penup" });
     });
 
-    it("parses ul as pendown (uselapis)", () => {
-      const ast = parseCode("ul");
+    it("parses uc as pendown (usecaneta)", () => {
+      const ast = parseCode("uc");
       expect(ast[0]).toMatchObject({ kind: "command", name: "pendown" });
     });
 
-    it("parses mudecl as setpencolor", () => {
-      const ast = parseCode("mudecl 4");
+    it("parses mudecor as setpencolor", () => {
+      const ast = parseCode("mudecor 4");
       expect(ast[0]).toMatchObject({
         kind: "command",
         name: "setpencolor",
       });
     });
 
-    it("parses mudeel as setpensize", () => {
-      const ast = parseCode("mudeel 3");
+    it("parses me as setpensize", () => {
+      const ast = parseCode("me 3");
       expect(ast[0]).toMatchObject({
         kind: "command",
         name: "setpensize",
@@ -101,15 +101,15 @@ describe("Parser", () => {
       });
     });
 
-    it("parses dt as hideturtle", () => {
-      const ast = parseCode("dt");
+    it("parses et as hideturtle (esconda)", () => {
+      const ast = parseCode("et");
       expect(ast[0]).toMatchObject({
         kind: "command",
         name: "hideturtle",
       });
     });
 
-    it("parses mt as showturtle", () => {
+    it("parses mt as showturtle (mostretartaruga)", () => {
       const ast = parseCode("mt");
       expect(ast[0]).toMatchObject({
         kind: "command",
@@ -117,8 +117,8 @@ describe("Parser", () => {
       });
     });
 
-    it("parses paracentro as home", () => {
-      const ast = parseCode("paracentro");
+    it("parses centro as home", () => {
+      const ast = parseCode("centro");
       expect(ast[0]).toMatchObject({ kind: "command", name: "home" });
     });
 

@@ -36,8 +36,8 @@ function getPrompt(ageGroup: string): string {
 
 const AJUDA_TEXT =
   "Movimento: pf N (frente), pt N (tras), vd N (direita), ve N (esquerda)\n" +
-  "Caneta: un (levantar), ul (abaixar), mudecor N, mudeespessura N\n" +
-  "Tela: limpe, paracentro, mudexy X Y, mudedirecao N\n" +
+  "Caneta: lc (levantar), uc (usar caneta), mudecor N, me N (espessura)\n" +
+  "Tela: limpe, centro, mudexy X Y, mudedirecao N\n" +
   'Variaveis: faca "nome valor, :nome, escreva valor\n' +
   "Controle: repita N [...], se cond [...], sesenao cond [...] [...]\n" +
   "Procedimentos: aprenda nome :arg ... fim\n" +

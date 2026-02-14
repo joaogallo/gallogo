@@ -21,7 +21,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Topicos: movimentos (fd, bk, rt, lt), caneta (pu, pendown, setpensize), repeticao (repeat), variaveis (make), procedures (to/end), condicionais (if).",
+          "Topicos: movimentos (pf, pt, vd, ve), caneta (sc, uc, tc), repeticao (repita), variaveis (faca), procedures (aprenda/fim), condicionais (se).",
       },
       {
         type: "tip",
@@ -33,9 +33,9 @@ export const MODULE_5_LESSONS: Lesson[] = [
       {
         id: "5.1.1",
         title: "Quiz: Quadrado",
-        description: "Desenhe um quadrado de lado 80 usando repeat.",
+        description: "Desenhe um quadrado de lado 80 usando repita.",
         difficulty: 1,
-        hints: ["repeat 4 [fd 80 rt 90]"],
+        hints: ["repita 4 [pf 80 vd 90]"],
         validation: { type: "contains-commands", commands: ["repeat"] },
         points: 20,
       },
@@ -46,7 +46,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
         difficulty: 2,
         hints: [
           "Pentagono = 5 lados. Angulo = 360/5 = 72 graus.",
-          "repeat 5 [fd 60 rt 72]",
+          "repita 5 [pf 60 vd 72]",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
         points: 25,
@@ -58,8 +58,8 @@ export const MODULE_5_LESSONS: Lesson[] = [
           "Crie um procedure 'triangulo' que recebe o tamanho como parametro.",
         difficulty: 2,
         hints: [
-          "to triangulo :tam ... end",
-          "repeat 3 [fd :tam rt 120]",
+          "aprenda triangulo :tam ... fim",
+          "repita 3 [pf :tam vd 120]",
         ],
         validation: { type: "contains-commands", commands: ["to"] },
         points: 30,
@@ -96,7 +96,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Nivel Hacker (10-14):\n1. Arvore fractal com folhas coloridas\n2. Floco de neve de Koch (3 niveis)\n3. Paisagem procedural com random",
+          "Nivel Hacker (10-14):\n1. Arvore fractal com folhas coloridas\n2. Floco de neve de Koch (3 niveis)\n3. Paisagem procedural com aleatorio",
       },
     ],
     challenges: [
@@ -108,8 +108,8 @@ export const MODULE_5_LESSONS: Lesson[] = [
         difficulty: 2,
         hints: [
           "Crie procedures separados: parede, teto, porta.",
-          "Use setpc para colorir cada parte.",
-          "Use pu/pendown para posicionar sem desenhar.",
+          "Use mudecor para colorir cada parte.",
+          "Use sc/uc para posicionar sem desenhar.",
         ],
         validation: { type: "free", description: "Casa com pelo menos parede e teto." },
         points: 40,
@@ -122,8 +122,8 @@ export const MODULE_5_LESSONS: Lesson[] = [
         difficulty: 3,
         hints: [
           "Crie uma forma base (quadrado, hexagono).",
-          "Repita-a com rotacao: repeat N [forma rt 360/N].",
-          "Varie cores com setpc repcount.",
+          "Repita-a com rotacao: repita N [forma vd 360/N].",
+          "Varie cores com mudecor contagemrepita.",
         ],
         validation: { type: "free", description: "Mandala simetrica." },
         points: 50,
@@ -164,32 +164,32 @@ export const MODULE_5_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "MOVIMENTO:\nfd N — para frente N passos\nbk N — para tras N passos\nrt N — girar N graus a direita\nlt N — girar N graus a esquerda",
+          "MOVIMENTO:\npf N — para frente N passos\npt N — para tras N passos\nvd N — girar N graus a direita\nve N — girar N graus a esquerda",
       },
       {
         type: "text",
         content:
-          "POSICAO:\nhome — voltar ao centro\nsetxy X Y — ir para (X, Y)\nseth N — apontar para direcao N",
+          "POSICAO:\ncasa — voltar ao centro\nmudexy X Y — ir para (X, Y)\nmuded N — apontar para direcao N",
       },
       {
         type: "text",
         content:
-          "CANETA:\npu — levantar (nao desenha)\npendown — abaixar (desenha)\nsetpensize N — espessura\nsetpc N — cor (0-15)",
+          "CANETA:\nsc — levantar (nao desenha)\nuc — abaixar (desenha)\ntc N — espessura\nmudecor N — cor (0-15)",
       },
       {
         type: "text",
         content:
-          "TARTARUGA:\nht — esconder\nst — mostrar\ncs — limpar tela",
+          "TARTARUGA:\net — esconder\nmt — mostrar\nlimpe — limpar tela",
       },
       {
         type: "text",
         content:
-          'PROGRAMACAO:\nrepeat N [cmds] — repetir\nmake "nome valor — variavel\n:nome — usar variavel\nprint valor — mostrar\nto nome :param ... end — procedure\nif cond [cmds] — condicional\nstop — sair do procedure',
+          'PROGRAMACAO:\nrepita N [cmds] — repetir\nfaca "nome valor — variavel\n:nome — usar variavel\nescreva valor — mostrar\naprenda nome :param ... fim — procedure\nse cond [cmds] — condicional\npare — sair do procedure',
       },
       {
         type: "text",
         content:
-          "MATEMATICA:\n+, -, *, / — aritmetica\nsqrt N — raiz quadrada\npower B E — potencia\nrandom N — aleatorio 0 a N-1\nabs N — valor absoluto",
+          "MATEMATICA:\n+, -, *, / — aritmetica\nraizq N — raiz quadrada\npotencia B E — potencia\naleatorio N — aleatorio 0 a N-1\nabsoluto N — valor absoluto",
       },
     ],
     challenges: [],

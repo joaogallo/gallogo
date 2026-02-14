@@ -92,8 +92,8 @@ describe("Interpreter", () => {
       expect(lines).toHaveLength(1); // only the last fd 50
     });
 
-    it("un / ul (PT pen commands)", () => {
-      const r = run("un pf 50 ul pf 50");
+    it("lc / uc (PT pen commands)", () => {
+      const r = run("lc pf 50 uc pf 50");
       const lines = r.commands.filter((c) => c.type === "line");
       expect(lines).toHaveLength(1);
     });
@@ -104,8 +104,8 @@ describe("Interpreter", () => {
       expect(lines[0]).toMatchObject({ color: "#cc0000" }); // red
     });
 
-    it("mudecl changes color (PT)", () => {
-      const r = run("mudecl 1 pf 50");
+    it("mudecor changes color (PT)", () => {
+      const r = run("mudecor 1 pf 50");
       const lines = r.commands.filter((c) => c.type === "line");
       expect(lines[0]).toMatchObject({ color: "#0000ff" }); // blue
     });
@@ -116,8 +116,8 @@ describe("Interpreter", () => {
       expect(lines[0]).toMatchObject({ size: 5 });
     });
 
-    it("mudeel changes size (PT)", () => {
-      const r = run("mudeel 3 pf 50");
+    it("me changes size (PT)", () => {
+      const r = run("me 3 pf 50");
       const lines = r.commands.filter((c) => c.type === "line");
       expect(lines[0]).toMatchObject({ size: 3 });
     });
@@ -131,8 +131,8 @@ describe("Interpreter", () => {
       expect(r.turtle.heading).toBeCloseTo(0);
     });
 
-    it("paracentro returns to center (PT)", () => {
-      const r = run("pf 100 vd 45 paracentro");
+    it("centro returns to center (PT)", () => {
+      const r = run("pf 100 vd 45 centro");
       expect(r.turtle.x).toBeCloseTo(0);
       expect(r.turtle.y).toBeCloseTo(0);
     });
@@ -158,10 +158,10 @@ describe("Interpreter", () => {
       expect(r.turtle.visible).toBe(true);
     });
 
-    it("dt / mt (PT turtle visibility)", () => {
-      let r = run("dt");
+    it("et / mt (PT turtle visibility)", () => {
+      let r = run("et");
       expect(r.turtle.visible).toBe(false);
-      r = run("dt mt");
+      r = run("et mt");
       expect(r.turtle.visible).toBe(true);
     });
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GalloGo - Avatar Preview</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 2rem;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #4ade80, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-family: monospace;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #1e293b;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #334155;
+    text-align: center;
+  }
+  .card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: #4ade80;
+  }
+  .card p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+  }
+  .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+  .card.wide {
+    grid-column: 1 / -1;
+  }
+  .card.wide img {
+    max-width: 500px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .badge.main { background: #22c55e20; color: #4ade80; }
+  .badge.explorer { background: #f59e0b20; color: #fbbf24; }
+  .badge.adventurer { background: #14b8a620; color: #2dd4bf; }
+  .badge.hacker { background: #06b6d420; color: #22d3ee; }
+  .badge.icon { background: #8b5cf620; color: #a78bfa; }
+  .badge.logo { background: #6366f120; color: #818cf8; }
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, #334155 25%, transparent 25%),
+      linear-gradient(-45deg, #334155 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #334155 75%),
+      linear-gradient(-45deg, transparent 75%, #334155 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+  <h1>GalloGo Avatar System — TMNT Edition</h1>
+  <p class="subtitle">src/media/avatar/ — Estilo Tartarugas Ninja (Donatello + Michelangelo)</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="badge main">MASCOTE PRINCIPAL</span>
+      <h2>gallo-mascot.svg</h2>
+      <p>TMNT com bandana roxo→laranja, bo-staff tech, goggles Donnie, sorriso Mikey</p>
+      <div class="checkerboard">
+        <img src="gallo-mascot.svg" alt="Gallo Mascot">
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge explorer">EXPLORADOR 6-8</span>
+      <h2>gallo-explorer.svg</h2>
+      <p>Olhos kawaii enormes, varinha tech magica, bandana laranja, arco-iris</p>
+      <div class="checkerboard">
+        <img src="gallo-explorer.svg" alt="Gallo Explorer">
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge adventurer">AVENTUREIRO 8-12</span>
+      <h2>gallo-adventurer.svg</h2>
+      <p>Skate, shaka hand, sobrancelha levantada, bandana roxa+laranja, goggles</p>
+      <div class="checkerboard">
+        <img src="gallo-adventurer.svg" alt="Gallo Adventurer">
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge hacker">HACKER 10-14</span>
+      <h2>gallo-hacker.svg</h2>
+      <p>Hoodie dark, capuz, bandana roxa (Donnie), olhos intensos, terminal holografico</p>
+      <div class="checkerboard">
+        <img src="gallo-hacker.svg" alt="Gallo Hacker">
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge icon">ICONE</span>
+      <h2>gallo-icon.svg</h2>
+      <p>Cabeca TMNT compacta — bandana, goggles, sorriso (funciona ate 16px)</p>
+      <div class="checkerboard">
+        <img src="gallo-icon.svg" alt="Gallo Icon" style="max-width: 128px;">
+      </div>
+    </div>
+
+    <div class="card wide">
+      <span class="badge logo">LOGO</span>
+      <h2>gallo-logo.svg</h2>
+      <p>Cabeca TMNT + "GalloGo" com texto bold + outline + gradiente roxo→laranja</p>
+      <div class="checkerboard">
+        <img src="gallo-logo.svg" alt="GalloGo Logo">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

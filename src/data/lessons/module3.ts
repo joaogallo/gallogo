@@ -44,7 +44,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     description:
       "Dominar o sistema de coordenadas e posicionamento absoluto.",
     ageGroupMin: "8-12",
-    commandsIntroduced: ["setxy", "setheading"],
+    commandsIntroduced: ["mudexy", "mudedirecao"],
     points: 40,
     steps: [
       {
@@ -60,27 +60,27 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Posicionamento relativo vs. absoluto:\n- Relativo: fd, bk, rt, lt (a partir de onde esta)\n- Absoluto: setxy, setheading (posicao/direcao exata)",
+          "Posicionamento relativo vs. absoluto:\n- Relativo: pf, pt, vd, ve (a partir de onde esta)\n- Absoluto: mudexy, mudedirecao (posicao/direcao exata)",
       },
       {
         type: "example",
-        content: "Desenhar um quadrado com setxy (sem fd/rt):",
-        code: "pu\nsetxy 50 50\npendown\nsetxy 50 -50\nsetxy -50 -50\nsetxy -50 50\nsetxy 50 50",
+        content: "Desenhar um quadrado com mudexy (sem pf/vd):",
+        code: "sc\nmudexy 50 50\nuc\nmudexy 50 -50\nmudexy -50 -50\nmudexy -50 50\nmudexy 50 50",
       },
       {
         type: "try-it",
         content: "Faca a tartaruga pular entre 4 pontos formando um X:",
-        code: "pu\nsetxy -50 50\npendown\nsetxy 50 -50\npu\nsetxy 50 50\npendown\nsetxy -50 -50",
+        code: "sc\nmudexy -50 50\nuc\nmudexy 50 -50\nsc\nmudexy 50 50\nuc\nmudexy -50 -50",
       },
     ],
     challenges: [
       {
         id: "3.2.1",
         title: "Quadrado absoluto",
-        description: "Desenhe um quadrado usando apenas setxy (sem fd/rt).",
+        description: "Desenhe um quadrado usando apenas mudexy (sem pf/vd).",
         difficulty: 2,
         hints: [
-          "Use 4 chamadas setxy para os 4 cantos.",
+          "Use 4 chamadas mudexy para os 4 cantos.",
           "Volte ao primeiro ponto para fechar a forma.",
         ],
         validation: { type: "contains-commands", commands: ["setxy"] },
@@ -97,33 +97,33 @@ export const MODULE_3_LESSONS: Lesson[] = [
     description:
       "Referencia completa de variaveis, aritmetica e repeticao.",
     ageGroupMin: "8-12",
-    commandsIntroduced: ["sqrt", "power", "abs", "round", "remainder"],
+    commandsIntroduced: ["raizq", "potencia", "absoluto", "arredonde", "resto"],
     points: 40,
     steps: [
       {
         type: "text",
         content:
-          'Variaveis:\nmake "nome valor — criar\n:nome — usar\nprint :nome — mostrar',
+          'Variaveis:\nfaca "nome valor — criar\n:nome — usar\nescreva :nome — mostrar',
       },
       {
         type: "text",
         content:
-          "Aritmetica: +, -, *, /\nFuncoes: sqrt (raiz), power (potencia), abs (absoluto), round (arredondar), int (inteiro), remainder (resto), random (aleatorio)",
+          "Aritmetica: +, -, *, /\nFuncoes: raizq (raiz), potencia, absoluto, arredonde (arredondar), inteiro, resto, aleatorio",
       },
       {
         type: "example",
         content: "Funcoes matematicas em acao:",
-        code: "print sqrt 144\nprint power 2 8\nprint abs -5\nprint round 3.7\nprint remainder 10 3",
+        code: "escreva raizq 144\nescreva potencia 2 8\nescreva absoluto -5\nescreva arredonde 3.7\nescreva resto 10 3",
       },
       {
         type: "example",
         content: "Poligono com variavel para os lados:",
-        code: 'make "lados 6\nrepeat :lados [fd 50 rt 360 / :lados]',
+        code: 'faca "lados 6\nrepita :lados [pf 50 vd 360 / :lados]',
       },
       {
         type: "try-it",
         content: "Calcule a hipotenusa de um triangulo 3-4-5:",
-        code: "print sqrt (power 3 2) + (power 4 2)",
+        code: "escreva raizq (potencia 3 2) + (potencia 4 2)",
       },
     ],
     challenges: [
@@ -134,7 +134,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
           "Use uma variavel 'lados' para desenhar qualquer poligono regular.",
         difficulty: 2,
         hints: [
-          "Faca make com o numero de lados, depois use 360 / :lados para o angulo.",
+          "Use faca com o numero de lados, depois use 360 / :lados para o angulo.",
         ],
         validation: { type: "contains-commands", commands: ["make", "repeat"] },
         points: 30,
@@ -161,12 +161,12 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Procedure poligono generico:",
-        code: "to poligono :lados :tamanho\n  repeat :lados [fd :tamanho rt 360 / :lados]\nend\npoligono 5 60\npoligono 8 40",
+        code: "aprenda poligono :lados :tamanho\n  repita :lados [pf :tamanho vd 360 / :lados]\nfim\npoligono 5 60\npoligono 8 40",
       },
       {
         type: "example",
         content: "Flor: procedure que usa poligono:",
-        code: "to poligono :lados :tamanho\n  repeat :lados [fd :tamanho rt 360 / :lados]\nend\nto flor :petalas :tamanho\n  repeat :petalas [\n    poligono 4 :tamanho\n    rt 360 / :petalas\n  ]\nend\nflor 8 40",
+        code: "aprenda poligono :lados :tamanho\n  repita :lados [pf :tamanho vd 360 / :lados]\nfim\naprenda flor :petalas :tamanho\n  repita :petalas [\n    poligono 4 :tamanho\n    vd 360 / :petalas\n  ]\nfim\nflor 8 40",
       },
       {
         type: "text",
@@ -176,12 +176,12 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Arvore fractal:",
-        code: "to arvore :tamanho :nivel\n  if :nivel < 1 [stop]\n  fd :tamanho\n  lt 30\n  arvore :tamanho * 0.7 :nivel - 1\n  rt 60\n  arvore :tamanho * 0.7 :nivel - 1\n  lt 30\n  bk :tamanho\nend\narvore 80 5",
+        code: "aprenda arvore :tamanho :nivel\n  se :nivel < 1 [pare]\n  pf :tamanho\n  ve 30\n  arvore :tamanho * 0.7 :nivel - 1\n  vd 60\n  arvore :tamanho * 0.7 :nivel - 1\n  ve 30\n  pt :tamanho\nfim\narvore 80 5",
       },
       {
         type: "example",
         content: "Triangulo de Sierpinski:",
-        code: "to sierpinski :tam :nivel\n  if :nivel = 0 [repeat 3 [fd :tam rt 120] stop]\n  sierpinski :tam / 2 :nivel - 1\n  fd :tam / 2\n  sierpinski :tam / 2 :nivel - 1\n  bk :tam / 2\n  lt 60\n  fd :tam / 2\n  rt 60\n  sierpinski :tam / 2 :nivel - 1\n  lt 60\n  bk :tam / 2\n  rt 60\nend\nsierpinski 200 3",
+        code: "aprenda sierpinski :tam :nivel\n  se :nivel = 0 [repita 3 [pf :tam vd 120] pare]\n  sierpinski :tam / 2 :nivel - 1\n  pf :tam / 2\n  sierpinski :tam / 2 :nivel - 1\n  pt :tam / 2\n  ve 60\n  pf :tam / 2\n  vd 60\n  sierpinski :tam / 2 :nivel - 1\n  ve 60\n  pt :tam / 2\n  vd 60\nfim\nsierpinski 200 3",
       },
     ],
     challenges: [
@@ -193,7 +193,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
         difficulty: 3,
         hints: [
           "Crie um procedure para a petala (quadrado ou losango).",
-          "Repita girando: repeat N [petala rt 360/N].",
+          "Repita girando: repita N [petala vd 360/N].",
         ],
         validation: { type: "contains-commands", commands: ["to", "repeat"] },
         points: 40,
@@ -206,7 +206,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
         difficulty: 3,
         hints: [
           "O procedure arvore chama a si mesmo com tamanho menor.",
-          "Condicao de parada: if :nivel < 1 [stop].",
+          "Condicao de parada: se :nivel < 1 [pare].",
           "Gire esquerda, recursao, gire direita, recursao, volte.",
         ],
         validation: { type: "contains-commands", commands: ["to", "if"] },
@@ -222,7 +222,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     title: "Manipulacao de Dados e Estetica",
     description: "Cores, preenchimento e personalizacao visual.",
     ageGroupMin: "8-12",
-    commandsIntroduced: ["setpencolor"],
+    commandsIntroduced: ["mudecor"],
     points: 40,
     steps: [
       {
@@ -238,22 +238,22 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "setpencolor N (setpc N) — mudar cor da caneta\nExemplo: setpc 4 muda para vermelho.",
+          "mudecor N — mudar cor da caneta\nExemplo: mudecor 4 muda para vermelho.",
       },
       {
         type: "example",
         content: "Quadrado colorido:",
-        code: "setpc 4\nsetpensize 3\nrepeat 4 [fd 100 rt 90]",
+        code: "mudecor 4\ntc 3\nrepita 4 [pf 100 vd 90]",
       },
       {
         type: "example",
         content: "Estrela multicolorida:",
-        code: "to estrela\n  repeat 5 [\n    setpc repcount\n    fd 100\n    rt 144\n  ]\nend\nestrela",
+        code: "aprenda estrela\n  repita 5 [\n    mudecor contagemrepita\n    pf 100\n    vd 144\n  ]\nfim\nestrela",
       },
       {
         type: "try-it",
         content: "Crie um arco-iris com linhas de cores diferentes!",
-        code: "repeat 15 [\n  setpc repcount\n  fd 80\n  bk 80\n  rt 12\n]",
+        code: "repita 15 [\n  mudecor contagemrepita\n  pf 80\n  pt 80\n  vd 12\n]",
       },
     ],
     challenges: [
@@ -261,11 +261,11 @@ export const MODULE_3_LESSONS: Lesson[] = [
         id: "3.5.1",
         title: "Arco-iris",
         description:
-          "Desenhe um arco-iris usando setpc com cores diferentes.",
+          "Desenhe um arco-iris usando mudecor com cores diferentes.",
         difficulty: 2,
         hints: [
-          "Use repcount dentro de um repeat para mudar a cor a cada iteracao.",
-          "setpc repcount muda a cor para o numero da iteracao.",
+          "Use contagemrepita dentro de um repita para mudar a cor a cada iteracao.",
+          "mudecor contagemrepita muda a cor para o numero da iteracao.",
         ],
         validation: { type: "contains-commands", commands: ["setpencolor"] },
         points: 35,
@@ -297,29 +297,29 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Padrao Flor — quadrados girados:",
-        code: "to quadrado :t\n  repeat 4 [fd :t rt 90]\nend\nrepeat 12 [quadrado 60 rt 30]",
+        code: "aprenda quadrado :t\n  repita 4 [pf :t vd 90]\nfim\nrepita 12 [quadrado 60 vd 30]",
       },
       {
         type: "example",
         content: "Padrao Espiral — tamanho crescente:",
-        code: "to espiral_quadrada :t :n\n  if :n < 1 [stop]\n  fd :t\n  rt 90\n  espiral_quadrada :t + 5 :n - 1\nend\nespiral_quadrada 10 40",
+        code: "aprenda espiral_quadrada :t :n\n  se :n < 1 [pare]\n  pf :t\n  vd 90\n  espiral_quadrada :t + 5 :n - 1\nfim\nespiral_quadrada 10 40",
       },
       {
         type: "try-it",
         content: "Crie uma mandala com multiplos poligonos girados:",
-        code: "to poli :l :t\n  repeat :l [fd :t rt 360 / :l]\nend\nrepeat 6 [\n  setpc repcount + 1\n  poli 6 50\n  rt 60\n]",
+        code: "aprenda poli :l :t\n  repita :l [pf :t vd 360 / :l]\nfim\nrepita 6 [\n  mudecor contagemrepita + 1\n  poli 6 50\n  vd 60\n]",
       },
     ],
     challenges: [
       {
         id: "3.6.1",
         title: "Mandala",
-        description: "Crie uma mandala simetrica com procedures e repeat.",
+        description: "Crie uma mandala simetrica com procedures e repita.",
         difficulty: 3,
         hints: [
           "Crie um procedure para uma forma basica.",
-          "Repita-a girando: repeat N [forma rt 360/N].",
-          "Use setpc para variar as cores.",
+          "Repita-a girando: repita N [forma vd 360/N].",
+          "Use mudecor para variar as cores.",
         ],
         validation: { type: "contains-commands", commands: ["to", "repeat"] },
         points: 45,
@@ -333,7 +333,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     order: 7,
     title: "Sistema de Cores — Referencia Completa",
     description:
-      "Paleta de 16 cores, uso avancado de setpencolor.",
+      "Paleta de 16 cores, uso avancado de mudecor.",
     ageGroupMin: "8-12",
     commandsIntroduced: [],
     points: 30,
@@ -351,7 +351,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Mostruario de todas as cores:",
-        code: "pu\nsetxy -200 0\npendown\nrepeat 16 [\n  setpc repcount - 1\n  setpensize 8\n  fd 25\n]",
+        code: "sc\nmudexy -200 0\nuc\nrepita 16 [\n  mudecor contagemrepita - 1\n  tc 8\n  pf 25\n]",
       },
       {
         type: "tip",
@@ -367,8 +367,8 @@ export const MODULE_3_LESSONS: Lesson[] = [
           "Desenhe um mostruario mostrando todas as 16 cores.",
         difficulty: 2,
         hints: [
-          "Use repeat 16 com setpc repcount - 1 dentro.",
-          "Use setpensize grande para as linhas ficarem visiveis.",
+          "Use repita 16 com mudecor contagemrepita - 1 dentro.",
+          "Use tc grande para as linhas ficarem visiveis.",
         ],
         validation: { type: "contains-commands", commands: ["setpencolor", "repeat"] },
         points: 30,

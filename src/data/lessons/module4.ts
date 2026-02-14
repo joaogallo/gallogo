@@ -91,12 +91,12 @@ export const MODULE_4_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Exercicio de depuracao — encontre o erro:",
-        code: "; Este quadrado tem um erro. Qual?\nrepeat 4 [fd 100 rt 80]",
+        code: "; Este quadrado tem um erro. Qual?\nrepita 4 [pf 100 vd 80]",
       },
       {
         type: "tip",
         content:
-          "O erro: rt 80 deveria ser rt 90! A forma nao fecha porque 4 × 80 = 320, nao 360.",
+          "O erro: vd 80 deveria ser vd 90! A forma nao fecha porque 4 × 80 = 320, nao 360.",
       },
     ],
     challenges: [],
@@ -156,12 +156,12 @@ export const MODULE_4_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Caleidoscopio simples:",
-        code: "repeat 36 [\n  setpc repcount\n  repeat 4 [fd 80 rt 90]\n  rt 10\n]",
+        code: "repita 36 [\n  mudecor contagemrepita\n  repita 4 [pf 80 vd 90]\n  vd 10\n]",
       },
       {
         type: "try-it",
         content: "Crie seu proprio caleidoscopio variando formas e cores!",
-        code: "repeat 18 [\n  setpc repcount\n  repeat 3 [fd 60 rt 120]\n  rt 20\n]",
+        code: "repita 18 [\n  mudecor contagemrepita\n  repita 3 [pf 60 vd 120]\n  vd 20\n]",
       },
     ],
     challenges: [
@@ -172,7 +172,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
           "Crie um caleidoscopio unico com pelo menos 3 cores diferentes.",
         difficulty: 2,
         hints: [
-          "Use setpc repcount dentro de um repeat.",
+          "Use mudecor contagemrepita dentro de um repita.",
           "Gire a forma a cada iteracao.",
         ],
         validation: { type: "contains-commands", commands: ["setpencolor", "repeat"] },

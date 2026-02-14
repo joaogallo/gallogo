@@ -116,7 +116,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "pf N (para frente) — move N passos na direcao que esta olhando\nbk N (para tras) — move N passos para tras\nrt N (girar direita) — gira N graus no sentido horario\nlt N (girar esquerda) — gira N graus no sentido anti-horario",
+          "pf N (para frente) — move N passos na direcao que esta olhando\npt N (para tras) — move N passos para tras\nvd N (girar direita) — gira N graus no sentido horario\nve N (girar esquerda) — gira N graus no sentido anti-horario",
       },
       {
         type: "example",
@@ -126,12 +126,12 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Gire 90 graus para a direita e ande mais 50:",
-        code: "rt 90\nfd 50",
+        code: "vd 90\npf 50",
       },
       {
         type: "try-it",
         content: "Tente voce! Faca um L: ande para frente, gire e ande de novo.",
-        code: "fd 100\nrt 90\nfd 50",
+        code: "pf 100\nvd 90\npf 50",
       },
       {
         type: "tip",
@@ -186,7 +186,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     description:
       "Controle quando a tartaruga desenha, espessura e visibilidade.",
     ageGroupMin: "6-8",
-    commandsIntroduced: ["pu", "pendown", "setpensize", "ht", "st", "home"],
+    commandsIntroduced: ["sc", "uc", "tc", "et", "mt", "casa"],
     points: 30,
     steps: [
       {
@@ -197,34 +197,34 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "pu (pen up / caneta levantada) — mover sem desenhar\npendown (caneta abaixada) — voltar a desenhar\nsetpensize N — mudar espessura da caneta\nht (hide turtle) — esconder tartaruga\nst (show turtle) — mostrar tartaruga\nhome — voltar ao centro",
+          "sc/semcaneta (sem caneta) — mover sem desenhar\nuc/usecaneta (caneta abaixada) — voltar a desenhar\ntc/tamanhocaneta N — mudar espessura da caneta\net/escondatartaruga — esconder tartaruga\nmt/mostretartaruga — mostrar tartaruga\ncasa — voltar ao centro",
       },
       {
         type: "example",
         content: "Desenhe duas linhas com espaco no meio:",
-        code: "fd 50\npu\nfd 30\npendown\nfd 50",
+        code: "pf 50\nsc\npf 30\nuc\npf 50",
       },
       {
         type: "example",
         content: "Desenhe com caneta grossa:",
-        code: "setpensize 5\nfd 100",
+        code: "tc 5\npf 100",
       },
       {
         type: "try-it",
         content:
           "Desenhe uma linha tracejada! Alterne entre desenhar e pular.",
-        code: "fd 20\npu\nfd 10\npendown\nfd 20\npu\nfd 10\npendown\nfd 20",
+        code: "pf 20\nsc\npf 10\nuc\npf 20\nsc\npf 10\nuc\npf 20",
       },
     ],
     challenges: [
       {
         id: "1.4.1",
         title: "Linha tracejada",
-        description: "Desenhe uma linha tracejada usando pu e pendown.",
+        description: "Desenhe uma linha tracejada usando sc e uc.",
         difficulty: 1,
         hints: [
-          "Alterne: fd (desenha), pu, fd (pula), pendown, fd (desenha)...",
-          "Use pu para levantar e pendown para abaixar a caneta.",
+          "Alterne: pf (desenha), sc, pf (pula), uc, pf (desenha)...",
+          "Use sc para levantar e uc para abaixar a caneta.",
         ],
         validation: { type: "contains-commands", commands: ["penup", "pendown"] },
         points: 20,
@@ -233,11 +233,11 @@ export const MODULE_1_LESSONS: Lesson[] = [
         id: "1.4.2",
         title: "Linhas paralelas",
         description:
-          "Desenhe duas linhas paralelas (use pu para reposicionar).",
+          "Desenhe duas linhas paralelas (use sc para reposicionar).",
         difficulty: 2,
         hints: [
           "Desenhe uma linha, levante a caneta, mova para o lado, abaixe e desenhe outra.",
-          "Apos a primeira linha, use pu, rt 90, fd 30, lt 90, pendown, fd para a segunda.",
+          "Apos a primeira linha, use sc, vd 90, pf 30, ve 90, uc, pf para a segunda.",
         ],
         validation: { type: "min-lines", count: 2 },
         points: 25,
@@ -247,7 +247,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         title: "Caneta grossa",
         description: "Desenhe qualquer forma com caneta de espessura 5.",
         difficulty: 1,
-        hints: ["Use setpensize 5 antes de desenhar."],
+        hints: ["Use tc 5 antes de desenhar."],
         validation: { type: "contains-commands", commands: ["setpensize"] },
         points: 15,
       },
@@ -262,7 +262,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     description:
       "Combine comandos para criar formas fechadas e aprenda repeat.",
     ageGroupMin: "6-8",
-    commandsIntroduced: ["repeat", "cs"],
+    commandsIntroduced: ["repita", "limpe"],
     points: 40,
     steps: [
       {
@@ -273,43 +273,43 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Quadrado passo a passo (longo):",
-        code: "fd 100 rt 90 fd 100 rt 90 fd 100 rt 90 fd 100 rt 90",
+        code: "pf 100 vd 90 pf 100 vd 90 pf 100 vd 90 pf 100 vd 90",
       },
       {
         type: "text",
         content:
-          "Percebeu? Repetimos 'fd 100 rt 90' quatro vezes! Existe um comando magico para isso: repeat!",
+          "Percebeu? Repetimos 'pf 100 vd 90' quatro vezes! Existe um comando magico para isso: repita!",
       },
       {
         type: "example",
         content: "Quadrado com repeat — muito mais elegante:",
-        code: "repeat 4 [fd 100 rt 90]",
+        code: "repita 4 [pf 100 vd 90]",
       },
       {
         type: "text",
         content:
-          "Formula magica: para um poligono regular de N lados, use repeat N [fd tamanho rt 360/N]",
+          "Formula magica: para um poligono regular de N lados, use repita N [pf tamanho vd 360/N]",
       },
       {
         type: "example",
         content: "Triangulo equilatero (3 lados, giro de 120):",
-        code: "repeat 3 [fd 100 rt 120]",
+        code: "repita 3 [pf 100 vd 120]",
       },
       {
         type: "example",
         content: "Hexagono (6 lados, giro de 60):",
-        code: "repeat 6 [fd 60 rt 60]",
+        code: "repita 6 [pf 60 vd 60]",
       },
       {
         type: "tip",
         content:
-          "Use 'cs' (clear screen) para limpar a tela e comecar de novo. Em PT: 'limpe'.",
+          "Use 'limpe' para limpar a tela e comecar de novo.",
       },
       {
         type: "try-it",
         content:
-          "Tente fazer um circulo! Dica: repeat 360 [fd 1 rt 1]",
-        code: "repeat 360 [fd 1 rt 1]",
+          "Tente fazer um circulo! Dica: repita 360 [pf 1 vd 1]",
+        code: "repita 360 [pf 1 vd 1]",
       },
     ],
     challenges: [
@@ -320,7 +320,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         difficulty: 1,
         hints: [
           "Um quadrado tem 4 lados com giro de 90 graus.",
-          "Use: repeat 4 [fd 100 rt 90]",
+          "Use: repita 4 [pf 100 vd 90]",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
         points: 25,
@@ -332,7 +332,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         difficulty: 1,
         hints: [
           "Triangulo = 3 lados. Angulo externo = 360/3 = 120 graus.",
-          "repeat 3 [fd 100 rt 120]",
+          "repita 3 [pf 100 vd 120]",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
         points: 25,
@@ -344,7 +344,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         difficulty: 2,
         hints: [
           "Hexagono = 6 lados. 360/6 = 60 graus.",
-          "repeat 6 [fd 60 rt 60]",
+          "repita 6 [pf 60 vd 60]",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
         points: 30,
@@ -355,7 +355,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         description: "Desenhe um circulo (ou quase!).",
         difficulty: 2,
         hints: [
-          "Use muitos lados pequenos: repeat 360 [fd 1 rt 1].",
+          "Use muitos lados pequenos: repita 360 [pf 1 vd 1].",
           "Quanto mais lados e menor o passo, mais redondo fica!",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
@@ -371,7 +371,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     title: "Mais Comandos Uteis",
     description: "Posicionamento absoluto, coordenadas e limpeza.",
     ageGroupMin: "6-8",
-    commandsIntroduced: ["setxy", "setheading"],
+    commandsIntroduced: ["mudexy", "mudedirecao"],
     points: 30,
     steps: [
       {
@@ -382,22 +382,22 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "home — voltar ao centro (0, 0)\nsetxy X Y — ir para coordenadas especificas\nsetheading N (seth N) — apontar para uma direcao (0=cima, 90=direita, 180=baixo, 270=esquerda)",
+          "casa — voltar ao centro (0, 0)\nmudexy X Y — ir para coordenadas especificas\nmudedirecao N (muded N) — apontar para uma direcao (0=cima, 90=direita, 180=baixo, 270=esquerda)",
       },
       {
         type: "example",
         content: "Mover para uma posicao especifica:",
-        code: "setxy 100 100",
+        code: "mudexy 100 100",
       },
       {
         type: "example",
         content: "Voltar ao centro e apontar para a direita:",
-        code: "home\nseth 90",
+        code: "casa\nmuded 90",
       },
       {
         type: "try-it",
         content: "Desenhe um quadrado no canto superior direito!",
-        code: "pu\nsetxy 50 50\npendown\nrepeat 4 [fd 80 rt 90]",
+        code: "sc\nmudexy 50 50\nuc\nrepita 4 [pf 80 vd 90]",
       },
     ],
     challenges: [
@@ -408,7 +408,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
           "Desenhe um quadrado no canto superior direito da tela usando setxy.",
         difficulty: 2,
         hints: [
-          "Use pu para mover sem desenhar, depois pendown.",
+          "Use sc para mover sem desenhar, depois uc.",
           "Coordenadas positivas ficam no canto superior direito.",
         ],
         validation: { type: "contains-commands", commands: ["setxy"] },
@@ -435,7 +435,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Movimento: fd, bk, rt, lt\nCaneta: pu, pendown, setpensize\nFormas: repeat N [comandos]\nPosicao: home, setxy, setheading\nLimpeza: cs (clear screen)",
+          "Movimento: pf, pt, vd, ve\nCaneta: sc, uc, tc\nFormas: repita N [comandos]\nPosicao: casa, mudexy, mudedirecao\nLimpeza: limpe",
       },
       {
         type: "text",
@@ -461,7 +461,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
           "Crie um desenho usando todos os comandos que aprendeu! Seja criativo.",
         difficulty: 2,
         hints: [
-          "Combine fd, rt, lt, repeat, pu, pendown, setpensize...",
+          "Combine pf, vd, ve, repita, sc, uc, tc...",
           "Tente desenhar uma casa (quadrado + triangulo)!",
         ],
         validation: { type: "free", description: "Qualquer desenho vale!" },

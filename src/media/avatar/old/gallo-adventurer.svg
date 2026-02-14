@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 440" width="400" height="440">
+  <!-- AVENTUREIRO (8-12) - TMNT style, skateboard, balanced Donnie+Mikey, confident -->
+  <defs>
+    <radialGradient id="avSkin" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#5ED88C"/>
+      <stop offset="50%" stop-color="#3DB86A"/>
+      <stop offset="100%" stop-color="#2A8F4E"/>
+    </radialGradient>
+    <radialGradient id="avSkinHi" cx="40%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#7EEAA8"/>
+      <stop offset="100%" stop-color="#5ED88C"/>
+    </radialGradient>
+    <radialGradient id="avSkinSh" cx="55%" cy="65%" r="55%">
+      <stop offset="0%" stop-color="#3DB86A"/>
+      <stop offset="100%" stop-color="#1E7A3A"/>
+    </radialGradient>
+    <radialGradient id="avShell" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#5A9E40"/>
+      <stop offset="40%" stop-color="#3D7A2E"/>
+      <stop offset="100%" stop-color="#2B5E1E"/>
+    </radialGradient>
+    <linearGradient id="avPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A8C35"/>
+      <stop offset="100%" stop-color="#2E6820"/>
+    </linearGradient>
+    <!-- Bandana: balanced purple + orange -->
+    <linearGradient id="avBandana" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="50%" stop-color="#D946EF"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <radialGradient id="avBelly" cx="48%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#F5E6A3"/>
+      <stop offset="60%" stop-color="#E8D48B"/>
+      <stop offset="100%" stop-color="#D4B96A"/>
+    </radialGradient>
+    <!-- Skateboard -->
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <filter id="avDrop">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#00000040"/>
+    </filter>
+    <filter id="avGlow">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feFlood flood-color="#A855F7" flood-opacity="0.4" result="c"/>
+      <feComposite in="c" in2="b" operator="in" result="g"/>
+      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Speed lines (dynamic movement) -->
+  <g stroke-linecap="round" opacity="0.3">
+    <line x1="30" y1="210" x2="75" y2="210" stroke="#A855F7" stroke-width="3"/>
+    <line x1="20" y1="230" x2="80" y2="230" stroke="#F97316" stroke-width="3.5"/>
+    <line x1="35" y1="250" x2="70" y2="250" stroke="#A855F7" stroke-width="2.5"/>
+    <line x1="25" y1="270" x2="65" y2="270" stroke="#D946EF" stroke-width="2"/>
+  </g>
+
+  <!-- === SKATEBOARD (under feet) === -->
+  <g filter="url(#avDrop)">
+    <!-- Board deck -->
+    <path d="M105 378 Q95 375 90 370 Q88 365 95 362 L305 355 Q312 352 318 355 Q322 360 315 365 Z" fill="url(#boardGrad)" stroke="#1a1a2e" stroke-width="3.5"/>
+    <!-- Grip tape -->
+    <path d="M110 375 L300 360" stroke="#1a1a2e" stroke-width="2" opacity="0.2"/>
+    <!-- Board design - lightning bolt -->
+    <path d="M195 362 L208 362 L202 368 L212 368 L192 380 L198 372 L186 372 Z" fill="#FBBF24" stroke="#1a1a2e" stroke-width="1.5" opacity="0.8"/>
+    <!-- Wheels (with motion blur) -->
+    <circle cx="130" cy="388" r="11" fill="#E2E8F0" stroke="#1a1a2e" stroke-width="3"/>
+    <circle cx="130" cy="388" r="5" fill="#94A3B8" stroke="#1a1a2e" stroke-width="1.5"/>
+    <circle cx="280" cy="381" r="11" fill="#E2E8F0" stroke="#1a1a2e" stroke-width="3"/>
+    <circle cx="280" cy="381" r="5" fill="#94A3B8" stroke="#1a1a2e" stroke-width="1.5"/>
+    <!-- Trucks -->
+    <rect x="122" y="380" width="16" height="5" rx="2" fill="#94A3B8" stroke="#1a1a2e" stroke-width="1.5"/>
+    <rect x="272" y="373" width="16" height="5" rx="2" fill="#94A3B8" stroke="#1a1a2e" stroke-width="1.5"/>
+  </g>
+
+  <!-- === SHELL (dynamic tilt) === -->
+  <g filter="url(#avDrop)" transform="rotate(-5 200 240)">
+    <ellipse cx="200" cy="240" rx="115" ry="96" fill="url(#avShell)" stroke="#1a1a2e" stroke-width="4.5"/>
+    <path d="M200 155 L248 188 L248 245 L200 275 L152 245 L152 188 Z" fill="url(#avPlate)" stroke="#1a1a2e" stroke-width="3.5"/>
+    <path d="M200 165 L240 192 L240 240 L200 265 L160 240 L160 192 Z" fill="none" stroke="#6BAF50" stroke-width="1" opacity="0.5"/>
+    <path d="M152 188 L112 205 L112 248 L152 245" fill="url(#avPlate)" stroke="#1a1a2e" stroke-width="2.5" opacity="0.8"/>
+    <path d="M248 188 L288 205 L288 248 L248 245" fill="url(#avPlate)" stroke="#1a1a2e" stroke-width="2.5" opacity="0.8"/>
+    <path d="M152 245 L132 272 L168 295 L200 275" fill="url(#avPlate)" stroke="#1a1a2e" stroke-width="2" opacity="0.7"/>
+    <path d="M248 245 L268 272 L232 295 L200 275" fill="url(#avPlate)" stroke="#1a1a2e" stroke-width="2" opacity="0.7"/>
+    <ellipse cx="180" cy="185" rx="30" ry="14" fill="white" opacity="0.1" transform="rotate(-18 180 185)"/>
+  </g>
+
+  <!-- Belly -->
+  <path d="M148 185 Q145 240 155 288 Q175 322 200 326 Q225 322 245 288 Q255 240 252 185 Q232 170 200 167 Q168 170 148 185Z" fill="url(#avBelly)" stroke="#1a1a2e" stroke-width="4" transform="rotate(-3 200 250)"/>
+  <path d="M167 196 L233 193" stroke="#C4A862" stroke-width="2" opacity="0.4"/>
+  <path d="M163 232 L237 230" stroke="#C4A862" stroke-width="2" opacity="0.4"/>
+  <path d="M165 268 L235 266" stroke="#C4A862" stroke-width="2" opacity="0.4"/>
+
+  <!-- Legs (on skateboard, dynamic crouch) -->
+  <g>
+    <path d="M145 305 Q132 330 128 350 Q127 362 138 366 Q152 363 155 352 Q158 338 155 312" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <ellipse cx="138" cy="330" rx="13" ry="9" fill="#4A8C35" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(-10 138 330)"/>
+    <path d="M130 358 Q134 366 142 366" stroke="#D4B96A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M255 300 Q268 325 275 345 Q277 358 266 362 Q252 360 248 348 Q245 332 248 308" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <ellipse cx="265" cy="325" rx="13" ry="9" fill="#4A8C35" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(10 265 325)"/>
+    <path d="M273 355 Q270 362 260 362" stroke="#D4B96A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Left arm (relaxed, hand forward) -->
+  <g>
+    <path d="M102 215 Q80 228 72 248 Q70 262 80 266 Q92 264 96 250 Q100 238 106 225" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <rect x="69" y="253" width="20" height="9" rx="3" fill="#D4B96A" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="76" cy="268" r="6" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="68" cy="266" r="5" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+    <circle cx="84" cy="267" r="5.5" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+  </g>
+  <!-- Right arm (raised, peace sign / shaka) -->
+  <g>
+    <path d="M298 208 Q320 192 335 172 Q342 160 336 154 Q326 156 320 168 Q308 188 298 205" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="4"/>
+    <rect x="322" y="154" width="18" height="9" rx="3" fill="#D4B96A" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(-38 331 158)"/>
+    <!-- SHAKA / peace sign hand -->
+    <g transform="translate(338 142) rotate(-25)">
+      <circle cx="0" cy="0" r="7" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="2.5"/>
+      <!-- Pinky out -->
+      <line x1="-5" y1="-2" x2="-16" y2="-14" stroke="url(#avSkin)" stroke-width="7" stroke-linecap="round"/>
+      <line x1="-5" y1="-2" x2="-16" y2="-14" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <!-- Thumb out -->
+      <line x1="5" y1="2" x2="18" y2="12" stroke="url(#avSkin)" stroke-width="7" stroke-linecap="round"/>
+      <line x1="5" y1="2" x2="18" y2="12" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </g>
+  </g>
+
+  <!-- Tail -->
+  <path d="M150 328 Q128 352 134 365 Q144 358 154 342" fill="url(#avSkinSh)" stroke="#1a1a2e" stroke-width="3.5"/>
+
+  <!-- === HEAD === -->
+  <g filter="url(#avDrop)">
+    <path d="M162 170 Q168 152 200 145 Q232 152 238 170" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="3"/>
+    <ellipse cx="200" cy="108" rx="66" ry="60" fill="url(#avSkin)" stroke="#1a1a2e" stroke-width="4.5"/>
+    <ellipse cx="185" cy="82" rx="34" ry="22" fill="url(#avSkinHi)" opacity="0.35"/>
+    <path d="M143 130 Q175 148 200 150 Q225 148 257 130" fill="url(#avSkinSh)" opacity="0.2"/>
+    <path d="M140 96 Q156 82 200 78 Q244 82 260 96" fill="#3DB86A" stroke="#1a1a2e" stroke-width="3" opacity="0.8"/>
+  </g>
+
+  <!-- === BANDANA === -->
+  <g>
+    <path d="M132 90 Q134 82 158 76 Q180 73 200 72 Q220 73 242 76 Q266 82 268 90 L268 112 Q266 120 242 124 Q220 126 200 127 Q180 126 158 124 Q134 120 132 112 Z" fill="url(#avBandana)" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Bandana tails (wind-swept, dynamic) -->
+    <path d="M262 96 Q284 88 310 78 Q322 74 326 82 Q320 90 304 95" fill="#F97316" stroke="#1a1a2e" stroke-width="3.5"/>
+    <path d="M264 108 Q292 106 320 112 Q330 116 326 124 Q316 120 296 116" fill="#FB923C" stroke="#1a1a2e" stroke-width="3"/>
+    <!-- Extra wind trail -->
+    <path d="M310 80 Q325 72 340 75" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- === EYES (confident, through bandana) === -->
+  <g>
+    <ellipse cx="177" cy="100" rx="23" ry="17" fill="#1a1a2e"/>
+    <ellipse cx="177" cy="100" rx="20" ry="14" fill="white"/>
+    <ellipse cx="180" cy="99" rx="11" ry="11" fill="#2D6A1E"/>
+    <ellipse cx="182" cy="98" rx="7" ry="7.5" fill="#1a1a2e"/>
+    <circle cx="186" cy="94" r="4.5" fill="white"/>
+    <circle cx="178" cy="104" r="2" fill="white" opacity="0.5"/>
+    <ellipse cx="177" cy="100" rx="20" ry="14" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+
+    <ellipse cx="223" cy="100" rx="23" ry="17" fill="#1a1a2e"/>
+    <ellipse cx="223" cy="100" rx="20" ry="14" fill="white"/>
+    <ellipse cx="226" cy="99" rx="11" ry="11" fill="#2D6A1E"/>
+    <ellipse cx="228" cy="98" rx="7" ry="7.5" fill="#1a1a2e"/>
+    <circle cx="232" cy="94" r="4.5" fill="white"/>
+    <circle cx="224" cy="104" r="2" fill="white" opacity="0.5"/>
+    <ellipse cx="223" cy="100" rx="20" ry="14" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  </g>
+
+  <!-- One raised eyebrow (cocky expression) -->
+  <path d="M155 84 Q168 76 192 82" stroke="#1a1a2e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M208 80 Q232 72 248 82" stroke="#1a1a2e" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <circle cx="194" cy="120" r="3" fill="#2A8F4E"/>
+  <circle cx="206" cy="120" r="3" fill="#2A8F4E"/>
+
+  <!-- === MOUTH (sideways confident smirk) === -->
+  <g>
+    <path d="M165 132 Q185 148 205 150 Q228 148 242 134" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="4"/>
+    <path d="M172 134 L180 142 L189 134 L198 142 L207 134 L216 142 L225 134 L234 140" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+    <path d="M165 132 Q185 148 205 150 Q228 148 242 134" fill="none" stroke="#1a1a2e" stroke-width="4"/>
+    <!-- Single fang poking out (cocky) -->
+    <path d="M230 136 L234 144 L238 136" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+  </g>
+
+  <!-- Cheek spots -->
+  <circle cx="144" cy="123" r="3" fill="#2A8F4E" opacity="0.5"/>
+  <circle cx="256" cy="123" r="3" fill="#2A8F4E" opacity="0.5"/>
+
+  <!-- === TECH GOGGLES (on forehead, Donnie style) === -->
+  <g>
+    <path d="M142 72 Q148 58 200 53 Q252 58 258 72" fill="none" stroke="#6D28D9" stroke-width="4"/>
+    <ellipse cx="174" cy="66" rx="18" ry="12" fill="#A78BFA" stroke="#1a1a2e" stroke-width="3"/>
+    <ellipse cx="170" cy="63" rx="6" ry="4" fill="white" opacity="0.4"/>
+    <ellipse cx="226" cy="66" rx="18" ry="12" fill="#A78BFA" stroke="#1a1a2e" stroke-width="3"/>
+    <ellipse cx="222" cy="63" rx="6" ry="4" fill="white" opacity="0.4"/>
+    <rect x="189" y="62" width="22" height="8" rx="3" fill="#7C3AED" stroke="#1a1a2e" stroke-width="2"/>
+  </g>
+
+  <!-- Action energy burst -->
+  <g opacity="0.5" filter="url(#avGlow)">
+    <polygon points="340,135 344,143 352,143 346,148 348,156 340,152 332,156 334,148 328,143 336,143" fill="#FBBF24"/>
+    <polygon points="60,155 63,161 69,161 65,165 66,171 60,167 54,171 55,165 51,161 57,161" fill="#FB923C"/>
+  </g>
+</svg>

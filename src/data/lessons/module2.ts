@@ -40,7 +40,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
     description:
       "Caixas de memoria nomeadas para guardar valores e reutilizar.",
     ageGroupMin: "6-8",
-    commandsIntroduced: ["make", "print", "random"],
+    commandsIntroduced: ["faca", "escreva", "aleatorio"],
     points: 40,
     steps: [
       {
@@ -51,17 +51,17 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          'make "nome valor — criar ou mudar uma variavel\n:nome — usar o valor guardado (dois pontos antes do nome)\nprint :nome — mostrar o valor no terminal',
+          'faca "nome valor — criar ou mudar uma variavel\n:nome — usar o valor guardado (dois pontos antes do nome)\nescreva :nome — mostrar o valor no terminal',
       },
       {
         type: "example",
         content: "Guardar um tamanho e usar no desenho:",
-        code: 'make "tamanho 100\nfd :tamanho\nrt 90\nfd :tamanho',
+        code: 'faca "tamanho 100\npf :tamanho\nvd 90\npf :tamanho',
       },
       {
         type: "example",
         content: "Mudar o valor e desenhar de novo:",
-        code: 'make "tamanho 50\nrepeat 4 [fd :tamanho rt 90]',
+        code: 'faca "tamanho 50\nrepita 4 [pf :tamanho vd 90]',
       },
       {
         type: "text",
@@ -71,7 +71,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Calcular e mostrar o perimetro de um quadrado:",
-        code: 'make "lado 80\nrepeat 4 [fd :lado rt 90]\nprint :lado * 4',
+        code: 'faca "lado 80\nrepita 4 [pf :lado vd 90]\nescreva :lado * 4',
       },
       {
         type: "text",
@@ -81,7 +81,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "try-it",
         content: "Mova a tartaruga um tamanho aleatorio:",
-        code: "fd random 200\nrt random 360",
+        code: "pf aleatorio 200\nvd aleatorio 360",
       },
     ],
     challenges: [
@@ -92,8 +92,8 @@ export const MODULE_2_LESSONS: Lesson[] = [
           'Crie uma variavel "lado" e desenhe um quadrado com ela.',
         difficulty: 1,
         hints: [
-          'Use make "lado 100 para criar a variavel.',
-          "Depois: repeat 4 [fd :lado rt 90]",
+          'Use faca "lado 100 para criar a variavel.',
+          "Depois: repita 4 [pf :lado vd 90]",
         ],
         validation: { type: "contains-commands", commands: ["make"] },
         points: 25,
@@ -105,8 +105,8 @@ export const MODULE_2_LESSONS: Lesson[] = [
           "Mude o valor da variavel e desenhe outro quadrado diferente.",
         difficulty: 2,
         hints: [
-          "Desenhe o primeiro quadrado, depois faca make com um valor diferente.",
-          "Dica: mova a tartaruga entre os quadrados com pu e pendown.",
+          "Desenhe o primeiro quadrado, depois use faca com um valor diferente.",
+          "Dica: mova a tartaruga entre os quadrados com sc e uc.",
         ],
         validation: { type: "contains-commands", commands: ["make"] },
         points: 30,
@@ -118,7 +118,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
         difficulty: 1,
         hints: [
           "random 200 gera um numero de 0 a 199.",
-          "fd random 200",
+          "pf aleatorio 200",
         ],
         validation: { type: "contains-commands", commands: ["random"] },
         points: 20,
@@ -134,7 +134,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
     description:
       "Crie comandos personalizados reutilizaveis com to...end.",
     ageGroupMin: "6-8",
-    commandsIntroduced: ["to", "end"],
+    commandsIntroduced: ["aprenda", "fim"],
     points: 50,
     steps: [
       {
@@ -145,7 +145,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Criando o comando 'quadrado':",
-        code: "to quadrado\n  repeat 4 [fd 100 rt 90]\nend",
+        code: "aprenda quadrado\n  repita 4 [pf 100 vd 90]\nfim",
       },
       {
         type: "text",
@@ -155,7 +155,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Procedure com parametro de tamanho:",
-        code: "to quadrado :tamanho\n  repeat 4 [fd :tamanho rt 90]\nend\nquadrado 100\nquadrado 50",
+        code: "aprenda quadrado :tamanho\n  repita 4 [pf :tamanho vd 90]\nfim\nquadrado 100\nquadrado 50",
       },
       {
         type: "text",
@@ -175,7 +175,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Espiral recursiva (avancado):",
-        code: "to espiral :tamanho\n  if :tamanho < 1 [stop]\n  fd :tamanho\n  rt 20\n  espiral :tamanho * 0.95\nend\nespiral 200",
+        code: "aprenda espiral :tamanho\n  se :tamanho < 1 [pare]\n  pf :tamanho\n  vd 20\n  espiral :tamanho * 0.95\nfim\nespiral 200",
       },
     ],
     challenges: [
@@ -186,9 +186,9 @@ export const MODULE_2_LESSONS: Lesson[] = [
           "Crie um procedure 'quadrado' com parametro de tamanho.",
         difficulty: 2,
         hints: [
-          "Comece com: to quadrado :tamanho",
-          "Dentro: repeat 4 [fd :tamanho rt 90]",
-          "Termine com: end",
+          "Comece com: aprenda quadrado :tamanho",
+          "Dentro: repita 4 [pf :tamanho vd 90]",
+          "Termine com: fim",
         ],
         validation: { type: "contains-commands", commands: ["to"] },
         points: 30,
@@ -214,7 +214,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
         difficulty: 3,
         hints: [
           "Use o procedure quadrado dentro de um repeat.",
-          "Apos cada quadrado, mova a tartaruga para o lado com pu.",
+          "Apos cada quadrado, mova a tartaruga para o lado com sc.",
         ],
         validation: { type: "contains-commands", commands: ["to", "repeat"] },
         points: 40,
@@ -230,7 +230,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
     description:
       "Faca a tartaruga tomar decisoes com if e comparacoes.",
     ageGroupMin: "8-12",
-    commandsIntroduced: ["if", "ifelse", "stop"],
+    commandsIntroduced: ["se", "sesenao", "pare"],
     points: 50,
     steps: [
       {
@@ -241,28 +241,28 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "if condicao [comandos] — executa se verdadeiro\nComparacoes: < (menor), > (maior), = (igual)",
+          "se condicao [comandos] — executa se verdadeiro\nComparacoes: < (menor), > (maior), = (igual)",
       },
       {
         type: "example",
         content: "Se o tamanho for grande, usar caneta grossa:",
-        code: 'make "tamanho 150\nif :tamanho > 100 [setpensize 5]\nrepeat 4 [fd :tamanho rt 90]',
+        code: 'faca "tamanho 150\nse :tamanho > 100 [tc 5]\nrepita 4 [pf :tamanho vd 90]',
       },
       {
         type: "text",
         content:
-          "ifelse condicao [se-verdadeiro] [se-falso] — escolhe entre duas opcoes.",
+          "sesenao condicao [se-verdadeiro] [se-falso] — escolhe entre duas opcoes.",
       },
       {
         type: "example",
         content: "Caminhada aleatoria com parada condicional:",
-        code: "to caminhar :passos\n  if :passos < 1 [stop]\n  fd 10 + random 20\n  rt -45 + random 90\n  caminhar :passos - 1\nend\ncaminhar 30",
+        code: "aprenda caminhar :passos\n  se :passos < 1 [pare]\n  pf 10 + aleatorio 20\n  vd -45 + aleatorio 90\n  caminhar :passos - 1\nfim\ncaminhar 30",
       },
       {
         type: "try-it",
         content:
           "Desenhe poligonos diferentes baseado em uma variavel 'lados':",
-        code: 'make "lados 5\nrepeat :lados [fd 60 rt 360 / :lados]',
+        code: 'faca "lados 5\nrepita :lados [pf 60 vd 360 / :lados]',
       },
     ],
     challenges: [
@@ -273,7 +273,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
           "Use if para desenhar um quadrado so se a variavel 'tamanho' for maior que 50.",
         difficulty: 2,
         hints: [
-          "Crie a variavel com make, depois use if :tamanho > 50 [...].",
+          "Crie a variavel com faca, depois use se :tamanho > 50 [...].",
         ],
         validation: { type: "contains-commands", commands: ["if"] },
         points: 30,
@@ -286,7 +286,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
         difficulty: 3,
         hints: [
           "Use recursao: o procedure chama a si mesmo com passos - 1.",
-          "Condicao de parada: if :passos < 1 [stop].",
+          "Condicao de parada: se :passos < 1 [pare].",
         ],
         validation: { type: "contains-commands", commands: ["random", "if"] },
         points: 40,
@@ -334,8 +334,8 @@ export const MODULE_2_LESSONS: Lesson[] = [
           "Crie uma cena com pelo menos 3 procedures diferentes (ex: casa, sol, grama).",
         difficulty: 3,
         hints: [
-          "Crie procedures separados: to casa, to sol, to grama.",
-          "Use setxy e pu para posicionar cada elemento.",
+          "Crie procedures separados: aprenda casa, aprenda sol, aprenda grama.",
+          "Use mudexy e sc para posicionar cada elemento.",
           "Combine tudo no final chamando cada procedure.",
         ],
         validation: { type: "free", description: "Cena com multiplos procedures." },
