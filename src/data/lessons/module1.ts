@@ -1,6 +1,6 @@
 import type { Lesson } from "@/types/curriculum";
 
-/** Modulo 1: Primeiros Passos com a Tartaruga Logo (7 licoes) */
+/** Módulo 1: Primeiros Passos com a Tartaruga Logo (7 lições) */
 export const MODULE_1_LESSONS: Lesson[] = [
   {
     id: "1.1",
@@ -8,7 +8,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     order: 1,
     title: "Bem-vindo ao Mundo Logo!",
     description:
-      "Apresentacao do ambiente e do conceito da tartaruga como agente programavel.",
+      "Apresentação do ambiente e do conceito da tartaruga como agente programável.",
     ageGroupMin: "6-8",
     commandsIntroduced: [],
     points: 20,
@@ -16,32 +16,32 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Bem-vindo ao GalloGo! Aqui voce vai aprender a programar controlando uma tartaruga que desenha na tela.",
+          "Bem-vindo ao GalloGo! Aqui você vai aprender a programar controlando uma tartaruga que desenha na tela.",
       },
       {
         type: "text",
         content:
-          "O que e programar? E dar instrucoes precisas para o computador seguir. No Logo, voce da instrucoes para uma tartaruga que se move e desenha!",
+          "O que é programar? É dar instruções precisas para o computador seguir. No Logo, você dá instruções para uma tartaruga que se move e desenha!",
       },
       {
         type: "text",
         content:
-          "Logo foi criada nos anos 1960 por Seymour Papert para ensinar criancas a programar. A ideia e simples: imagine que VOCE e a tartaruga.",
+          "Logo foi criada nos anos 1960 por Seymour Papert para ensinar crianças a programar. A ideia é simples: imagine que VOCÊ é a tartaruga.",
       },
       {
         type: "tip",
         content:
-          "Olhe para os 3 paineis da tela: Instrucoes (aqui!), Terminal (onde voce digita comandos) e Canvas (onde a tartaruga desenha).",
+          "Olhe para os 3 painéis da tela: Instruções (aqui!), Terminal (onde você digita comandos) e Canvas (onde a tartaruga desenha).",
       },
       {
         type: "text",
         content:
-          "A tartaruga comeca no centro da tela, na posicao (0, 0), olhando para cima. Ela tem uma caneta que desenha por onde passa.",
+          "A tartaruga começa no centro da tela, na posição (0, 0), olhando para cima. Ela tem uma caneta que desenha por onde passa.",
       },
       {
         type: "text",
         content:
-          "No Terminal, voce digita comandos e a tartaruga obedece. Vamos comecar na proxima licao!",
+          "No Terminal, você digita comandos e a tartaruga obedece. Vamos começar na próxima lição!",
       },
     ],
     challenges: [
@@ -49,7 +49,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         id: "1.1.1",
         title: "Explorador",
         description:
-          "Digite 'ajuda' no terminal para ver os comandos disponiveis.",
+          "Digite 'ajuda' no terminal para ver os comandos disponíveis.",
         difficulty: 1,
         hints: ["Digite a palavra 'ajuda' e pressione Enter."],
         validation: { type: "contains-commands", commands: ["help"] },
@@ -62,9 +62,9 @@ export const MODULE_1_LESSONS: Lesson[] = [
     id: "1.2",
     moduleId: 1,
     order: 2,
-    title: "Conheca Sua Tartaruga: A Artista",
+    title: "Conheça Sua Tartaruga: A Artista",
     description:
-      "Entenda a tartaruga como cursor grafico e o raciocinio corporal.",
+      "Entenda a tartaruga como cursor gráfico e o raciocínio corporal.",
     ageGroupMin: "6-8",
     commandsIntroduced: [],
     points: 20,
@@ -72,27 +72,27 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "A tartaruga e como uma artista que segue suas instrucoes. Ela tem tres propriedades importantes:",
+          "A tartaruga é como uma artista que segue suas instruções. Ela tem três propriedades importantes:",
       },
       {
         type: "text",
         content:
-          "1. Posicao — onde ela esta (coordenadas x, y)\n2. Direcao — para onde ela esta olhando (angulo)\n3. Caneta — se esta abaixada (desenhando) ou levantada",
+          "1. Posição — onde ela está (coordenadas x, y)\n2. Direção — para onde ela está olhando (ângulo)\n3. Caneta — se está abaixada (desenhando) ou levantada",
       },
       {
         type: "tip",
         content:
-          'Dica: imagine que VOCE e a tartaruga! Se alguem disser "ande 100 passos para frente", voce andaria na direcao que esta olhando.',
+          'Dica: imagine que VOCÊ é a tartaruga! Se alguém disser "ande 100 passos para frente", você andaria na direção que está olhando.',
       },
       {
         type: "text",
         content:
-          "O centro da tela e a posicao (0, 0). X positivo e para a direita, Y positivo e para cima — como no plano cartesiano da matematica!",
+          "O centro da tela é a posição (0, 0). X positivo é para a direita, Y positivo é para cima — como no plano cartesiano da matemática!",
       },
       {
         type: "text",
         content:
-          "A caneta comeca abaixada, entao tudo que a tartaruga andar vai deixar um rastro. Na proxima licao vamos finalmente dar comandos!",
+          "A caneta começa abaixada, então tudo que a tartaruga andar vai deixar um rastro. Na próxima lição vamos finalmente dar comandos!",
       },
     ],
     challenges: [],
@@ -102,7 +102,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     id: "1.3",
     moduleId: 1,
     order: 3,
-    title: "Os Quatro Movimentos Basicos",
+    title: "Os Quatro Movimentos Básicos",
     description: "Aprenda pf, pt, vd e ve — os 4 comandos fundamentais.",
     ageGroupMin: "6-8",
     commandsIntroduced: ["pf", "pt", "vd", "ve"],
@@ -116,7 +116,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "pf N (para frente) — move N passos na direcao que esta olhando\npt N (para tras) — move N passos para tras\nvd N (girar direita) — gira N graus no sentido horario\nve N (girar esquerda) — gira N graus no sentido anti-horario",
+          "pf N (para frente) — move N passos na direção que está olhando\npt N (para trás) — move N passos para trás\nvd N (girar direita) — gira N graus no sentido horário\nve N (girar esquerda) — gira N graus no sentido anti-horário",
       },
       {
         type: "example",
@@ -130,7 +130,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       },
       {
         type: "try-it",
-        content: "Tente voce! Faca um L: ande para frente, gire e ande de novo.",
+        content: "Tente você! Faça um L: ande para frente, gire e ande de novo.",
         code: "pf 100\nvd 90\npf 50",
       },
       {
@@ -145,7 +145,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         title: "Primeiro passo",
         description: "Mova a tartaruga 100 passos para frente.",
         difficulty: 1,
-        hints: ["Use o comando 'pf' seguido de um numero.", "Digite: pf 100"],
+        hints: ["Use o comando 'pf' seguido de um número.", "Digite: pf 100"],
         validation: { type: "contains-commands", commands: ["forward"] },
         points: 15,
       },
@@ -156,8 +156,8 @@ export const MODULE_1_LESSONS: Lesson[] = [
           "Desenhe uma linha em forma de L (ande para frente, gire e ande de novo).",
         difficulty: 1,
         hints: [
-          "Voce precisa de 3 comandos: pf, vd e pf.",
-          "Gire 90 graus para fazer uma curva em angulo reto.",
+          "Você precisa de 3 comandos: pf, vd e pf.",
+          "Gire 90 graus para fazer uma curva em ângulo reto.",
         ],
         validation: { type: "min-lines", count: 2 },
         points: 20,
@@ -166,11 +166,11 @@ export const MODULE_1_LESSONS: Lesson[] = [
         id: "1.3.3",
         title: "Ida e volta",
         description:
-          "Faca a tartaruga ir para frente e voltar ao ponto de partida.",
+          "Faça a tartaruga ir para frente e voltar ao ponto de partida.",
         difficulty: 1,
         hints: [
           "Use pf para ir e pt para voltar.",
-          "Se andar 100 para frente, ande 100 para tras.",
+          "Se andar 100 para frente, ande 100 para trás.",
         ],
         validation: { type: "contains-commands", commands: ["forward", "back"] },
         points: 20,
@@ -192,7 +192,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "A tartaruga tem uma caneta que desenha por onde passa. Voce pode controlar quando ela desenha!",
+          "A tartaruga tem uma caneta que desenha por onde passa. Você pode controlar quando ela desenha!",
       },
       {
         type: "text",
@@ -201,7 +201,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       },
       {
         type: "example",
-        content: "Desenhe duas linhas com espaco no meio:",
+        content: "Desenhe duas linhas com espaço no meio:",
         code: "pf 50\nsc\npf 30\nuc\npf 50",
       },
       {
@@ -237,7 +237,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         difficulty: 2,
         hints: [
           "Desenhe uma linha, levante a caneta, mova para o lado, abaixe e desenhe outra.",
-          "Apos a primeira linha, use sc, vd 90, pf 30, ve 90, uc, pf para a segunda.",
+          "Após a primeira linha, use sc, vd 90, pf 30, ve 90, uc, pf para a segunda.",
         ],
         validation: { type: "min-lines", count: 2 },
         points: 25,
@@ -268,7 +268,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Vamos desenhar um quadrado! Sao 4 lados iguais com giros de 90 graus:",
+          "Vamos desenhar um quadrado! São 4 lados iguais com giros de 90 graus:",
       },
       {
         type: "example",
@@ -278,7 +278,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Percebeu? Repetimos 'pf 100 vd 90' quatro vezes! Existe um comando magico para isso: repita!",
+          "Percebeu? Repetimos 'pf 100 vd 90' quatro vezes! Existe um comando mágico para isso: repita!",
       },
       {
         type: "example",
@@ -288,27 +288,27 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Formula magica: para um poligono regular de N lados, use repita N [pf tamanho vd 360/N]",
+          "Fórmula mágica: para um polígono regular de N lados, use repita N [pf tamanho vd 360/N]",
       },
       {
         type: "example",
-        content: "Triangulo equilatero (3 lados, giro de 120):",
+        content: "Triângulo equilátero (3 lados, giro de 120):",
         code: "repita 3 [pf 100 vd 120]",
       },
       {
         type: "example",
-        content: "Hexagono (6 lados, giro de 60):",
+        content: "Hexágono (6 lados, giro de 60):",
         code: "repita 6 [pf 60 vd 60]",
       },
       {
         type: "tip",
         content:
-          "Use 'limpe' para limpar a tela e comecar de novo.",
+          "Use 'limpe' para limpar a tela e começar de novo.",
       },
       {
         type: "try-it",
         content:
-          "Tente fazer um circulo! Dica: repita 360 [pf 1 vd 1]",
+          "Tente fazer um círculo! Dica: repita 360 [pf 1 vd 1]",
         code: "repita 360 [pf 1 vd 1]",
       },
     ],
@@ -327,11 +327,11 @@ export const MODULE_1_LESSONS: Lesson[] = [
       },
       {
         id: "1.5.2",
-        title: "Triangulo equilatero",
-        description: "Desenhe um triangulo equilatero usando repeat.",
+        title: "Triângulo equilátero",
+        description: "Desenhe um triângulo equilátero usando repeat.",
         difficulty: 1,
         hints: [
-          "Triangulo = 3 lados. Angulo externo = 360/3 = 120 graus.",
+          "Triângulo = 3 lados. Ângulo externo = 360/3 = 120 graus.",
           "repita 3 [pf 100 vd 120]",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
@@ -339,11 +339,11 @@ export const MODULE_1_LESSONS: Lesson[] = [
       },
       {
         id: "1.5.3",
-        title: "Hexagono",
-        description: "Desenhe um hexagono regular.",
+        title: "Hexágono",
+        description: "Desenhe um hexágono regular.",
         difficulty: 2,
         hints: [
-          "Hexagono = 6 lados. 360/6 = 60 graus.",
+          "Hexágono = 6 lados. 360/6 = 60 graus.",
           "repita 6 [pf 60 vd 60]",
         ],
         validation: { type: "contains-commands", commands: ["repeat"] },
@@ -351,8 +351,8 @@ export const MODULE_1_LESSONS: Lesson[] = [
       },
       {
         id: "1.5.4",
-        title: "Circulo!",
-        description: "Desenhe um circulo (ou quase!).",
+        title: "Círculo!",
+        description: "Desenhe um círculo (ou quase!).",
         difficulty: 2,
         hints: [
           "Use muitos lados pequenos: repita 360 [pf 1 vd 1].",
@@ -368,7 +368,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     id: "1.6",
     moduleId: 1,
     order: 6,
-    title: "Mais Comandos Uteis",
+    title: "Mais Comandos Úteis",
     description: "Posicionamento absoluto, coordenadas e limpeza.",
     ageGroupMin: "6-8",
     commandsIntroduced: ["mudexy", "mudedirecao"],
@@ -377,16 +377,16 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Ate agora movemos a tartaruga de forma relativa (a partir de onde esta). Agora vamos aprender posicionamento absoluto!",
+          "Até agora movemos a tartaruga de forma relativa (a partir de onde está). Agora vamos aprender posicionamento absoluto!",
       },
       {
         type: "text",
         content:
-          "casa — voltar ao centro (0, 0)\nmudexy X Y — ir para coordenadas especificas\nmudedirecao N (muded N) — apontar para uma direcao (0=cima, 90=direita, 180=baixo, 270=esquerda)",
+          "casa — voltar ao centro (0, 0)\nmudexy X Y — ir para coordenadas específicas\nmudedirecao N (muded N) — apontar para uma direção (0=cima, 90=direita, 180=baixo, 270=esquerda)",
       },
       {
         type: "example",
-        content: "Mover para uma posicao especifica:",
+        content: "Mover para uma posição específica:",
         code: "mudexy 100 100",
       },
       {
@@ -422,7 +422,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     moduleId: 1,
     order: 7,
     title: "O Que Vem Agora?",
-    description: "Recapitulacao e desenho livre combinando tudo aprendido.",
+    description: "Recapitulação e desenho livre combinando tudo aprendido.",
     ageGroupMin: "6-8",
     commandsIntroduced: [],
     points: 30,
@@ -430,22 +430,22 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Parabens! Voce ja sabe o basico de Logo. Vamos recapitular:",
+          "Parabéns! Você já sabe o básico de Logo. Vamos recapitular:",
       },
       {
         type: "text",
         content:
-          "Movimento: pf, pt, vd, ve\nCaneta: sc, uc, tc\nFormas: repita N [comandos]\nPosicao: casa, mudexy, mudedirecao\nLimpeza: limpe",
+          "Movimento: pf, pt, vd, ve\nCaneta: sc, uc, tc\nFormas: repita N [comandos]\nPosição: casa, mudexy, mudedirecao\nLimpeza: limpe",
       },
       {
         type: "text",
         content:
-          "Ate agora a tartaruga so faz o que mandamos diretamente. Nos proximos modulos ela vai ganhar superpoderes:",
+          "Até agora a tartaruga só faz o que mandamos diretamente. Nos próximos módulos ela vai ganhar superpoderes:",
       },
       {
         type: "text",
         content:
-          "Memoria (variaveis) — lembrar valores\nHabilidades (procedures) — criar novos comandos\nInteligencia (logica) — tomar decisoes",
+          "Memória (variáveis) — lembrar valores\nHabilidades (procedures) — criar novos comandos\nInteligência (lógica) — tomar decisões",
       },
       {
         type: "tip",
@@ -462,7 +462,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         difficulty: 2,
         hints: [
           "Combine pf, vd, ve, repita, sc, uc, tc...",
-          "Tente desenhar uma casa (quadrado + triangulo)!",
+          "Tente desenhar uma casa (quadrado + triângulo)!",
         ],
         validation: { type: "free", description: "Qualquer desenho vale!" },
         points: 40,

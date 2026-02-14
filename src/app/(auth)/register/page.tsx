@@ -13,7 +13,7 @@ const AGE_OPTIONS: { id: AgeOption; label: string; range: string; description: s
     id: "AGE_6_8",
     label: "Explorador",
     range: "6-8 anos",
-    description: "Cores vibrantes, fontes grandes, tartaruga amigavel!",
+    description: "Cores vibrantes, fontes grandes, tartaruga amigável!",
   },
   {
     id: "AGE_8_12",
@@ -25,7 +25,7 @@ const AGE_OPTIONS: { id: AgeOption; label: string; range: string; description: s
     id: "AGE_10_14",
     label: "Hacker",
     range: "10-14 anos",
-    description: "Modo escuro, terminal compacto, comandos avancados.",
+    description: "Modo escuro, terminal compacto, comandos avançados.",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function RegisterPage() {
       }
     } catch {
       setLoading(false);
-      setError("Erro de conexao. Tente novamente.");
+      setError("Erro de conexão. Tente novamente.");
     }
   };
 
@@ -117,7 +117,7 @@ export default function RegisterPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-content">Escolha seu perfil</h1>
           <p className="mt-1 text-sm text-content-muted">
-            Isso define a aparencia e dificuldade do GalloGo
+            Isso define a aparência e dificuldade do GalloGo
           </p>
         </div>
 
@@ -196,7 +196,7 @@ export default function RegisterPage() {
         </div>
         <h1 className="text-2xl font-bold text-content">Criar conta</h1>
         <p className="mt-1 text-sm text-content-muted">
-          Comece a aprender programacao com Logo!
+          Comece a aprender programação com Logo!
         </p>
       </div>
 
@@ -254,7 +254,7 @@ export default function RegisterPage() {
               required
               minLength={6}
               className="w-full rounded-[var(--radius-md)] border border-border bg-surface-secondary px-4 py-3 pr-12 text-content outline-none focus:border-primary transition-colors"
-              placeholder="Minimo 6 caracteres"
+              placeholder="Mínimo 6 caracteres"
             />
             <button
               type="button"
@@ -326,7 +326,7 @@ export default function RegisterPage() {
       </div>
 
       <p className="text-center text-sm text-content-muted">
-        Ja tem conta?{" "}
+        Já tem conta?{" "}
         <Link
           href="/login"
           className="font-medium text-primary hover:text-primary-dark transition-colors"

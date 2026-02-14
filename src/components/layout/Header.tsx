@@ -15,7 +15,7 @@ import galloLogo from "@/media/avatar/gallo-logo.png";
 
 const NAV_ITEMS = [
   { href: "/playground", label: "Playground" },
-  { href: "/lessons", label: "Licoes" },
+  { href: "/lessons", label: "Lições" },
   { href: "/challenges", label: "Desafios" },
   { href: "/gallery", label: "Galeria" },
   { href: "/leaderboard", label: "Ranking" },
@@ -91,7 +91,7 @@ function UserMenu() {
           <div className="absolute right-0 top-full z-30 mt-1 w-48 rounded-[var(--radius-md)] border border-border bg-surface shadow-lg">
             <div className="border-b border-border px-3 py-2">
               <p className="text-sm font-medium text-content truncate">
-                {user.name || "Usuario"}
+                {user.name || "Usuário"}
               </p>
               <p className="text-xs text-content-muted truncate">
                 {user.email}

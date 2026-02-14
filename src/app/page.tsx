@@ -13,7 +13,7 @@ const AGE_PROFILES = [
     age: "6 a 8 anos",
     image: galloExplorer,
     description:
-      "Interface colorida e divertida com elementos grandes, perfeita para os primeiros passos na programacao.",
+      "Interface colorida e divertida com elementos grandes, perfeita para os primeiros passos na programação.",
     color: "bg-yellow-400/20 border-yellow-400/40",
   },
   {
@@ -22,7 +22,7 @@ const AGE_PROFILES = [
     age: "8 a 12 anos",
     image: galloAdventurer,
     description:
-      "Visual equilibrado com estetica de game, ideal para quem ja conhece o basico e quer explorar mais.",
+      "Visual equilibrado com estética de game, ideal para quem já conhece o básico e quer explorar mais.",
     color: "bg-teal-400/20 border-teal-400/40",
   },
   {
@@ -31,7 +31,7 @@ const AGE_PROFILES = [
     age: "10 a 14 anos",
     image: galloHacker,
     description:
-      "Tema escuro com estetica de terminal, para quem quer se sentir um programador de verdade.",
+      "Tema escuro com estética de terminal, para quem quer se sentir um programador de verdade.",
     color: "bg-green-400/20 border-green-400/40",
   },
 ];
@@ -41,37 +41,37 @@ const FEATURES = [
     icon: "~>",
     title: "Terminal Interativo",
     description:
-      "Digite comandos e veja a tartaruga executar em tempo real. Historico, autocomplete e syntax highlighting inclusos.",
+      "Digite comandos e veja a tartaruga executar em tempo real. Histórico, autocomplete e syntax highlighting inclusos.",
   },
   {
     icon: "[]",
-    title: "Licoes Guiadas",
+    title: "Lições Guiadas",
     description:
-      "5 modulos com mais de 25 licoes progressivas, desde os primeiros passos ate fractais e recursao.",
+      "5 módulos com mais de 25 lições progressivas, desde os primeiros passos até fractais e recursão.",
   },
   {
     icon: "/\\",
     title: "Canvas Animado",
     description:
-      "Veja seus desenhos ganharem vida com animacoes suaves. Exporte como PNG e compartilhe na galeria.",
+      "Veja seus desenhos ganharem vida com animações suaves. Exporte como PNG e compartilhe na galeria.",
   },
   {
     icon: "PT",
-    title: "100% em Portugues",
+    title: "100% em Português",
     description:
-      "Todos os comandos funcionam em portugues: pf, vd, repita, aprenda, faca e muito mais.",
+      "Todos os comandos funcionam em português: pf, vd, repita, aprenda, faça e muito mais.",
   },
   {
     icon: "**",
-    title: "Gamificacao",
+    title: "Gamificação",
     description:
-      "Ganhe pontos, suba de nivel, conquiste badges e dispute o ranking com outros programadores.",
+      "Ganhe pontos, suba de nível, conquiste badges e dispute o ranking com outros programadores.",
   },
   {
     icon: "<>",
     title: "Adaptativo por Idade",
     description:
-      "A interface se adapta automaticamente — cores, tamanhos e complexidade mudam conforme a faixa etaria.",
+      "A interface se adapta automaticamente — cores, tamanhos e complexidade mudam conforme a faixa etária.",
   },
 ];
 
@@ -90,16 +90,16 @@ export default function Home() {
               priority
             />
             <p className="max-w-lg text-lg text-content-secondary">
-              Uma plataforma educacional onde criancas aprendem a programar
+              Uma plataforma educacional onde crianças aprendem a programar
               controlando uma tartaruga que desenha na tela, usando a linguagem
-              Logo — em portugues!
+              Logo — em português!
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/register"
                 className="rounded-[var(--radius-md)] bg-primary px-6 py-3 text-base font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
               >
-                Comecar Agora
+                Começar Agora
               </Link>
               <Link
                 href="/playground"
@@ -121,33 +121,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* O que e o GalloGo */}
+      {/* O que é o GalloGo */}
       <section className="border-t border-border bg-surface-secondary py-16">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-2xl font-bold text-content md:text-3xl">
-            O que e o GalloGo?
+            O que é o GalloGo?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-content-secondary">
-            GalloGo e uma plataforma web inspirada na linguagem Logo, criada nos
-            anos 1960 por Seymour Papert. A filosofia e simples:{" "}
+            GalloGo é uma plataforma web inspirada na linguagem Logo, criada nos
+            anos 1960 por Seymour Papert. A filosofia é simples:{" "}
             <strong className="text-content">
-              criancas aprendem melhor construindo
+              crianças aprendem melhor construindo
             </strong>
-            . Aqui, elas dao instrucoes para uma tartaruga que se move e desenha
-            na tela — aprendendo logica, geometria e pensamento computacional
+            . Aqui, elas dão instruções para uma tartaruga que se move e desenha
+            na tela — aprendendo lógica, geometria e pensamento computacional
             brincando.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 text-left sm:grid-cols-3">
             <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
               <div className="text-3xl font-bold text-primary">25+</div>
               <div className="mt-1 text-sm text-content-secondary">
-                Licoes progressivas em 5 modulos
+                Lições progressivas em 5 módulos
               </div>
             </div>
             <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
               <div className="text-3xl font-bold text-primary">40+</div>
               <div className="mt-1 text-sm text-content-secondary">
-                Comandos com aliases em portugues
+                Comandos com aliases em português
               </div>
             </div>
             <div className="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
@@ -164,11 +164,11 @@ export default function Home() {
       <section className="py-16">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-center text-2xl font-bold text-content md:text-3xl">
-            Uma experiencia adaptada para cada idade
+            Uma experiência adaptada para cada idade
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-content-secondary">
             A interface, as cores, o tamanho da fonte e a complexidade do
-            conteudo se ajustam automaticamente ao perfil escolhido.
+            conteúdo se ajustam automaticamente ao perfil escolhido.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             {AGE_PROFILES.map((profile) => (
@@ -203,7 +203,7 @@ export default function Home() {
       <section className="border-t border-border bg-surface-secondary py-16">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-center text-2xl font-bold text-content md:text-3xl">
-            Tudo que voce precisa para aprender
+            Tudo que você precisa para aprender
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((feat) => (
@@ -237,22 +237,22 @@ export default function Home() {
               {
                 step: "1",
                 title: "Crie sua conta e escolha sua idade",
-                text: "O tema da interface se adapta automaticamente — de colorido e divertido para os menores ate estetica de terminal para os mais velhos.",
+                text: "O tema da interface se adapta automaticamente — de colorido e divertido para os menores até estética de terminal para os mais velhos.",
               },
               {
                 step: "2",
-                title: "Siga as licoes ou va direto para o playground",
-                text: "As licoes ensinam passo a passo, dos movimentos basicos (pf, vd) ate procedures, recursao e fractais. Ou explore livremente no playground!",
+                title: "Siga as lições ou vá direto para o playground",
+                text: "As lições ensinam passo a passo, dos movimentos básicos (pf, vd) até procedures, recursão e fractais. Ou explore livremente no playground!",
               },
               {
                 step: "3",
                 title: "Digite comandos e veja a tartaruga desenhar",
-                text: "A tela e dividida em 3 paineis: instrucoes, terminal e canvas. Digite comandos como 'repita 4 [pf 100 vd 90]' e veja um quadrado aparecer.",
+                text: "A tela é dividida em 3 painéis: instruções, terminal e canvas. Digite comandos como 'repita 4 [pf 100 vd 90]' e veja um quadrado aparecer.",
               },
               {
                 step: "4",
-                title: "Ganhe pontos, suba de nivel e conquiste badges",
-                text: "Complete desafios, mantenha seu streak diario e suba no ranking. Sao 10 niveis de Tartaruga Iniciante a Arquiteto Digital!",
+                title: "Ganhe pontos, suba de nível e conquiste badges",
+                text: "Complete desafios, mantenha seu streak diário e suba no ranking. São 10 níveis de Tartaruga Iniciante a Arquiteto Digital!",
               },
             ].map((item) => (
               <div key={item.step} className="flex gap-4">
@@ -277,24 +277,24 @@ export default function Home() {
       <section className="border-t border-border bg-surface-secondary py-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 text-center">
           <h2 className="text-2xl font-bold text-content md:text-3xl">
-            Pronto para comecar?
+            Pronto para começar?
           </h2>
           <p className="text-content-secondary">
-            Junte-se a plataforma e comece sua jornada como programador. E
-            gratuito, divertido e 100% em portugues!
+            Junte-se à plataforma e comece sua jornada como programador. É
+            gratuito, divertido e 100% em português!
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
               href="/register"
               className="rounded-[var(--radius-md)] bg-primary px-8 py-3 text-base font-bold text-white shadow-lg hover:bg-primary-dark transition-colors"
             >
-              Criar Conta Gratis
+              Criar Conta Grátis
             </Link>
             <Link
               href="/login"
               className="rounded-[var(--radius-md)] border-2 border-border px-8 py-3 text-base font-bold text-content-secondary hover:bg-surface transition-colors"
             >
-              Ja tenho conta
+              Já tenho conta
             </Link>
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border py-6">
         <div className="mx-auto max-w-6xl px-6 text-center text-sm text-content-muted">
-          GalloGo — Plataforma educacional de programacao com Logo. Inspirado na
+          GalloGo — Plataforma educacional de programação com Logo. Inspirado na
           filosofia de Seymour Papert.
         </div>
       </footer>

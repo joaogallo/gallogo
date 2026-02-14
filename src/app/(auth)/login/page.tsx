@@ -166,7 +166,7 @@ export default function LoginPage() {
       </div>
 
       <p className="text-center text-sm text-content-muted">
-        Nao tem conta?{" "}
+        Não tem conta?{" "}
         <Link
           href="/register"
           className="font-medium text-primary hover:text-primary-dark transition-colors"

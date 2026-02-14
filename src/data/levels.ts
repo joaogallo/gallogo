@@ -13,7 +13,7 @@ export const LEVELS: LevelDefinition[] = [
   { level: 4, name: "Programmer", namePt: "Programador", minPoints: 600, icon: "💻" },
   { level: 5, name: "Master", namePt: "Mestre", minPoints: 1000, icon: "⭐" },
   { level: 6, name: "Ninja", namePt: "Ninja", minPoints: 1500, icon: "🥷" },
-  { level: 7, name: "Legend", namePt: "Lendario", minPoints: 2500, icon: "🏆" },
+  { level: 7, name: "Legend", namePt: "Lendário", minPoints: 2500, icon: "🏆" },
   { level: 8, name: "Logo Master", namePt: "Mestre Logo", minPoints: 4000, icon: "👑" },
   { level: 9, name: "Guru", namePt: "Guru", minPoints: 6000, icon: "🧙" },
   { level: 10, name: "Digital Architect", namePt: "Arquiteto Digital", minPoints: 10000, icon: "🏛️" },

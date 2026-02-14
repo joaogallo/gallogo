@@ -54,7 +54,7 @@ export default function ProfilePage() {
         </div>
         <div>
           <h1 className="text-xl font-bold text-content">
-            {user.name || "Usuario"}
+            {user.name || "Usuário"}
           </h1>
           <p className="text-sm text-content-muted">{user.email}</p>
           <p className="text-xs text-content-muted mt-0.5">
@@ -69,7 +69,7 @@ export default function ProfilePage() {
           <div className="text-2xl font-bold text-primary">
             {loaded ? level : "-"}
           </div>
-          <div className="text-xs text-content-muted">Nivel</div>
+          <div className="text-xs text-content-muted">Nível</div>
           <div className="text-[10px] text-content-secondary">
             {loaded ? levelName : "..."}
           </div>
