@@ -45,6 +45,26 @@ export function parse(
     return current().type === TokenType.EOF;
   }
 
+  /** Check if the current token can begin an expression (for optional arg parsing) */
+  function canStartExpression(): boolean {
+    const tok = current();
+    if (
+      tok.type === TokenType.NUMBER ||
+      tok.type === TokenType.VARIABLE ||
+      tok.type === TokenType.STRING ||
+      tok.type === TokenType.LPAREN ||
+      tok.type === TokenType.MINUS
+    ) {
+      return true;
+    }
+    // A WORD that is a reporter can start an expression
+    if (tok.type === TokenType.WORD) {
+      const cmd = lookupCommand(tok.value);
+      if (cmd && cmd.type === "reporter") return true;
+    }
+    return false;
+  }
+
   // ---- Top-level ----
 
   function parseProgram(): Statement[] {
@@ -123,7 +143,13 @@ export function parse(
       }
 
       const args: Expression[] = [];
-      for (let i = 0; i < cmdDef.arity; i++) {
+      // Parse required args
+      for (let i = 0; i < cmdDef.minArity; i++) {
+        args.push(parseExpression());
+      }
+      // Parse optional args (up to arity) if the next token can start an expression
+      for (let i = cmdDef.minArity; i < cmdDef.arity; i++) {
+        if (!canStartExpression()) break;
         args.push(parseExpression());
       }
       return {

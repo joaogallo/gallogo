@@ -260,7 +260,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
     order: 5,
     title: "Desenhando Formas: O Quadrado Perfeito",
     description:
-      "Combine comandos para criar formas fechadas e aprenda repeat.",
+      "Combine comandos para criar formas fechadas e aprenda o repita.",
     ageGroupMin: "6-8",
     commandsIntroduced: ["repita", "limpe"],
     points: 40,
@@ -382,7 +382,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "casa — voltar ao centro (0, 0)\nmudexy X Y — ir para coordenadas específicas\nmudedirecao N (muded N) — apontar para uma direção (0=cima, 90=direita, 180=baixo, 270=esquerda)",
+          "casa — voltar ao centro (0, 0)\nmudexy X Y — ir para coordenadas específicas\nmudedireção N (muded N) — apontar para uma direção (0=cima, 90=direita, 180=baixo, 270=esquerda)",
       },
       {
         type: "example",
@@ -405,7 +405,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
         id: "1.6.1",
         title: "Quadrado posicionado",
         description:
-          "Desenhe um quadrado no canto superior direito da tela usando setxy.",
+          "Desenhe um quadrado no canto superior direito da tela usando mudexy.",
         difficulty: 2,
         hints: [
           "Use sc para mover sem desenhar, depois uc.",
@@ -435,7 +435,7 @@ export const MODULE_1_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Movimento: pf, pt, vd, ve\nCaneta: sc, uc, tc\nFormas: repita N [comandos]\nPosição: casa, mudexy, mudedirecao\nLimpeza: limpe",
+          "Movimento: pf, pt, vd, ve\nCaneta: sc, uc, tc\nFormas: repita N [comandos]\nPosição: casa, mudexy, mudedireção\nLimpeza: limpe",
       },
       {
         type: "text",

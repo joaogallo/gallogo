@@ -25,6 +25,8 @@ export function useGamification() {
             streak: data.streak,
             lastActive: data.lastActive,
             earnedBadgeIds: data.earnedBadgeIds,
+            completedLessonIds: data.completedLessonIds ?? [],
+            completedChallengeIds: data.completedChallengeIds ?? [],
           });
         }
       })
@@ -51,6 +53,13 @@ export function useGamification() {
       if (!res.ok) return null;
 
       const data = await res.json();
+
+      // Track completion in store regardless of first or repeat
+      if (params.challengeId) {
+        store.addCompletedChallenge(params.challengeId);
+      } else {
+        store.addCompletedLesson(params.lessonId);
+      }
 
       if (data.isFirstCompletion) {
         // Update points in store
@@ -97,6 +106,8 @@ export function useGamification() {
     levelName: store.levelName,
     streak: store.streak,
     earnedBadgeIds: store.earnedBadgeIds,
+    completedLessonIds: store.completedLessonIds,
+    completedChallengeIds: store.completedChallengeIds,
     pendingAchievements: store.pendingAchievements,
     loaded: store.loaded,
     recordProgress,

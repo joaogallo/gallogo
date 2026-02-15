@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const AGE_MAP: Record<string, AgeGroupId> = {
   AGE_6_8: "6-8",
-  AGE_8_12: "8-12",
+  AGE_8_10: "8-10",
   AGE_10_14: "10-14",
 };
 
@@ -134,7 +134,7 @@ export default function ProfilePage() {
           Perfil de idade (tema visual)
         </h2>
         <div className="flex gap-2">
-          {(["6-8", "8-12", "10-14"] as AgeGroupId[]).map((ag) => (
+          {(["6-8", "8-10", "10-14"] as AgeGroupId[]).map((ag) => (
             <button
               key={ag}
               onClick={() => setAgeGroup(ag)}

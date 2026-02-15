@@ -51,17 +51,17 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          'faca "nome valor — criar ou mudar uma variável\n:nome — usar o valor guardado (dois pontos antes do nome)\nescreva :nome — mostrar o valor no terminal',
+          'faça "nome valor — criar ou mudar uma variável\n:nome — usar o valor guardado (dois pontos antes do nome)\nescreva :nome — mostrar o valor no terminal',
       },
       {
         type: "example",
         content: "Guardar um tamanho e usar no desenho:",
-        code: 'faca "tamanho 100\npf :tamanho\nvd 90\npf :tamanho',
+        code: 'faça "tamanho 100\npf :tamanho\nvd 90\npf :tamanho',
       },
       {
         type: "example",
         content: "Mudar o valor e desenhar de novo:",
-        code: 'faca "tamanho 50\nrepita 4 [pf :tamanho vd 90]',
+        code: 'faça "tamanho 50\nrepita 4 [pf :tamanho vd 90]',
       },
       {
         type: "text",
@@ -71,17 +71,17 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Calcular e mostrar o perímetro de um quadrado:",
-        code: 'faca "lado 80\nrepita 4 [pf :lado vd 90]\nescreva :lado * 4',
+        code: 'faça "lado 80\nrepita 4 [pf :lado vd 90]\nescreva :lado * 4',
       },
       {
         type: "text",
         content:
-          "random N gera um número aleatório de 0 a N-1. Ótimo para surpresas!",
+          "aleatório N gera um número aleatório de 0 a N-1. Ótimo para surpresas!",
       },
       {
         type: "try-it",
         content: "Mova a tartaruga um tamanho aleatório:",
-        code: "pf aleatorio 200\nvd aleatorio 360",
+        code: "pf aleatório 200\nvd aleatório 360",
       },
     ],
     challenges: [
@@ -92,7 +92,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
           'Crie uma variável "lado" e desenhe um quadrado com ela.',
         difficulty: 1,
         hints: [
-          'Use faca "lado 100 para criar a variável.',
+          'Use faça "lado 100 para criar a variável.',
           "Depois: repita 4 [pf :lado vd 90]",
         ],
         validation: { type: "contains-commands", commands: ["make"] },
@@ -105,7 +105,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
           "Mude o valor da variável e desenhe outro quadrado diferente.",
         difficulty: 2,
         hints: [
-          "Desenhe o primeiro quadrado, depois use faca com um valor diferente.",
+          "Desenhe o primeiro quadrado, depois use faça com um valor diferente.",
           "Dica: mova a tartaruga entre os quadrados com sc e uc.",
         ],
         validation: { type: "contains-commands", commands: ["make"] },
@@ -117,8 +117,8 @@ export const MODULE_2_LESSONS: Lesson[] = [
         description: "Use random para desenhar uma linha de tamanho surpresa.",
         difficulty: 1,
         hints: [
-          "random 200 gera um número de 0 a 199.",
-          "pf aleatorio 200",
+          "aleatório 200 gera um número de 0 a 199.",
+          "pf aleatório 200",
         ],
         validation: { type: "contains-commands", commands: ["random"] },
         points: 20,
@@ -201,7 +201,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
         difficulty: 2,
         hints: [
           "Desenhe o quadrado primeiro, depois o triângulo.",
-          "O triângulo fica em cima: fd para subir, depois repeat 3 [fd :tam rt 120].",
+          "O triângulo fica em cima: pf para subir, depois repita 3 [pf :tam vd 120].",
         ],
         validation: { type: "contains-commands", commands: ["to"] },
         points: 35,
@@ -229,7 +229,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
     title: "Dando Inteligência: Lógica e Decisões",
     description:
       "Faça a tartaruga tomar decisões com if e comparações.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     commandsIntroduced: ["se", "sesenao", "pare"],
     points: 50,
     steps: [
@@ -246,23 +246,23 @@ export const MODULE_2_LESSONS: Lesson[] = [
       {
         type: "example",
         content: "Se o tamanho for grande, usar caneta grossa:",
-        code: 'faca "tamanho 150\nse :tamanho > 100 [tc 5]\nrepita 4 [pf :tamanho vd 90]',
+        code: 'faça "tamanho 150\nse :tamanho > 100 [tc 5]\nrepita 4 [pf :tamanho vd 90]',
       },
       {
         type: "text",
         content:
-          "sesenao condição [se-verdadeiro] [se-falso] — escolhe entre duas opções.",
+          "sesenão condição [se-verdadeiro] [se-falso] — escolhe entre duas opções.",
       },
       {
         type: "example",
         content: "Caminhada aleatória com parada condicional:",
-        code: "aprenda caminhar :passos\n  se :passos < 1 [pare]\n  pf 10 + aleatorio 20\n  vd -45 + aleatorio 90\n  caminhar :passos - 1\nfim\ncaminhar 30",
+        code: "aprenda caminhar :passos\n  se :passos < 1 [pare]\n  pf 10 + aleatório 20\n  vd -45 + aleatório 90\n  caminhar :passos - 1\nfim\ncaminhar 30",
       },
       {
         type: "try-it",
         content:
           "Desenhe polígonos diferentes baseado em uma variável 'lados':",
-        code: 'faca "lados 5\nrepita :lados [pf 60 vd 360 / :lados]',
+        code: 'faça "lados 5\nrepita :lados [pf 60 vd 360 / :lados]',
       },
     ],
     challenges: [
@@ -273,7 +273,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
           "Use if para desenhar um quadrado só se a variável 'tamanho' for maior que 50.",
         difficulty: 2,
         hints: [
-          "Crie a variável com faca, depois use se :tamanho > 50 [...].",
+          "Crie a variável com faça, depois use se :tamanho > 50 [...].",
         ],
         validation: { type: "contains-commands", commands: ["if"] },
         points: 30,

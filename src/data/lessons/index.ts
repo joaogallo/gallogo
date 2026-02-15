@@ -28,7 +28,7 @@ export function getLesson(id: string): Lesson | undefined {
 /** Age group ordering for filtering */
 const AGE_ORDER: Record<AgeGroupId, number> = {
   "6-8": 0,
-  "8-12": 1,
+  "8-10": 1,
   "10-14": 2,
 };
 

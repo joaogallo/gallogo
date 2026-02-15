@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type AgeOption = "AGE_6_8" | "AGE_8_12" | "AGE_10_14";
+type AgeOption = "AGE_6_8" | "AGE_8_10" | "AGE_10_14";
 
 const AGE_OPTIONS: { id: AgeOption; label: string; range: string; description: string }[] = [
   {
@@ -16,9 +16,9 @@ const AGE_OPTIONS: { id: AgeOption; label: string; range: string; description: s
     description: "Cores vibrantes, fontes grandes, tartaruga amigável!",
   },
   {
-    id: "AGE_8_12",
+    id: "AGE_8_10",
     label: "Aventureiro",
-    range: "8-12 anos",
+    range: "8-10 anos",
     description: "Terminal Homebrew, desafios equilibrados, game-like.",
   },
   {
@@ -38,7 +38,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [ageGroup, setAgeGroup] = useState<AgeOption>("AGE_8_12");
+  const [ageGroup, setAgeGroup] = useState<AgeOption>("AGE_8_10");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 

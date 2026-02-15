@@ -9,7 +9,7 @@ datasource db {
 
 enum AgeGroup {
   AGE_6_8
-  AGE_8_12
+  AGE_8_10
   AGE_10_14
 }
 
@@ -20,7 +20,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-  ageGroup      AgeGroup  @default(AGE_8_12)
+  ageGroup      AgeGroup  @default(AGE_8_10)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

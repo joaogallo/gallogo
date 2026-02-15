@@ -17,9 +17,9 @@ const AGE_PROFILES = [
     color: "bg-yellow-400/20 border-yellow-400/40",
   },
   {
-    id: "8-12",
+    id: "8-10",
     title: "Aventureiro",
-    age: "8 a 12 anos",
+    age: "8 a 10 anos",
     image: galloAdventurer,
     description:
       "Visual equilibrado com estética de game, ideal para quem já conhece o básico e quer explorar mais.",

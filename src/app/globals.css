@@ -5,7 +5,7 @@
    Controlled via data-age-group attribute on <html>
    ============================================ */
 
-/* Default / fallback (8-12 Aventureiro) */
+/* Default / fallback (8-10 Aventureiro) */
 :root {
   --color-primary: #2dd4bf;
   --color-primary-light: #5eead4;
@@ -63,8 +63,8 @@
   --font-size-cli: 1.125rem;
 }
 
-/* 8-12 Aventureiro — Balanced, game-like (same as :root) */
-[data-age-group="8-12"] {
+/* 8-10 Aventureiro — Balanced, game-like (same as :root) */
+[data-age-group="8-10"] {
   --color-primary: #2dd4bf;
   --color-primary-light: #5eead4;
   --color-primary-dark: #14b8a6;
@@ -119,10 +119,10 @@
 }
 
 /* ============================================
-   8-12 CLI "Basic" terminal override
+   8-10 CLI "Basic" terminal override
    Apple Terminal Basic profile aesthetic
    ============================================ */
-[data-age-group="8-12"] [data-panel="cli"] {
+[data-age-group="8-10"] [data-panel="cli"] {
   /* Raw vars */
   --color-bg: #1e1e1e;
   --color-bg-secondary: #282828;

@@ -235,18 +235,18 @@ export function interpret(
         return moveForward(toNumber(evalExpr(argExprs[0])));
       case "back":
         return moveForward(-toNumber(evalExpr(argExprs[0])));
-      case "right":
-        turtle.heading =
-          ((turtle.heading + toNumber(evalExpr(argExprs[0]))) % 360 + 360) %
-          360;
+      case "right": {
+        const angle = argExprs.length > 0 ? toNumber(evalExpr(argExprs[0])) : 90;
+        turtle.heading = ((turtle.heading + angle) % 360 + 360) % 360;
         emitTurtleUpdate();
         return;
-      case "left":
-        turtle.heading =
-          ((turtle.heading - toNumber(evalExpr(argExprs[0]))) % 360 + 360) %
-          360;
+      }
+      case "left": {
+        const angle = argExprs.length > 0 ? toNumber(evalExpr(argExprs[0])) : 90;
+        turtle.heading = ((turtle.heading - angle) % 360 + 360) % 360;
         emitTurtleUpdate();
         return;
+      }
       case "penup":
         turtle.penDown = false;
         return;

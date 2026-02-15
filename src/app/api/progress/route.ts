@@ -12,19 +12,31 @@ export async function GET() {
 
   const userId = session.user.id;
 
-  const [points, badges, progressCount] = await Promise.all([
+  const [points, badges, completedProgress] = await Promise.all([
     prisma.userPoints.findUnique({ where: { userId } }),
     prisma.userBadge.findMany({
       where: { userId },
       select: { badgeId: true, earnedAt: true },
     }),
-    prisma.userProgress.count({
+    prisma.userProgress.findMany({
       where: { userId, completed: true },
+      select: { lessonId: true, challengeId: true },
     }),
   ]);
 
   const totalPoints = points?.totalPoints ?? 0;
   const level = getLevelForPoints(totalPoints);
+
+  const completedLessonIds = [
+    ...new Set(
+      completedProgress
+        .filter((p) => p.challengeId === "")
+        .map((p) => p.lessonId)
+    ),
+  ];
+  const completedChallengeIds = completedProgress
+    .filter((p) => p.challengeId !== "")
+    .map((p) => p.challengeId);
 
   return NextResponse.json({
     totalPoints,
@@ -33,7 +45,9 @@ export async function GET() {
     streak: points?.streak ?? 0,
     lastActive: points?.lastActive?.toISOString() ?? new Date().toISOString(),
     earnedBadgeIds: badges.map((b) => b.badgeId),
-    completedCount: progressCount,
+    completedCount: completedProgress.length,
+    completedLessonIds,
+    completedChallengeIds,
   });
 }
 

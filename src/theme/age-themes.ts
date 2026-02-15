@@ -1,4 +1,4 @@
-export type AgeGroupId = "6-8" | "8-12" | "10-14";
+export type AgeGroupId = "6-8" | "8-10" | "10-14";
 
 export interface AgeTheme {
   id: AgeGroupId;
@@ -22,8 +22,8 @@ export const AGE_THEMES: Record<AgeGroupId, AgeTheme> = {
     showIllustrations: true,
     darkMode: false,
   },
-  "8-12": {
-    id: "8-12",
+  "8-10": {
+    id: "8-10",
     label: "Adventurer",
     labelPtBr: "Aventureiro",
     fontFamily: "sans",
@@ -45,12 +45,12 @@ export const AGE_THEMES: Record<AgeGroupId, AgeTheme> = {
 };
 
 export function dbAgeGroupToThemeId(
-  dbValue: "AGE_6_8" | "AGE_8_12" | "AGE_10_14"
+  dbValue: "AGE_6_8" | "AGE_8_10" | "AGE_10_14"
 ): AgeGroupId {
   const map: Record<string, AgeGroupId> = {
     AGE_6_8: "6-8",
-    AGE_8_12: "8-12",
+    AGE_8_10: "8-10",
     AGE_10_14: "10-14",
   };
-  return map[dbValue] ?? "8-12";
+  return map[dbValue] ?? "8-10";
 }

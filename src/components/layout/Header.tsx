@@ -7,7 +7,6 @@ import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/theme/ThemeProvider";
-import type { AgeGroupId } from "@/theme/age-themes";
 import { PointsDisplay } from "@/components/gamification/PointsDisplay";
 import { StreakDisplay } from "@/components/gamification/StreakDisplay";
 import { useGamificationStore } from "@/stores/gamification-store";
@@ -22,31 +21,17 @@ const NAV_ITEMS = [
 ];
 
 function ThemeSwitcher() {
-  const { ageGroup, setAgeGroup } = useTheme();
-
-  const options: { id: AgeGroupId; label: string }[] = [
-    { id: "6-8", label: "6-8" },
-    { id: "8-12", label: "8-12" },
-    { id: "10-14", label: "10-14" },
-  ];
+  const { theme, ageGroup, openAgeModal } = useTheme();
 
   return (
-    <div className="flex items-center gap-1 rounded-[var(--radius-md)] border border-border p-0.5">
-      {options.map((opt) => (
-        <button
-          key={opt.id}
-          onClick={() => setAgeGroup(opt.id)}
-          className={cn(
-            "rounded-[var(--radius-sm)] px-2 py-1 text-xs font-medium transition-colors",
-            ageGroup === opt.id
-              ? "bg-primary text-white"
-              : "text-content-muted hover:text-content-secondary"
-          )}
-        >
-          {opt.label}
-        </button>
-      ))}
-    </div>
+    <button
+      onClick={openAgeModal}
+      className="flex items-center gap-1.5 rounded-[var(--radius-md)] border border-border px-2.5 py-1 text-xs font-medium text-content-secondary hover:bg-surface-secondary hover:text-content transition-colors"
+      title="Trocar perfil de idade"
+    >
+      <span>{theme.labelPtBr}</span>
+      <span className="text-content-muted">{ageGroup}</span>
+    </button>
   );
 }
 

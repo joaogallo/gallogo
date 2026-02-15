@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" data-age-group="8-12">
+    <html lang="pt-BR" data-age-group="8-10">
       <body
         className={`${nunito.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >

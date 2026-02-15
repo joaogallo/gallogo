@@ -18,7 +18,7 @@ interface LeaderboardEntry {
   isCurrentUser: boolean;
 }
 
-type AgeFilter = "all" | "AGE_6_8" | "AGE_8_12" | "AGE_10_14";
+type AgeFilter = "all" | "AGE_6_8" | "AGE_8_10" | "AGE_10_14";
 
 export default function LeaderboardPage() {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
@@ -45,7 +45,7 @@ export default function LeaderboardPage() {
   const AGE_OPTIONS: { value: AgeFilter; label: string }[] = [
     { value: "all", label: "Todos" },
     { value: "AGE_6_8", label: "6-8" },
-    { value: "AGE_8_12", label: "8-12" },
+    { value: "AGE_8_10", label: "8-10" },
     { value: "AGE_10_14", label: "10-14" },
   ];
 

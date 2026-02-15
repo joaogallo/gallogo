@@ -8,7 +8,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     order: 1,
     title: "Introdução à Linguagem Logo",
     description: "História, filosofia e tipos de dados.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     commandsIntroduced: [],
     points: 20,
     steps: [
@@ -43,7 +43,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     title: "Turtle Graphics e Coordenadas",
     description:
       "Dominar o sistema de coordenadas e posicionamento absoluto.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     commandsIntroduced: ["mudexy", "mudedirecao"],
     points: 40,
     steps: [
@@ -60,7 +60,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Posicionamento relativo vs. absoluto:\n- Relativo: pf, pt, vd, ve (a partir de onde está)\n- Absoluto: mudexy, mudedirecao (posição/direção exata)",
+          "Posicionamento relativo vs. absoluto:\n- Relativo: pf, pt, vd, ve (a partir de onde está)\n- Absoluto: mudexy, mudedireção (posição/direção exata)",
       },
       {
         type: "example",
@@ -96,34 +96,34 @@ export const MODULE_3_LESSONS: Lesson[] = [
     title: "Construções de Programação Essenciais",
     description:
       "Referência completa de variáveis, aritmética e repetição.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     commandsIntroduced: ["raizq", "potencia", "absoluto", "arredonde", "resto"],
     points: 40,
     steps: [
       {
         type: "text",
         content:
-          'Variáveis:\nfaca "nome valor — criar\n:nome — usar\nescreva :nome — mostrar',
+          'Variáveis:\nfaça "nome valor — criar\n:nome — usar\nescreva :nome — mostrar',
       },
       {
         type: "text",
         content:
-          "Aritmética: +, -, *, /\nFunções: raizq (raiz), potencia, absoluto, arredonde (arredondar), inteiro, resto, aleatorio",
+          "Aritmética: +, -, *, /\nFunções: raizq (raiz), potência, absoluto, arredonde (arredondar), inteiro, resto, aleatório",
       },
       {
         type: "example",
         content: "Funções matemáticas em ação:",
-        code: "escreva raizq 144\nescreva potencia 2 8\nescreva absoluto -5\nescreva arredonde 3.7\nescreva resto 10 3",
+        code: "escreva raizq 144\nescreva potência 2 8\nescreva absoluto -5\nescreva arredonde 3.7\nescreva resto 10 3",
       },
       {
         type: "example",
         content: "Polígono com variável para os lados:",
-        code: 'faca "lados 6\nrepita :lados [pf 50 vd 360 / :lados]',
+        code: 'faça "lados 6\nrepita :lados [pf 50 vd 360 / :lados]',
       },
       {
         type: "try-it",
         content: "Calcule a hipotenusa de um triângulo 3-4-5:",
-        code: "escreva raizq (potencia 3 2) + (potencia 4 2)",
+        code: "escreva raizq (potência 3 2) + (potência 4 2)",
       },
     ],
     challenges: [
@@ -134,7 +134,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
           "Use uma variável 'lados' para desenhar qualquer polígono regular.",
         difficulty: 2,
         hints: [
-          "Use faca com o número de lados, depois use 360 / :lados para o ângulo.",
+          "Use faça com o número de lados, depois use 360 / :lados para o ângulo.",
         ],
         validation: { type: "contains-commands", commands: ["make", "repeat"] },
         points: 30,
@@ -221,7 +221,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     order: 5,
     title: "Manipulação de Dados e Estética",
     description: "Cores, preenchimento e personalização visual.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     commandsIntroduced: ["mudecor"],
     points: 40,
     steps: [
@@ -334,7 +334,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
     title: "Sistema de Cores — Referência Completa",
     description:
       "Paleta de 16 cores, uso avançado de mudecor.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     commandsIntroduced: [],
     points: 30,
     steps: [

@@ -1,6 +1,8 @@
 export interface CommandDef {
   canonicalName: string;
   arity: number;
+  /** Minimum required args (defaults to arity). Commands with minArity < arity accept optional args. */
+  minArity: number;
   type: "command" | "reporter";
 }
 
@@ -10,9 +12,15 @@ function reg(
   aliases: string[],
   canonical: string,
   arity: number,
-  type: "command" | "reporter" = "command"
+  type: "command" | "reporter" = "command",
+  minArity?: number
 ) {
-  const def: CommandDef = { canonicalName: canonical, arity, type };
+  const def: CommandDef = {
+    canonicalName: canonical,
+    arity,
+    minArity: minArity ?? arity,
+    type,
+  };
   for (const alias of aliases) {
     REGISTRY.set(alias.toLowerCase(), def);
   }
@@ -22,9 +30,9 @@ function reg(
 // Movimento / Movement
 // =========================================================
 reg(["forward", "fd", "parafrente", "pf"], "forward", 1);
-reg(["back", "bk", "paratras", "pt"], "back", 1);
-reg(["right", "rt", "paradireita", "vd", "virardireita"], "right", 1);
-reg(["left", "lt", "paraesquerda", "ve", "viraresquerda"], "left", 1);
+reg(["back", "bk", "paratras", "paratrás", "pt"], "back", 1);
+reg(["right", "rt", "paradireita", "vd", "virardireita"], "right", 1, "command", 0);
+reg(["left", "lt", "paraesquerda", "ve", "viraresquerda"], "left", 1, "command", 0);
 
 // =========================================================
 // Caneta / Pen
@@ -53,7 +61,7 @@ reg(
 // =========================================================
 // Tartaruga / Turtle
 // =========================================================
-reg(["home", "centro", "inicio", "casa"], "home", 0);
+reg(["home", "centro", "inicio", "início", "casa"], "home", 0);
 reg(["clearscreen", "cs", "limpe", "limpetela", "limpatela"], "clearscreen", 0);
 reg(
   ["hideturtle", "ht", "esconda", "et", "escondatartaruga"],
@@ -61,13 +69,13 @@ reg(
   0
 );
 reg(
-  ["showturtle", "st", "apareca", "mt", "mostretartaruga"],
+  ["showturtle", "st", "apareca", "apareça", "mt", "mostretartaruga"],
   "showturtle",
   0
 );
-reg(["setxy", "mudexy", "mudeposicao", "vaparaxy"], "setxy", 2);
+reg(["setxy", "mudexy", "mudeposicao", "mudeposição", "vaparaxy"], "setxy", 2);
 reg(
-  ["setheading", "seth", "mudedirecao", "muded", "mudead", "mudeangulo"],
+  ["setheading", "seth", "mudedirecao", "mudedireção", "muded", "mudead", "mudeangulo", "mudeângulo"],
   "setheading",
   1
 );
@@ -75,7 +83,7 @@ reg(
 // =========================================================
 // Variaveis / Variables
 // =========================================================
-reg(["make", "faca", "atribua"], "make", 2);
+reg(["make", "faca", "faça", "atribua"], "make", 2);
 reg(["print", "escreva", "mostre", "imprima"], "print", 1);
 
 // =========================================================
@@ -87,11 +95,11 @@ reg(["stop", "pare"], "stop", 0);
 // Matematica / Math  (reporters — retornam valor)
 // =========================================================
 reg(["sum", "soma"], "sum", 2, "reporter");
-reg(["difference", "diferenca"], "difference", 2, "reporter");
+reg(["difference", "diferenca", "diferença"], "difference", 2, "reporter");
 reg(["product", "produto"], "product", 2, "reporter");
-reg(["quotient", "quociente", "divisao"], "quotient", 2, "reporter");
-reg(["remainder", "resto", "modulo"], "remainder", 2, "reporter");
-reg(["random", "aleatorio", "sorteie"], "random", 1, "reporter");
+reg(["quotient", "quociente", "divisao", "divisão"], "quotient", 2, "reporter");
+reg(["remainder", "resto", "modulo", "módulo"], "remainder", 2, "reporter");
+reg(["random", "aleatorio", "aleatório", "sorteie"], "random", 1, "reporter");
 reg(["sqrt", "raizq", "raizquadrada"], "sqrt", 1, "reporter");
 reg(["abs", "valorabsoluto", "absoluto"], "abs", 1, "reporter");
 reg(["minus", "negativo", "menosde", "invertasinal"], "minus", 1, "reporter");
@@ -100,7 +108,7 @@ reg(["int", "inteiro", "parteinteira"], "int", 1, "reporter");
 reg(["sin", "seno"], "sin", 1, "reporter");
 reg(["cos", "cosseno"], "cos", 1, "reporter");
 reg(["tan", "tangente"], "tan", 1, "reporter");
-reg(["power", "potencia", "elevado"], "power", 2, "reporter");
+reg(["power", "potencia", "potência", "elevado"], "power", 2, "reporter");
 reg(["repcount", "contagemrepita"], "repcount", 0, "reporter");
 
 // =========================================================
@@ -115,7 +123,9 @@ const SPECIAL_FORMS: Record<string, string> = {
   se: "if",
   ifelse: "ifelse",
   senao: "ifelse",
+  senão: "ifelse",
   sesenao: "ifelse",
+  sesenão: "ifelse",
   to: "to",
   aprenda: "to",
   end: "end",

@@ -35,13 +35,13 @@ function getPrompt(ageGroup: string): string {
 }
 
 const AJUDA_TEXT =
-  "Movimento: pf N (frente), pt N (tras), vd N (direita), ve N (esquerda)\n" +
+  "Movimento: pf N (frente), pt N (trás), vd N (direita), ve N (esquerda)\n" +
   "Caneta: lc (levantar), uc (usar caneta), mudecor N, me N (espessura)\n" +
-  "Tela: limpe, centro, mudexy X Y, mudedirecao N\n" +
-  'Variaveis: faca "nome valor, :nome, escreva valor\n' +
-  "Controle: repita N [...], se cond [...], sesenao cond [...] [...]\n" +
+  "Tela: limpe, centro, mudexy X Y, mudedireção N\n" +
+  'Variáveis: faça "nome valor, :nome, escreva valor\n' +
+  "Controle: repita N [...], se cond [...], sesenão cond [...] [...]\n" +
   "Procedimentos: aprenda nome :arg ... fim\n" +
-  "Matematica: soma, diferenca, produto, quociente, raizq, aleatorio, potencia";
+  "Matemática: soma, diferença, produto, quociente, raizq, aleatório, potência";
 
 const HELP_TEXT =
   "Movement: fd N, bk N, rt N, lt N\n" +

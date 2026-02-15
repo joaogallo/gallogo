@@ -20,6 +20,10 @@ interface GamificationState {
   // Badges
   earnedBadgeIds: string[];
 
+  // Progress tracking
+  completedLessonIds: string[];
+  completedChallengeIds: string[];
+
   // Achievement toast queue
   pendingAchievements: Achievement[];
 
@@ -33,9 +37,13 @@ interface GamificationState {
     streak: number;
     lastActive: string;
     earnedBadgeIds: string[];
+    completedLessonIds: string[];
+    completedChallengeIds: string[];
   }) => void;
   addPoints: (amount: number) => void;
   addBadge: (badgeId: string, title: string, icon: string) => void;
+  addCompletedLesson: (lessonId: string) => void;
+  addCompletedChallenge: (challengeId: string) => void;
   levelUp: (newLevel: number, levelName: string) => void;
   shiftAchievement: () => void;
   queueAchievement: (achievement: Achievement) => void;
@@ -48,6 +56,8 @@ export const useGamificationStore = create<GamificationState>((set) => ({
   streak: 0,
   lastActive: new Date().toISOString(),
   earnedBadgeIds: [],
+  completedLessonIds: [],
+  completedChallengeIds: [],
   pendingAchievements: [],
   loaded: false,
 
@@ -60,6 +70,8 @@ export const useGamificationStore = create<GamificationState>((set) => ({
       streak: stats.streak,
       lastActive: stats.lastActive,
       earnedBadgeIds: stats.earnedBadgeIds,
+      completedLessonIds: stats.completedLessonIds,
+      completedChallengeIds: stats.completedChallengeIds,
       loaded: true,
     });
   },
@@ -74,6 +86,20 @@ export const useGamificationStore = create<GamificationState>((set) => ({
         levelName: levelDef.namePt,
       };
     }),
+
+  addCompletedLesson: (lessonId) =>
+    set((state) =>
+      state.completedLessonIds.includes(lessonId)
+        ? state
+        : { completedLessonIds: [...state.completedLessonIds, lessonId] }
+    ),
+
+  addCompletedChallenge: (challengeId) =>
+    set((state) =>
+      state.completedChallengeIds.includes(challengeId)
+        ? state
+        : { completedChallengeIds: [...state.completedChallengeIds, challengeId] }
+    ),
 
   addBadge: (badgeId, title, icon) =>
     set((state) => ({

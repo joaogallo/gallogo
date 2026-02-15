@@ -63,7 +63,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             where: { id: token.sub },
             select: { ageGroup: true },
           });
-          token.ageGroup = dbUser?.ageGroup ?? "AGE_8_12";
+          token.ageGroup = dbUser?.ageGroup ?? "AGE_8_10";
         } else {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           token.ageGroup = (user as any).ageGroup;

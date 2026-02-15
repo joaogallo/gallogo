@@ -25,6 +25,8 @@ export function GamificationLoader() {
             streak: data.streak,
             lastActive: data.lastActive,
             earnedBadgeIds: data.earnedBadgeIds,
+            completedLessonIds: data.completedLessonIds ?? [],
+            completedChallengeIds: data.completedChallengeIds ?? [],
           });
         }
       })

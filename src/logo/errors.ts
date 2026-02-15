@@ -77,11 +77,11 @@ export function suggestCommand(input: string): string | null {
   return null;
 }
 
-export type AgeGroup = "6-8" | "8-12" | "10-14";
+export type AgeGroup = "6-8" | "8-10" | "10-14";
 
 export function formatError(
   error: Error,
-  ageGroup: AgeGroup = "8-12"
+  ageGroup: AgeGroup = "8-10"
 ): string {
   const msg = error.message;
 

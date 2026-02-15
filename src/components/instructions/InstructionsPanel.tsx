@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/theme/ThemeProvider";
 import type { InterpreterState } from "@/logo";
@@ -9,6 +9,8 @@ import { LessonContent } from "./LessonContent";
 import { useGamification } from "@/hooks/useGamification";
 
 type PanelMode = "browse" | "lesson" | "free";
+
+const ACTIVE_LESSON_KEY = "gallogo-active-lesson";
 
 interface InstructionsPanelProps {
   interpreterRef?: React.RefObject<InterpreterState | null>;
@@ -20,15 +22,47 @@ export function InstructionsPanel({
   onCopyToTerminal,
 }: InstructionsPanelProps) {
   const { ageGroup, theme } = useTheme();
-  const { recordProgress } = useGamification();
-  const [mode, setMode] = useState<PanelMode>("browse");
-  const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
-  const [completedLessons, setCompletedLessons] = useState<Set<string>>(
+  const { recordProgress, completedLessonIds, completedChallengeIds } =
+    useGamification();
+
+  const [mode, setMode] = useState<PanelMode>(() => {
+    if (typeof window === "undefined") return "browse";
+    const saved = localStorage.getItem(ACTIVE_LESSON_KEY);
+    return saved && getLesson(saved) ? "lesson" : "browse";
+  });
+  const [activeLessonId, setActiveLessonId] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    const saved = localStorage.getItem(ACTIVE_LESSON_KEY);
+    return saved && getLesson(saved) ? saved : null;
+  });
+  // Local completions (added during this session, merged with store)
+  const [sessionLessons, setSessionLessons] = useState<Set<string>>(
     new Set()
   );
-  const [completedChallenges, setCompletedChallenges] = useState<Set<string>>(
+  const [sessionChallenges, setSessionChallenges] = useState<Set<string>>(
     new Set()
   );
+
+  // Merge store (persisted) + session (just completed) into unified sets
+  const completedLessons = useMemo(() => {
+    const set = new Set(completedLessonIds);
+    sessionLessons.forEach((id) => set.add(id));
+    return set;
+  }, [completedLessonIds, sessionLessons]);
+
+  const completedChallenges = useMemo(() => {
+    const set = new Set(completedChallengeIds);
+    sessionChallenges.forEach((id) => set.add(id));
+    return set;
+  }, [completedChallengeIds, sessionChallenges]);
+
+  useEffect(() => {
+    if (activeLessonId) {
+      localStorage.setItem(ACTIVE_LESSON_KEY, activeLessonId);
+    } else {
+      localStorage.removeItem(ACTIVE_LESSON_KEY);
+    }
+  }, [activeLessonId]);
 
   const modules = getModulesForAge(ageGroup);
 
@@ -39,7 +73,7 @@ export function InstructionsPanel({
 
   const handleLessonComplete = useCallback(() => {
     if (activeLessonId) {
-      setCompletedLessons((prev) => new Set(prev).add(activeLessonId));
+      setSessionLessons((prev) => new Set(prev).add(activeLessonId));
 
       // Find next lesson
       const lesson = getLesson(activeLessonId);
@@ -69,13 +103,14 @@ export function InstructionsPanel({
         }
       }
       // No more lessons
+      setActiveLessonId(null);
       setMode("browse");
     }
   }, [activeLessonId, ageGroup, modules, recordProgress]);
 
   const handleChallengeComplete = useCallback(
     (challengeId: string) => {
-      setCompletedChallenges((prev) => new Set(prev).add(challengeId));
+      setSessionChallenges((prev) => new Set(prev).add(challengeId));
 
       // Award challenge points
       if (activeLessonId) {
@@ -110,7 +145,10 @@ export function InstructionsPanel({
         />
         <div className="border-t border-border px-4 py-1.5">
           <button
-            onClick={() => setMode("browse")}
+            onClick={() => {
+              setActiveLessonId(null);
+              setMode("browse");
+            }}
             className="text-xs text-content-muted hover:text-content transition-colors"
           >
             &larr; Voltar ao catálogo

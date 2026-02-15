@@ -8,7 +8,7 @@ Inspirado na filosofia de Seymour Papert: **criancas aprendem melhor construindo
 
 A interface se adapta automaticamente a faixa etaria escolhida:
 
-| Explorador (6-8) | Aventureiro (8-12) | Hacker (10-14) |
+| Explorador (6-8) | Aventureiro (8-10) | Hacker (10-14) |
 |---|---|---|
 | Cores vibrantes, elementos grandes | Visual equilibrado, estetica game | Tema escuro, estetica terminal |
 
@@ -17,7 +17,7 @@ A interface se adapta automaticamente a faixa etaria escolhida:
 - **Terminal Interativo** — Digite comandos e veja a tartaruga executar em tempo real. Historico, autocomplete e syntax highlighting inclusos.
 - **Licoes Guiadas** — 5 modulos com mais de 25 licoes progressivas, desde os primeiros passos ate fractais e recursao.
 - **Canvas Animado** — Veja seus desenhos ganharem vida com animacoes suaves. Exporte como PNG e compartilhe na galeria.
-- **100% em Portugues** — Todos os comandos funcionam em portugues: `pf`, `vd`, `repita`, `aprenda`, `faca` e muito mais.
+- **100% em Portugues** — Todos os comandos funcionam em portugues: `pf`, `vd`, `repita`, `aprenda`, `faça` e muito mais. Aceita formas acentuadas e sem acento.
 - **Gamificacao** — Ganhe pontos, suba de nivel, conquiste badges e dispute o ranking com outros programadores.
 - **Adaptativo por Idade** — A interface se adapta automaticamente: cores, tamanhos e complexidade mudam conforme a faixa etaria.
 
@@ -79,6 +79,9 @@ Acesse [http://localhost:3000](http://localhost:3000).
 | `NEXTAUTH_URL` | URL base da aplicacao |
 | `GOOGLE_CLIENT_ID` | OAuth Google (opcional) |
 | `GOOGLE_CLIENT_SECRET` | OAuth Google (opcional) |
+| `MICROSOFT_CLIENT_ID` | OAuth Microsoft (opcional) |
+| `MICROSOFT_CLIENT_SECRET` | OAuth Microsoft (opcional) |
+| `MICROSOFT_ISSUER` | Issuer URL Microsoft (opcional) |
 
 ## Estrutura do Projeto
 
@@ -89,12 +92,12 @@ src/
 │   ├── (app)/        # Rotas protegidas (playground, lessons, challenges, profile, leaderboard, gallery)
 │   └── api/          # API routes (auth, progress, drawings, leaderboard)
 ├── components/       # Componentes React
-│   ├── ui/           # Primitivos (Button, Card, Badge, Modal, ProgressBar)
+│   ├── ui/           # Primitivos (Button, Card, Badge, Modal, ProgressBar, AgeGroupModal, AgeGroupPicker)
 │   ├── layout/       # ThreePanelLayout, Header, PanelResizer
 │   ├── cli/          # CliPanel, CliInput, CliOutput, SyntaxHighlighter, AutoComplete
 │   ├── canvas/       # CanvasPanel, TurtleCanvas, CanvasToolbar
 │   ├── instructions/ # InstructionsPanel, LessonContent, ChallengePrompt
-│   ├── gamification/ # PointsDisplay, BadgeGrid, AchievementToast, LeaderboardTable
+│   ├── gamification/ # PointsDisplay, BadgeGrid, AchievementToast, LeaderboardTable, GamificationLoader
 │   └── auth/         # LoginForm, RegisterForm, AgeGroupSelector
 ├── logo/             # Interpretador Logo (TypeScript puro, zero deps UI)
 │   ├── lexer.ts      # Tokenizador
@@ -113,7 +116,7 @@ src/
 
 ## Interpretador Logo
 
-O interpretador e 100% TypeScript, sem dependencias de UI, com pipeline:
+O interpretador e 100% TypeScript, sem dependencias de UI, com suporte a Unicode (caracteres acentuados), e pipeline:
 
 ```
 Input string -> Lexer (tokens) -> Parser (AST) -> Interpreter (DrawCommands)
@@ -125,9 +128,9 @@ Input string -> Lexer (tokens) -> Parser (AST) -> Interpreter (DrawCommands)
 | Comando | Alias PT | Descricao |
 |---|---|---|
 | `forward N` / `fd N` | `pf N` / `parafrente N` | Mover para frente N passos |
-| `back N` / `bk N` | `pt N` / `paratras N` | Mover para tras N passos |
-| `right N` / `rt N` | `vd N` / `paradireita N` | Girar N graus a direita |
-| `left N` / `lt N` | `ve N` / `paraesquerda N` | Girar N graus a esquerda |
+| `back N` / `bk N` | `pt N` / `paratrás N` | Mover para tras N passos |
+| `right [N]` / `rt [N]` | `vd [N]` / `paradireita [N]` | Girar N graus a direita (default 90°) |
+| `left [N]` / `lt [N]` | `ve [N]` / `paraesquerda [N]` | Girar N graus a esquerda (default 90°) |
 
 #### Caneta
 | Comando | Alias PT | Descricao |
@@ -140,34 +143,38 @@ Input string -> Lexer (tokens) -> Parser (AST) -> Interpreter (DrawCommands)
 #### Tartaruga
 | Comando | Alias PT | Descricao |
 |---|---|---|
-| `home` | `casa` / `centro` | Voltar ao centro |
+| `home` | `casa` / `centro` / `início` | Voltar ao centro |
 | `clearscreen` / `cs` | `limpe` / `limpetela` | Limpar tela |
 | `hideturtle` / `ht` | `et` / `escondatartaruga` | Esconder tartaruga |
-| `showturtle` / `st` | `mt` / `mostretartaruga` | Mostrar tartaruga |
-| `setxy X Y` | `mudexy X Y` | Ir para coordenadas (X, Y) |
-| `setheading N` / `seth N` | `muded N` / `mudedirecao N` | Apontar para direcao N |
+| `showturtle` / `st` | `mt` / `apareça` / `mostretartaruga` | Mostrar tartaruga |
+| `setxy X Y` | `mudexy X Y` / `mudeposição X Y` | Ir para coordenadas (X, Y) |
+| `setheading N` / `seth N` | `muded N` / `mudedireção N` / `mudeângulo N` | Apontar para direcao N |
 
 #### Programacao
 | Comando | Alias PT | Descricao |
 |---|---|---|
 | `repeat N [cmds]` | `repita N [cmds]` | Repetir N vezes |
-| `make "nome valor` | `faca "nome valor` | Criar/alterar variavel |
+| `make "nome valor` | `faça "nome valor` | Criar/alterar variavel |
 | `print valor` | `escreva valor` | Mostrar valor no terminal |
 | `to nome :param ... end` | `aprenda nome :param ... fim` | Definir procedure |
 | `if cond [cmds]` | `se cond [cmds]` | Condicional |
-| `ifelse cond [v] [f]` | `sesenao cond [v] [f]` | Condicional com else |
+| `ifelse cond [v] [f]` | `sesenão cond [v] [f]` | Condicional com else |
 | `stop` | `pare` | Sair do procedure |
 
 #### Matematica
 | Comando | Alias PT | Descricao |
 |---|---|---|
-| `random N` | `aleatorio N` | Numero aleatorio 0 a N-1 |
+| `random N` | `aleatório N` | Numero aleatorio 0 a N-1 |
 | `sqrt N` | `raizq N` | Raiz quadrada |
-| `power B E` | `potencia B E` | Potencia |
+| `power B E` | `potência B E` | Potencia |
 | `abs N` | `absoluto N` | Valor absoluto |
 | `round N` | `arredonde N` | Arredondar |
-| `remainder A B` | `resto A B` / `modulo A B` | Resto da divisao |
+| `remainder A B` | `resto A B` / `módulo A B` | Resto da divisao |
 | `repcount` | `contagemrepita` | Contador do repeat atual |
+| `difference A B` | `diferença A B` | Diferenca |
+| `quotient A B` | `divisão A B` | Quociente |
+
+> **Nota**: Todos os aliases PT aceitam tanto a forma acentuada quanto sem acento (ex: `faça`/`faca`, `aleatório`/`aleatorio`, `potência`/`potencia`, `sesenão`/`sesenao`).
 
 ### Paleta de Cores (0-15)
 
@@ -215,7 +222,7 @@ Input string -> Lexer (tokens) -> Parser (AST) -> Interpreter (DrawCommands)
 |---|---|---|---|
 | 1 | Primeiros Passos com a Tartaruga | 7 | 6-8 |
 | 2 | Alem do Basico — Liberando a Criatividade | 5 | 6-8 |
-| 3 | Referencia e Aprofundamento | 7 | 8-12 |
+| 3 | Referencia e Aprofundamento | 7 | 8-10 |
 | 4 | Pedagogia e Projetos | 5 | 6-8 |
 | 5 | Revisao e Projetos Finais | 3 | 6-8 |
 

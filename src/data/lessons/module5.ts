@@ -91,7 +91,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       {
         type: "text",
         content:
-          "Nível Aventureiro (8-12):\n1. Cidade (casa, prédio, árvore, carro)\n2. Mandala simétrica\n3. Labirinto programado",
+          "Nível Aventureiro (8-10):\n1. Cidade (casa, prédio, árvore, carro)\n2. Mandala simétrica\n3. Labirinto programado",
       },
       {
         type: "text",

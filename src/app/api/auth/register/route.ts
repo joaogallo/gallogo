@@ -35,7 +35,7 @@ export async function POST(req: Request) {
         name: name || null,
         email,
         password: hashedPassword,
-        ageGroup: ageGroup || "AGE_8_12",
+        ageGroup: ageGroup || "AGE_8_10",
       },
     });
 

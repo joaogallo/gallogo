@@ -3,7 +3,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { getLevelForPoints } from "@/data/levels";
 
-// GET /api/leaderboard?ageGroup=AGE_8_12
+// GET /api/leaderboard?ageGroup=AGE_8_10
 export async function GET(req: NextRequest) {
   const session = await auth();
   if (!session?.user?.id) {
@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   const ageGroup = req.nextUrl.searchParams.get("ageGroup");
 
   const where = ageGroup
-    ? { user: { ageGroup: ageGroup as "AGE_6_8" | "AGE_8_12" | "AGE_10_14" } }
+    ? { user: { ageGroup: ageGroup as "AGE_6_8" | "AGE_8_10" | "AGE_10_14" } }
     : {};
 
   const entries = await prisma.userPoints.findMany({

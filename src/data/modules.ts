@@ -22,7 +22,7 @@ export const MODULES: Module[] = [
     title: "Referência e Aprofundamento",
     description:
       "Referência técnica completa: coordenadas, aritmética, procedures avançados e cores.",
-    ageGroupMin: "8-12",
+    ageGroupMin: "8-10",
     lessonIds: ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7"],
   },
   {
