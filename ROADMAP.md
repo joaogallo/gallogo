@@ -2,7 +2,7 @@
 
 ## Contexto
 
-GalloGo e uma plataforma web educacional que simula um CLI para ensinar criancas a programar usando a linguagem Logo (turtle graphics). A tela e dividida em 3 paineis: Instrucoes/Desafios, CLI e Canvas de saida. O app adapta a interface conforme a faixa etaria escolhida no cadastro (6-8, 8-12, 10-14 anos) e inclui gamificacao completa.
+GalloGo e uma plataforma web educacional que simula um CLI para ensinar criancas a programar usando a linguagem Logo (turtle graphics). A tela e dividida em 3 paineis: Instrucoes/Desafios, CLI e Canvas de saida. O app adapta a interface conforme a faixa etaria escolhida no cadastro (6-8, 8-10, 10-14 anos) e inclui gamificacao completa.
 
 **Tech Stack**: Next.js 16 (App Router + Turbopack) + TypeScript + Tailwind CSS v4 + PostgreSQL + Prisma 5 + Auth.js + Zustand
 
@@ -72,8 +72,8 @@ gallogo/
 │   │   └── useSoundEffects.ts
 │   ├── stores/          (canvas-store, gamification-store)
 │   ├── data/
-│   │   ├── lessons/     (age-6-8/, age-8-12/, age-10-14/ — JSON)
-│   │   ├── challenges/  (age-6-8/, age-8-12/, age-10-14/ — JSON)
+│   │   ├── lessons/     (age-6-8/, age-8-10/, age-10-14/ — JSON)
+│   │   ├── challenges/  (age-6-8/, age-8-10/, age-10-14/ — JSON)
 │   │   ├── badges.ts
 │   │   └── levels.ts
 │   ├── services/        (progress, gamification, challenge-validator, drawing)
@@ -102,9 +102,9 @@ jest ts-jest @types/jest @types/bcryptjs
 ```
 
 ### 1.3 Configurar Tailwind com sistema de temas por idade ✅
-- `globals.css` com `@theme inline` (Tailwind v4): CSS variables via `[data-age-group="6-8|8-12|10-14"]`
+- `globals.css` com `@theme inline` (Tailwind v4): CSS variables via `[data-age-group="6-8|8-10|10-14"]`
   - **6-8 "Explorador"**: cores vibrantes, border-radius grande (1rem), fonte 1.25rem
-  - **8-12 "Aventureiro"**: teal/purple/orange, radius medio (0.5rem), fonte 1rem
+  - **8-10 "Aventureiro"**: teal/purple/orange, radius medio (0.5rem), fonte 1rem
   - **10-14 "Hacker"**: dark mode (#0f172a), terminal green/cyan/magenta, radius pequeno (0.25rem)
 
 ### 1.4 Schema do banco (Prisma 5 + PostgreSQL via Docker) ✅
@@ -199,7 +199,7 @@ Paleta de 16 cores Logo (0-15) com `resolveColor()`.
 - `LogoError` (parse) com line/col, `LogoRuntimeError` (execucao), `StopSignal`
 - `formatError(error, ageGroup)` com mensagens adaptadas:
   - 6-8: "Oops! A tartaruga nao entendeu 'fdd'. Voce quis dizer 'fd'?"
-  - 8-12: "'fdd' nao encontrado. Tente 'fd'."
+  - 8-10: "'fdd' nao encontrado. Tente 'fd'."
   - 10-14: "Erro na linha 1:1: 'fdd' nao definido. Sugestao: 'fd'"
 - Fuzzy matching via distancia de Levenshtein com `suggestCommand()`
 
@@ -284,7 +284,7 @@ Implementada a conexao funcional entre o terminal CLI e o canvas antes de comple
 ### 5.1 CliPanel completo ✅
 - CLI custom com output scrollavel + input fixo (textarea auto-resize)
 - Integrado ao interpretador Logo real com animacao progressiva
-- Prompt adaptado por idade: `tartaruga>` (6-8), `logo>` (8-12), `gallogo>` (10-14)
+- Prompt adaptado por idade: `tartaruga>` (6-8), `logo>` (8-10), `gallogo>` (10-14)
 
 ### 5.2 CliOutput ✅
 - Entries tipadas: input, output, error, system com cores distintas
@@ -319,104 +319,125 @@ Implementada a conexao funcional entre o terminal CLI e o canvas antes de comple
 
 ---
 
-## Fase 6: Sistema de Licoes e Desafios (5-7 dias) — PENDENTE
+## Fase 6: Sistema de Licoes e Desafios ✅ CONCLUIDA
 
-### 6.1 Formato de dados (JSON)
-```
-Lesson: id, title, titlePtBr, description, ageGroup, order, category, content[], challenges[], prerequisites[], pointsReward
-LessonStep: type (text|example|try-it|explanation), content (markdown), code?, expectedOutput?, illustration?
-Challenge: id, title, description, difficulty (1-3), hints[], validation, pointsReward, badgeId?, timeLimit?
-ChallengeValidation: type (exact-drawing|contains-commands|output-match|custom), expectedCommands?, expectedDrawing?, tolerance?, customValidator?
-```
+### 6.1 Formato de dados (TypeScript) ✅
+- Licoes em `src/data/lessons/module1-5.ts` com tipagem forte
+- 5 modulos, 27+ licoes com desafios integrados
+- Conteudo 100% em portugues com aliases acentuados (`faça`, `aleatório`, `potência`, etc.)
 
-### 6.2 Curriculo Age 6-8 (10 licoes)
-1. Conheca a Tartaruga — introducao visual, sem comandos
-2. Primeiros Passos — comando `fd` apenas
-3. Girando! — `rt` e `lt`
-4. Desenhando um Quadrado — combinar fd + rt
-5. A Magia do Repeat — introduzir `repeat`
-6. Triangulos — `repeat 3 [fd 100 rt 120]`
-7. Cores! — `setpencolor`
-8. Desenhando uma Casa — combinar formas
-9. Estrelas — padroes com repeat
-10. Desenho Livre — exploracao
+### 6.2 Curriculo ✅
+- **Modulo 1** (6-8): Primeiros Passos — 7 licoes (pf, vd/ve, quadrado, repeat, cores)
+- **Modulo 2** (6-8): Alem do Basico — 5 licoes (variaveis, aleatorio, procedures, condicionais)
+- **Modulo 3** (8-10): Referencia e Aprofundamento — 7 licoes (coordenadas, angulos, espirais, fractais)
+- **Modulo 4** (6-8): Pedagogia e Projetos — 5 licoes
+- **Modulo 5** (6-8): Revisao e Projetos Finais — 3 licoes
 
-### 6.3 Curriculo Age 8-12
-- Variaveis com `make`, procedures com `to/end`, repeats aninhados
-- Padroes geometricos, espirais, uso de coordenadas (`setxy`), condicionais
+### 6.3 InstructionsPanel ✅
+- Alterna entre: catalogo de modulos, lista de licoes, conteudo de licao/desafio
+- Merge de progresso persistido (API) com progresso de sessao (localStorage)
+- Licao ativa persiste em localStorage (`gallogo-active-lesson`)
+- LessonContent, ChallengePrompt com hints progressivos
 
-### 6.4 Curriculo Age 10-14
-- Recursao, procedures com parametros multiplos, funcoes matematicas
-- Fractais: arvores, Koch snowflake, triangulo de Sierpinski
-- Pensamento algoritmico e desafios de otimizacao
-
-### 6.5 InstructionsPanel
-- Alterna entre: modo licao, modo desafio, modo livre
-- LessonContent, ChallengePrompt
-
-### 6.6 Challenge Validator
+### 6.4 Challenge Validator ✅
 - Validacao por comandos, drawing, estado da tartaruga, composta
 
-### 6.7 Hint System
-- Revelacao progressiva: 1o hint gratis, 2o custa pontos, 3o = quase-solucao
-
-### 6.8 Paginas de licoes e desafios
+### 6.5 Hint System ✅
+- Revelacao progressiva com hints por licao/desafio
 
 ---
 
-## Fase 7: Sistema de Usuarios e Auth (3-4 dias) — PARCIALMENTE CONCLUIDA
-
-> Auth.js configurado. Faltam paginas de login/registro, middleware e perfil.
+## Fase 7: Sistema de Usuarios e Auth ✅ CONCLUIDA
 
 ### 7.1 Auth.js config ✅
 - Credentials provider com bcrypt
 - JWT strategy com ageGroup nos callbacks
 - PrismaAdapter
+- OAuth: Google e Microsoft providers
 
-### 7.2 Registro com selecao de faixa etaria — PENDENTE
-### 7.3 Login — PENDENTE
-### 7.4 Middleware — PENDENTE
-### 7.5 Tema baseado na sessao — PENDENTE (ThemeProvider usa localStorage, falta sessao)
-### 7.6 Pagina de perfil — PENDENTE
+### 7.2 Registro com selecao de faixa etaria ✅
+- Formulario com selecao de AGE_6_8, AGE_8_10, AGE_10_14
 
----
+### 7.3 Login ✅
+- Pagina de login com Credentials + OAuth
 
-## Fase 8: Gamificacao (4-5 dias) — PENDENTE
+### 7.4 Tema baseado na sessao ✅
+- ThemeProvider sincroniza com session.user.ageGroup
+- Fallback para localStorage quando nao logado
+- AgeGroupModal para selecao na primeira visita
 
-### 8.1 Sistema de pontos
-### 8.2 Sistema de niveis (10 niveis)
-### 8.3 Badges (15+)
-### 8.4 UI de gamificacao
-### 8.5 Leaderboard
-### 8.6 Persistencia de progresso
-### 8.7 Gamification store (Zustand)
+### 7.5 Pagina de perfil ✅
+### 7.6 Leaderboard ✅
 
 ---
 
-## Fase 9: Polish e Deploy (4-5 dias) — PENDENTE
+## Fase 8: Gamificacao ✅ CONCLUIDA
 
-### 9.1 Animacoes
-### 9.2 Efeitos sonoros
-### 9.3 Acessibilidade
-### 9.4 Internacionalizacao (next-intl)
-### 9.5 Landing page publica
-### 9.6 Deploy (Vercel + Neon/Vercel Postgres)
-### 9.7 SEO e Metadata
+### 8.1 Sistema de pontos ✅
+- 20-50 pts por licao, 15-50 pts por desafio, +10 pts streak diario
+
+### 8.2 Sistema de niveis (10 niveis) ✅
+- Tartaruga Iniciante (0) ate Arquiteto Digital (10.000 pts)
+
+### 8.3 Badges (21) ✅
+- 4 categorias: Marcos, Streaks, Completude, Diversao
+
+### 8.4 UI de gamificacao ✅
+- PointsDisplay, BadgeGrid, AchievementToast, LeaderboardTable, GamificationLoader
+
+### 8.5 Leaderboard ✅
+- GET /api/leaderboard com ranking por pontos
+
+### 8.6 Persistencia de progresso ✅
+- GET/POST /api/progress com completedLessonIds e completedChallengeIds
+- Store Zustand com hydrate via GamificationLoader
+- InstructionsPanel merge progresso persistido (API) + sessao (localStorage)
+
+### 8.7 Gamification store (Zustand) ✅
+- points, level, badges, streak, pendingAchievements, completedLessonIds, completedChallengeIds
+
+---
+
+## Fase 9: Polish e Deploy — EM ANDAMENTO
+
+### 9.1 Landing page publica ✅
+
+### 9.2 Deploy (Vercel) ✅
+- postinstall script para prisma generate
+
+### 9.3 Acentuacao completa PT-BR ✅
+- Aliases acentuados no interpretador Logo (faça, aleatório, potência, sesenão, etc.)
+- Lexer com suporte Unicode (`\p{L}`)
+- Conteudo de licoes corrigido com acentos
+- Argumentos opcionais para vd/ve (default 90°)
+
+### 9.4 Modal de perfil etario ✅
+- AgeGroupModal com cards visuais e mascotes
+- AgeGroupPicker integrado ao ThemeProvider
+- Exibicao obrigatoria na primeira visita, dismissable via Header
+
+### 9.5 Faixa etaria 8-10 ✅
+- Renomeacao de AGE_8_12 para AGE_8_10 em todo o codebase (schema, temas, licoes, API)
+
+### 9.6 Animacoes — PENDENTE
+### 9.7 Efeitos sonoros — PENDENTE
+### 9.8 Acessibilidade — PENDENTE
+### 9.9 SEO e Metadata — PENDENTE
 
 ---
 
 ## Grafo de Dependencias entre Fases
 
 ```
-Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ✅ ──> Fase 6 (Licoes)
+Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ✅ ──> Fase 6 (Licoes) ✅
      │                                                │                      │
      ├──────────> Fase 3 (Interpretador) ✅ ─────────┘                      v
-     │                                                │             Fase 8 (Gamificacao)
+     │                                                │             Fase 8 (Gamificacao) ✅
      ├──────────> Fase 4 (Canvas) ✅ ───────────────┘                      │
-     │                                                              Fase 9 (Polish)
-     └──────────> Fase 7 (Auth) ~~ ────────────────────────────────────────┘
+     │                                                              Fase 9 (Polish) ~~
+     └──────────> Fase 7 (Auth) ✅ ────────────────────────────────────────┘
 
-✅ = concluida   ~~ = parcialmente concluida
+✅ = concluida   ~~ = em andamento
 ```
 
 ---
@@ -430,10 +451,10 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ✅ ─�
 | 3. Interpretador Logo | 5-7 dias | ✅ Concluida (132 testes) |
 | 4. Canvas / Turtle Graphics | 3-4 dias | ✅ Concluida |
 | 5. Emulador CLI | 3-4 dias | ✅ Concluida |
-| 6. Licoes e Desafios | 5-7 dias | Pendente |
-| 7. Auth e Usuarios | 3-4 dias | ~~ Auth.js config OK |
-| 8. Gamificacao | 4-5 dias | Pendente |
-| 9. Polish e Deploy | 4-5 dias | Pendente |
+| 6. Licoes e Desafios | 5-7 dias | ✅ Concluida (5 modulos, 27+ licoes) |
+| 7. Auth e Usuarios | 3-4 dias | ✅ Concluida (Credentials + OAuth + perfil) |
+| 8. Gamificacao | 4-5 dias | ✅ Concluida (10 niveis, 21 badges, leaderboard) |
+| 9. Polish e Deploy | 4-5 dias | ~~ Em andamento (landing, deploy, acentos, modal) |
 
 ---
 
@@ -480,10 +501,10 @@ Fase 1 (Setup) ✅ ──> Fase 2 (Layout/UI) ✅ ──> Fase 5 (CLI) ✅ ─�
 3. **Fase 3** ✅: 132 testes passam (`npx jest`), `fd 100 rt 90` gera DrawCommands corretos, aliases PT funcionam
 4. **Fase 4** ✅: Canvas com zoom/pan, animacao progressiva, toolbar completa, export PNG
 5. **Fase 5** ✅: CLI completo com syntax highlighting, autocomplete, historico Up/Down, multiline
-6. **Fase 6**: Licao carrega no painel de instrucoes, desafio valida corretamente, hints funcionam
-7. **Fase 7** ~~: Auth.js configurado com JWT + ageGroup. **Falta**: paginas login/registro, middleware
-8. **Fase 8**: Pontos incrementam, badges aparecem, toast de achievement dispara, leaderboard carrega
-9. **Fase 9**: `npm run build` sem erros, deploy na Vercel funciona, Lighthouse score > 90
+6. **Fase 6** ✅: 5 modulos com 27+ licoes, InstructionsPanel com catalogo/conteudo/desafio, hints progressivos, progresso persistido
+7. **Fase 7** ✅: Login/registro completos, OAuth Google/Microsoft, perfil, tema sincronizado com sessao, modal de selecao de perfil
+8. **Fase 8** ✅: Pontos incrementam, 10 niveis, 21 badges, toast de achievement, leaderboard, completedLessonIds/completedChallengeIds via API
+9. **Fase 9** ~~: Landing page OK, deploy Vercel OK, acentuacao PT-BR completa, modal de perfil OK. **Falta**: animacoes, sons, acessibilidade, SEO
 
 ---
 

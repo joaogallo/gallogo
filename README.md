@@ -18,8 +18,8 @@ A interface se adapta automaticamente a faixa etaria escolhida:
 - **Licoes Guiadas** — 5 modulos com mais de 25 licoes progressivas, desde os primeiros passos ate fractais e recursao.
 - **Canvas Animado** — Veja seus desenhos ganharem vida com animacoes suaves. Exporte como PNG e compartilhe na galeria.
 - **100% em Portugues** — Todos os comandos funcionam em portugues: `pf`, `vd`, `repita`, `aprenda`, `faça` e muito mais. Aceita formas acentuadas e sem acento.
-- **Gamificacao** — Ganhe pontos, suba de nivel, conquiste badges e dispute o ranking com outros programadores.
-- **Adaptativo por Idade** — A interface se adapta automaticamente: cores, tamanhos e complexidade mudam conforme a faixa etaria.
+- **Gamificacao** — Ganhe pontos, suba de nivel, conquiste badges e dispute o ranking com outros programadores. Progresso salvo automaticamente.
+- **Adaptativo por Idade** — Escolha seu perfil (Explorador, Aventureiro ou Hacker) no modal de boas-vindas. A interface se adapta automaticamente: cores, tamanhos e complexidade mudam conforme a faixa etaria.
 
 ## Tech Stack
 
