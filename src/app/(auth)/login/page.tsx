@@ -4,6 +4,11 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import galloLogo from "@/media/avatar/gallo-logo.png";
+import galloExplorer from "@/media/avatar/gallo-explorer.png";
+import galloAdventurer from "@/media/avatar/gallo-adventurer.png";
+import galloHacker from "@/media/avatar/gallo-hacker.png";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -37,19 +42,14 @@ export default function LoginPage() {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[var(--radius-lg)] bg-primary text-white">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            className="h-7 w-7"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2 L20 18 L4 18 Z" />
-          </svg>
-        </div>
+        <Image
+          src={galloLogo}
+          alt="GalloGo"
+          className="mx-auto mb-4"
+          width={200}
+          height={60}
+          priority
+        />
         <h1 className="text-2xl font-bold text-content">Entrar no GalloGo</h1>
         <p className="mt-1 text-sm text-content-muted">
           Digite seu email e senha para continuar
@@ -174,6 +174,18 @@ export default function LoginPage() {
           Cadastre-se
         </Link>
       </p>
+
+      <div className="flex items-end justify-center gap-4 pt-2">
+        <div className="relative h-16 w-16 opacity-80 hover:opacity-100 transition-opacity">
+          <Image src={galloExplorer} alt="Explorador" fill className="object-contain" sizes="64px" />
+        </div>
+        <div className="relative h-20 w-20 opacity-80 hover:opacity-100 transition-opacity">
+          <Image src={galloAdventurer} alt="Aventureiro" fill className="object-contain" sizes="80px" />
+        </div>
+        <div className="relative h-16 w-16 opacity-80 hover:opacity-100 transition-opacity">
+          <Image src={galloHacker} alt="Hacker" fill className="object-contain" sizes="64px" />
+        </div>
+      </div>
     </div>
   );
 }

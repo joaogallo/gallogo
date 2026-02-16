@@ -4,28 +4,36 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image, { type StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
+import galloLogo from "@/media/avatar/gallo-logo.png";
+import galloExplorer from "@/media/avatar/gallo-explorer.png";
+import galloAdventurer from "@/media/avatar/gallo-adventurer.png";
+import galloHacker from "@/media/avatar/gallo-hacker.png";
 
 type AgeOption = "AGE_6_8" | "AGE_8_10" | "AGE_10_14";
 
-const AGE_OPTIONS: { id: AgeOption; label: string; range: string; description: string }[] = [
+const AGE_OPTIONS: { id: AgeOption; label: string; range: string; description: string; image: StaticImageData }[] = [
   {
     id: "AGE_6_8",
     label: "Explorador",
     range: "6-8 anos",
     description: "Cores vibrantes, fontes grandes, tartaruga amigável!",
+    image: galloExplorer,
   },
   {
     id: "AGE_8_10",
     label: "Aventureiro",
     range: "8-10 anos",
     description: "Terminal Homebrew, desafios equilibrados, game-like.",
+    image: galloAdventurer,
   },
   {
     id: "AGE_10_14",
     label: "Hacker",
     range: "10-14 anos",
     description: "Modo escuro, terminal compacto, comandos avançados.",
+    image: galloHacker,
   },
 ];
 
@@ -127,31 +135,30 @@ export default function RegisterPage() {
               key={opt.id}
               onClick={() => setAgeGroup(opt.id)}
               className={cn(
-                "w-full rounded-[var(--radius-md)] border p-4 text-left transition-colors",
+                "w-full rounded-[var(--radius-md)] border p-4 text-left transition-all",
                 ageGroup === opt.id
-                  ? "border-primary bg-primary/5"
+                  ? "border-primary bg-primary/5 shadow-sm"
                   : "border-border bg-surface hover:bg-surface-secondary"
               )}
             >
               <div className="flex items-center gap-3">
-                <div
-                  className={cn(
-                    "flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold",
-                    ageGroup === opt.id
-                      ? "bg-primary text-white"
-                      : "bg-surface-secondary text-content-muted"
-                  )}
-                >
-                  {opt.range.split(" ")[0]}
+                <div className="relative h-14 w-14 shrink-0">
+                  <Image
+                    src={opt.image}
+                    alt={opt.label}
+                    fill
+                    className="object-contain"
+                    sizes="56px"
+                  />
                 </div>
                 <div>
                   <div className="font-semibold text-content">{opt.label}</div>
                   <div className="text-xs text-content-muted">{opt.range}</div>
+                  <p className="mt-1 text-sm text-content-secondary">
+                    {opt.description}
+                  </p>
                 </div>
               </div>
-              <p className="mt-2 text-sm text-content-secondary">
-                {opt.description}
-              </p>
             </button>
           ))}
         </div>
@@ -181,19 +188,14 @@ export default function RegisterPage() {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-[var(--radius-lg)] bg-primary text-white">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            className="h-7 w-7"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2 L20 18 L4 18 Z" />
-          </svg>
-        </div>
+        <Image
+          src={galloLogo}
+          alt="GalloGo"
+          className="mx-auto mb-4"
+          width={200}
+          height={60}
+          priority
+        />
         <h1 className="text-2xl font-bold text-content">Criar conta</h1>
         <p className="mt-1 text-sm text-content-muted">
           Comece a aprender programação com Logo!
