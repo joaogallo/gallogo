@@ -14,6 +14,9 @@ export function CanvasToolbar() {
   const setShowGrid = useCanvasStore((s) => s.setShowGrid);
   const setAnimationSpeed = useCanvasStore((s) => s.setAnimationSpeed);
   const finishAnimation = useCanvasStore((s) => s.finishAnimation);
+  const turtle = useCanvasStore((s) => s.turtle);
+  const animatedTurtle = useCanvasStore((s) => s.animatedTurtle);
+  const visibleTurtle = isAnimating ? animatedTurtle : turtle;
 
   const handleExport = () => {
     const canvas = document.querySelector<HTMLCanvasElement>(
@@ -44,6 +47,9 @@ export function CanvasToolbar() {
   return (
     <div className="flex items-center gap-1 border-b border-border px-2 py-1.5">
       <span className="text-xs font-semibold text-content mr-1">Canvas</span>
+      <span className="text-[10px] text-content-muted tabular-nums" title="Posicao X, Y e angulo da tartaruga">
+        ({Math.round(visibleTurtle.x)}, {Math.round(visibleTurtle.y)}) {Math.round(visibleTurtle.heading)}°
+      </span>
 
       <div className="ml-auto flex items-center gap-1">
         {/* Skip animation button */}
