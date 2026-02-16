@@ -106,7 +106,7 @@ export default function RegisterPage() {
   // Step 3: Welcome
   if (step === "done") {
     return (
-      <div className="space-y-4 text-center">
+      <div className="mx-auto max-w-md space-y-4 text-center">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
           <span className="text-3xl text-primary">&#10003;</span>
         </div>
@@ -121,7 +121,7 @@ export default function RegisterPage() {
   // Step 2: Age group selection
   if (step === "age") {
     return (
-      <div className="space-y-6">
+      <div className="mx-auto max-w-md space-y-6">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-content">Escolha seu perfil</h1>
           <p className="mt-1 text-sm text-content-muted">
@@ -186,7 +186,7 @@ export default function RegisterPage() {
 
   // Step 1: Info
   return (
-    <div className="space-y-6">
+    <div className="mx-auto max-w-md space-y-6">
       <div className="text-center">
         <Image
           src={galloLogo}
