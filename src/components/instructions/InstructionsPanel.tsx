@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useMemo } from "react";
+import { useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/theme/ThemeProvider";
 import type { InterpreterState } from "@/logo";
@@ -10,7 +11,13 @@ import { useGamification } from "@/hooks/useGamification";
 
 type PanelMode = "browse" | "lesson" | "free";
 
-const ACTIVE_LESSON_KEY = "gallogo-active-lesson";
+const ACTIVE_LESSON_KEY_PREFIX = "gallogo-active-lesson";
+
+function getActiveLessonKey(userId: string | undefined) {
+  return userId
+    ? `${ACTIVE_LESSON_KEY_PREFIX}-${userId}`
+    : ACTIVE_LESSON_KEY_PREFIX;
+}
 
 interface InstructionsPanelProps {
   interpreterRef?: React.RefObject<InterpreterState | null>;
@@ -21,20 +28,30 @@ export function InstructionsPanel({
   interpreterRef,
   onCopyToTerminal,
 }: InstructionsPanelProps) {
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
+
   const { ageGroup, theme } = useTheme();
   const { recordProgress, completedLessonIds, completedChallengeIds } =
     useGamification();
 
-  const [mode, setMode] = useState<PanelMode>(() => {
-    if (typeof window === "undefined") return "browse";
-    const saved = localStorage.getItem(ACTIVE_LESSON_KEY);
-    return saved && getLesson(saved) ? "lesson" : "browse";
-  });
-  const [activeLessonId, setActiveLessonId] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    const saved = localStorage.getItem(ACTIVE_LESSON_KEY);
-    return saved && getLesson(saved) ? saved : null;
-  });
+  const [mode, setMode] = useState<PanelMode>("browse");
+  const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
+  const [initialized, setInitialized] = useState(false);
+
+  // Load active lesson from user-specific localStorage key (runs on mount and user change)
+  useEffect(() => {
+    const key = getActiveLessonKey(userId);
+    const saved = localStorage.getItem(key);
+    if (saved && getLesson(saved)) {
+      setActiveLessonId(saved);
+      setMode("lesson");
+    } else {
+      setActiveLessonId(null);
+      setMode("browse");
+    }
+    setInitialized(true);
+  }, [userId]);
   // Local completions (added during this session, merged with store)
   const [sessionLessons, setSessionLessons] = useState<Set<string>>(
     new Set()
@@ -57,12 +74,14 @@ export function InstructionsPanel({
   }, [completedChallengeIds, sessionChallenges]);
 
   useEffect(() => {
+    if (!initialized) return;
+    const key = getActiveLessonKey(userId);
     if (activeLessonId) {
-      localStorage.setItem(ACTIVE_LESSON_KEY, activeLessonId);
+      localStorage.setItem(key, activeLessonId);
     } else {
-      localStorage.removeItem(ACTIVE_LESSON_KEY);
+      localStorage.removeItem(key);
     }
-  }, [activeLessonId]);
+  }, [activeLessonId, userId, initialized]);
 
   const modules = getModulesForAge(ageGroup);
 
