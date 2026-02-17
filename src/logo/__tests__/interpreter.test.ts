@@ -177,6 +177,13 @@ describe("Interpreter", () => {
       expect(r.turtle.y).toBeCloseTo(60);
     });
 
+    it("setxy with negative arguments", () => {
+      const r = run("mudexy 0 -150");
+      expect(r.turtle.x).toBeCloseTo(0);
+      expect(r.turtle.y).toBeCloseTo(-150);
+      expect(r.error).toBeUndefined();
+    });
+
     it("setheading sets direction", () => {
       const r = run("seth 180");
       expect(r.turtle.heading).toBeCloseTo(180);

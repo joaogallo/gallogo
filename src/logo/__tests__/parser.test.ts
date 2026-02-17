@@ -266,12 +266,25 @@ describe("Parser", () => {
       });
     });
 
-    it("parses unary minus", () => {
+    it("parses unary minus (negative literal after whitespace)", () => {
       const ast = parseCode("fd -50");
       const arg = (ast[0] as { args: unknown[] }).args[0];
+      // After whitespace, -50 is tokenized as a negative number literal
       expect(arg).toMatchObject({
-        kind: "unary_minus",
-        operand: { kind: "number", value: 50 },
+        kind: "number",
+        value: -50,
+      });
+    });
+
+    it("parses unary minus (inline without whitespace)", () => {
+      // No whitespace before minus → binary subtraction in expression context
+      const ast = parseCode("fd (0-50)");
+      const arg = (ast[0] as { args: unknown[] }).args[0];
+      expect(arg).toMatchObject({
+        kind: "binary",
+        op: "-",
+        left: { kind: "number", value: 0 },
+        right: { kind: "number", value: 50 },
       });
     });
 

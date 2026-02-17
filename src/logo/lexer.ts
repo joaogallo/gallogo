@@ -27,12 +27,15 @@ export function tokenize(input: string): Token[] {
     tokens.push({ type, value, line: l, col: c });
   }
 
+  let hadWhitespace = true; // treat start-of-input as "after whitespace"
+
   while (pos < input.length) {
     const ch = peek();
 
     // Skip whitespace
     if (ch === " " || ch === "\t" || ch === "\r" || ch === "\n") {
       advance();
+      hadWhitespace = true;
       continue;
     }
 
@@ -41,6 +44,7 @@ export function tokenize(input: string): Token[] {
       while (pos < input.length && peek() !== "\n") {
         advance();
       }
+      hadWhitespace = true;
       continue;
     }
 
@@ -54,6 +58,7 @@ export function tokenize(input: string): Token[] {
         num += advance();
       }
       add(TokenType.NUMBER, num, tl, tc);
+      hadWhitespace = false;
       continue;
     }
 
@@ -72,6 +77,7 @@ export function tokenize(input: string): Token[] {
         );
       }
       add(TokenType.VARIABLE, name, tl, tc);
+      hadWhitespace = false;
       continue;
     }
 
@@ -90,6 +96,7 @@ export function tokenize(input: string): Token[] {
         str += advance();
       }
       add(TokenType.STRING, str, tl, tc);
+      hadWhitespace = false;
       continue;
     }
 
@@ -97,11 +104,13 @@ export function tokenize(input: string): Token[] {
     if (ch === "[") {
       advance();
       add(TokenType.LBRACKET, "[", tl, tc);
+      hadWhitespace = false;
       continue;
     }
     if (ch === "]") {
       advance();
       add(TokenType.RBRACKET, "]", tl, tc);
+      hadWhitespace = false;
       continue;
     }
 
@@ -109,11 +118,13 @@ export function tokenize(input: string): Token[] {
     if (ch === "(") {
       advance();
       add(TokenType.LPAREN, "(", tl, tc);
+      hadWhitespace = false;
       continue;
     }
     if (ch === ")") {
       advance();
       add(TokenType.RPAREN, ")", tl, tc);
+      hadWhitespace = false;
       continue;
     }
 
@@ -121,26 +132,44 @@ export function tokenize(input: string): Token[] {
     if (ch === "+") {
       advance();
       add(TokenType.PLUS, "+", tl, tc);
+      hadWhitespace = false;
       continue;
     }
+    // Minus: if preceded by whitespace and immediately followed by a digit,
+    // tokenize as a negative number literal (UCBLogo convention).
+    // This allows "setxy 0 -150" to parse as two separate args.
     if (ch === "-") {
+      if (hadWhitespace && pos + 1 < input.length && isDigit(input[pos + 1])) {
+        advance(); // consume -
+        let num = "-";
+        while (pos < input.length && (isDigit(peek()) || peek() === ".")) {
+          num += advance();
+        }
+        add(TokenType.NUMBER, num, tl, tc);
+        hadWhitespace = false;
+        continue;
+      }
       advance();
       add(TokenType.MINUS, "-", tl, tc);
+      hadWhitespace = false;
       continue;
     }
     if (ch === "*") {
       advance();
       add(TokenType.STAR, "*", tl, tc);
+      hadWhitespace = false;
       continue;
     }
     if (ch === "/") {
       advance();
       add(TokenType.SLASH, "/", tl, tc);
+      hadWhitespace = false;
       continue;
     }
     if (ch === "=") {
       advance();
       add(TokenType.EQ, "=", tl, tc);
+      hadWhitespace = false;
       continue;
     }
 
@@ -155,6 +184,7 @@ export function tokenize(input: string): Token[] {
       } else {
         add(TokenType.LT, "<", tl, tc);
       }
+      hadWhitespace = false;
       continue;
     }
 
@@ -166,6 +196,7 @@ export function tokenize(input: string): Token[] {
       } else {
         add(TokenType.GT, ">", tl, tc);
       }
+      hadWhitespace = false;
       continue;
     }
 
@@ -176,6 +207,7 @@ export function tokenize(input: string): Token[] {
         word += advance();
       }
       add(TokenType.WORD, word, tl, tc);
+      hadWhitespace = false;
       continue;
     }
 

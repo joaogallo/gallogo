@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "@/theme/ThemeProvider";
 import { PointsDisplay } from "@/components/gamification/PointsDisplay";
 import { StreakDisplay } from "@/components/gamification/StreakDisplay";
+import { CommandsModal } from "@/components/ui/CommandsModal";
 import { useGamificationStore } from "@/stores/gamification-store";
 import galloLogo from "@/media/avatar/gallo-logo.png";
 
@@ -117,45 +118,59 @@ function GamificationHeader() {
 
 export function Header() {
   const pathname = usePathname();
+  const [commandsOpen, setCommandsOpen] = useState(false);
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-border bg-surface px-4">
-      <div className="flex items-center gap-6">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src={galloLogo}
-            alt="GalloGo"
-            height={44}
-            className="h-11 w-auto"
-            priority
-          />
-        </Link>
+    <>
+      <header className="flex h-14 items-center justify-between border-b border-border bg-surface px-4">
+        <div className="flex items-center gap-6">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src={galloLogo}
+              alt="GalloGo"
+              height={44}
+              className="h-11 w-auto"
+              priority
+            />
+          </Link>
 
-        {/* Navigation */}
-        <nav className="hidden items-center gap-1 sm:flex">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium transition-colors",
-                pathname === item.href || pathname?.startsWith(item.href + "/")
-                  ? "bg-surface-panel text-primary"
-                  : "text-content-secondary hover:bg-surface-secondary hover:text-content"
-              )}
+          {/* Navigation */}
+          <nav className="hidden items-center gap-1 sm:flex">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium transition-colors",
+                  pathname === item.href || pathname?.startsWith(item.href + "/")
+                    ? "bg-surface-panel text-primary"
+                    : "text-content-secondary hover:bg-surface-secondary hover:text-content"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <button
+              onClick={() => setCommandsOpen(true)}
+              className="rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium text-content-secondary hover:bg-surface-secondary hover:text-content transition-colors"
             >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+              Comandos
+            </button>
+          </nav>
+        </div>
 
-      <div className="flex items-center gap-3">
-        <GamificationHeader />
-        <ThemeSwitcher />
-        <UserMenu />
-      </div>
-    </header>
+        <div className="flex items-center gap-3">
+          <GamificationHeader />
+          <ThemeSwitcher />
+          <UserMenu />
+        </div>
+      </header>
+
+      <CommandsModal
+        open={commandsOpen}
+        onClose={() => setCommandsOpen(false)}
+      />
+    </>
   );
 }
